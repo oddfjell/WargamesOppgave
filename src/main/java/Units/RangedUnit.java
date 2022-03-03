@@ -15,6 +15,7 @@ public class RangedUnit extends Unit{
     }
 
     public int getResistBonus(){
-
+        //TODO fiks
+        return 2;
     }
 }
