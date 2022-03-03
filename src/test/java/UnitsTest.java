@@ -10,9 +10,13 @@ public class UnitsTest {
         System.out.println(bard.toString());
         System.out.println(christian.toString());
         System.out.println(bard.getName() + " attacks " + christian.getName() + " 20 times");
-        for(int i = 0; i < 20; i++){
+        for(int i = 0; i < 1; i++){
             bard.attack(christian);
         }
+        for(int i = 0; i < 1; i++){
+            christian.attack(bard);
+        }
         System.out.println(christian.getName() + " have " + christian.getHealth() + " HP left");
+        System.out.println(bard.getName() + " have " + bard.getHealth() + " HP left");
     }
 }
