@@ -1,10 +1,12 @@
+package Units;
+
 public abstract class Unit {
     private String name;
     private int health;
     private final int attack, armor;
 
     /**
-     * The constructor of the Unit class
+     * The constructor of the Units.Unit class
      * @param name name
      * @param health health
      * @param attack attack
