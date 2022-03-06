@@ -24,9 +24,11 @@ public abstract class Unit {
      * @param opponent opponent
      */
     public void attack(Unit opponent){
-        int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus()) + (this.armor + this.getResistBonus());
-        System.out.println(this.getName() + " attacks " + opponent.getName());
-        opponent.setHealth(opponentHealth);
+        if ((this.attack + this.getAttackBonus()) > (this.armor + this.getResistBonus())){ //To prevent the opponent from gaining life
+            int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus()) + (opponent.getArmor()+ opponent.getResistBonus());
+            System.out.println(this.getName() + " attacks " + opponent.getName());
+            opponent.setHealth(opponentHealth);
+        }
     }
 
     /**

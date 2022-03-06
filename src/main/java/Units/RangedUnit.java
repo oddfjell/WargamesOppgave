@@ -33,11 +33,18 @@ public class RangedUnit extends Unit{
 
     /**
      * the abstract method from Unit has now a body
+     * I used int attacked to change the resistance bonus value
      * @return resistBonus
      */
+    int attacked = -1;
     @Override
     public int getResistBonus(){
-        //TODO fiks
-        return 2;
+        attacked++;
+        switch (attacked){
+            case 0: return 6;
+            case 1: return 4;
+            default: return 2;
+        }
+
     }
 }

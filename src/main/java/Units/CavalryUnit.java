@@ -24,12 +24,17 @@ public class CavalryUnit extends Unit{
 
     /**
      * the abstract method from Unit has now a body
+     * I used int attacking to change the attack bonus value
      * @return attackBonus
      */
+    int attacking = -1;
     @Override
     public int getAttackBonus(){
-        //TODO fiks
-        return 2;
+        attacking++;
+        switch (attacking){
+            case 0: return 6;
+            default: return 2;
+        }
     }
 
     /**

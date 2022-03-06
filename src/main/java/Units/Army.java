@@ -1,9 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Army {
     private String name;
@@ -60,20 +57,17 @@ public class Army {
     public String toString(){
         return this.getName() + ": " + units.size() + " units";//TODO
     }
-    /*@Override
-    public boolean equals(Object object){
-        if (object == this){ //object.getClass().getName().equals(this.getClass().getName())
-            return true;
-        } else if(object == null || object.getClass()!=this.getClass()){
-            return false;
-        }
-        Unit unit = (Unit) object;
 
-        return (unit.getName() == this.name && unit.toString() == this.toString());
-        //TODO skjekk
-    }
     @Override
-    public int hashCode(){
-        return this
-    }*/
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Army army = (Army) o;
+        return Objects.equals(name, army.name) && Objects.equals(units, army.units);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, units);
+    }
 }
