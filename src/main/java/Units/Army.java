@@ -1,71 +1,112 @@
 package Units;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Army {
     private String name;
     private List<Unit> units;
 
+    /**
+     * constructor of army
+     * @param name
+     */
     public Army(String name){
         this.name = name;
     }
 
+    /**
+     * constructor of army with name and list
+     * @param name
+     * @param units
+     */
     public Army(String name, List<Unit> units){
         this.name = name;
         this.units = units;
     }
 
+    /**
+     * gets the name
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * method to add a unit to the army
+     * @param unit
+     */
     public void add(Unit unit){
         units.add(unit);
     }
+
+    /**
+     * method to add all the units from a certain list to the army
+     * @param units
+     */
     public void addAll(List<Unit> units){
         this.units.addAll(units);
     }
+
+    /**
+     * method to remove a unit from the army
+     * @param unit
+     */
     public void remove(Unit unit){
         units.remove(unit);
     }
+
+    /**
+     * method to check if army has units
+     * @return true if army is not empty, false otherwise
+     */
     public boolean hasUnits(){
         if(units.size() > 0){
             return true;
         } else {
             return false;
         }
-        //TODO skjekk
     }
+
+    /**
+     * returns a sorted list of the units of the army
+     * @return list
+     */
     public List<Unit> getAllUnits(){
-        List<Unit> u = new ArrayList<Unit>(units);
+        List<Unit> u = new ArrayList<>(units);
         u.sort(Comparator.comparing(Unit::toString));
         return u;
     }
-    public Unit getRandom(){
-        Random random = new Random(units.size() - 1);
-        int rand = random.nextInt();
-        return units.get(rand);
-    }
 
+    /**
+     * method to get a random index wHich fits the army.size()
+     * @return
+     */
+    public Unit getRandom() {
+        if (units.size() > 0) {
+            Random random = new Random();
+            int r = random.nextInt(units.size());
+            return units.get(r);
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public String toString(){
-        return this.getName() + ": " + units.size() + " units";//TODO
+        return this.getName() + ": " + units.size() + " units";
     }
+
     @Override
-    public boolean equals(Object object){
-        if (object == this){
-            return true;
-        } else {
-            return false;
-        }
-        //TODO skjekk
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Army army = (Army) o;
+        return Objects.equals(name, army.name) && Objects.equals(units, army.units);
     }
-    /*@Override
-    public int hashCode(){
-        return
-    }*/
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, units);
+    }
 }

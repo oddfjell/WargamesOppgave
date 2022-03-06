@@ -21,11 +21,15 @@ public abstract class Unit {
 
     /**
      * method for attacking an opponent
+     * the if-method is to prevent the opponent from gaining life
      * @param opponent opponent
      */
     public void attack(Unit opponent){
-        int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus()) + (this.armor + this.getResistBonus());
-        opponent.setHealth(opponentHealth);
+        if ((this.attack + this.getAttackBonus()) > (this.armor + this.getResistBonus())){
+            int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus()) + (opponent.getArmor()+ opponent.getResistBonus());
+            System.out.println(this.getName() + " attacks " + opponent.getName());
+            opponent.setHealth(opponentHealth);
+        }
     }
 
     /**
