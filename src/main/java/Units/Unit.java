@@ -6,7 +6,7 @@ public abstract class Unit {
     private final int attack, armor;
 
     /**
-     * The constructor of the Units.Unit class
+     * The constructor of the Unit class
      * @param name name
      * @param health health
      * @param attack attack
