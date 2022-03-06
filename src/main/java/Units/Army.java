@@ -13,7 +13,7 @@ public class Army {
         this.name = name;
     }
 
-    public Army(String name, List<Unit> untis){
+    public Army(String name, List<Unit> units){
         this.name = name;
         this.units = units;
     }
@@ -26,8 +26,7 @@ public class Army {
         units.add(unit);
     }
     public void addAll(List<Unit> units){
-        units.add(units);
-        //TODO forstå spørsmålet
+        this.units.addAll(units);
     }
     public void remove(Unit unit){
         units.remove(unit);
@@ -42,7 +41,7 @@ public class Army {
     }
     public List<Unit> getAllUnits(){
         List<Unit> u = new ArrayList<Unit>(units);
-        u.sort(Comparator.comparing(Unit::getName));
+        u.sort(Comparator.comparing(Unit::toString));
         return u;
     }
     public Unit getRandom(){
@@ -54,7 +53,7 @@ public class Army {
 
     @Override
     public String toString(){
-        return "...";//TODO
+        return this.getName() + ": " + units.size() + " units";//TODO
     }
     @Override
     public boolean equals(Object object){
@@ -65,6 +64,8 @@ public class Army {
         }
         //TODO skjekk
     }
-    @Override
-    public int hashCode(){}
+    /*@Override
+    public int hashCode(){
+        return
+    }*/
 }
