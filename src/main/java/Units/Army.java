@@ -40,14 +40,19 @@ public class Army {
         //TODO skjekk
     }
     public List<Unit> getAllUnits(){
-        List<Unit> u = new ArrayList<Unit>(units);
+        List<Unit> u = new ArrayList<>(units);  //endret fra <Unit>
         u.sort(Comparator.comparing(Unit::toString));
         return u;
     }
     public Unit getRandom(){
-        Random random = new Random(units.size() - 1);
-        int rand = random.nextInt();
-        return units.get(rand);
+        if(units.size() > 0){
+            Random random = new Random();
+            int r = random.nextInt(units.size());
+            return units.get(r);
+        }
+        else{
+            return null;
+        }
     }
 
 
@@ -55,17 +60,20 @@ public class Army {
     public String toString(){
         return this.getName() + ": " + units.size() + " units";//TODO
     }
-    @Override
+    /*@Override
     public boolean equals(Object object){
-        if (object == this){
+        if (object == this){ //object.getClass().getName().equals(this.getClass().getName())
             return true;
-        } else {
+        } else if(object == null || object.getClass()!=this.getClass()){
             return false;
         }
+        Unit unit = (Unit) object;
+
+        return (unit.getName() == this.name && unit.toString() == this.toString());
         //TODO skjekk
     }
-    /*@Override
+    @Override
     public int hashCode(){
-        return
+        return this
     }*/
 }

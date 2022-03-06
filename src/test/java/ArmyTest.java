@@ -8,27 +8,34 @@ public class ArmyTest {
     //TODO
 
     public static void main(String[] args) {
-        Army army = new Army("Gnottene");
+
+        ArrayList<Unit> gnotts = new ArrayList<>();
+        ArrayList<Unit> gnotts2 = new ArrayList<>();
+        Army army = new Army("Gnottene", gnotts);
+
+        System.out.println(army.hasUnits());
+
         RangedUnit gnott1 = new RangedUnit("Stella", 10);
         CavalryUnit gnott2 = new CavalryUnit("Kaisa", 20);
         InfantryUnit gnott3 = new InfantryUnit("Tander", 5);
         CommanderUnit gnott4 = new CommanderUnit("Sanpler", 1);
 
-        ArrayList<Unit> gnotts = new ArrayList<>();
-        gnotts.add(gnott2);
-        gnotts.add(gnott3);
-        gnotts.add(gnott4);
+        gnotts2.add(gnott2);
+        gnotts2.add(gnott3);
+        gnotts2.add(gnott4);
 
         army.add(gnott1);
-        army.addAll(gnotts);
+        army.addAll(gnotts2);
 
         System.out.println(army.getAllUnits());
 
+        army.remove(gnott2);
+        System.out.println(army.getAllUnits());
 
+        System.out.println(army.hasUnits());
 
-        /*
-        Stella, Tander, Sampler og Kaisa
-         */
+        System.out.println("\n\n"+ army.getRandom().toString()); //TODO getRandom
+
 
     }
     /*
