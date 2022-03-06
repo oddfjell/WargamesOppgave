@@ -3,9 +3,15 @@ import Units.*;
 import java.util.ArrayList;
 
 public class BattleTest {
-    public static void main(String[] args) {
 
+    /**
+     * test which makes an instance of a Battle, makes the army, puts them into the constructor
+     * and uses the simulate method to se who wins
+     * @param args
+     */
+    public static void main(String[] args) {
         Battle fight = new Battle();
+
         ArrayList<Unit> mcuFans = new ArrayList<>();
         Army mcu = new Army("MCUFans", mcuFans);
         ArrayList<Unit> dcFans = new ArrayList<>();
@@ -18,5 +24,6 @@ public class BattleTest {
         dcFans.add(new RangedUnit("Robin", 30));
 
         fight.Battle(dc,mcu);
+        System.out.println(fight.simulate().getName() + " won");
     }
 }

@@ -8,6 +8,8 @@ public class ArmyTest {
 
     /**
      * testing all the methods from the army class as addAll()
+     * test which makes an instance of an Army, makes the troops, puts them into the army
+     * and uses the different army methods as addAll(), remove(), add(), getAllUnits(), getRandom()
      * @param args
      */
     public static void main(String[] args) {

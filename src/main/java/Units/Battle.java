@@ -7,11 +7,22 @@ public class Battle {
     private Army armyOne;
     private Army armyTwo;
 
+    /**
+     * constructor of the battle class
+     * @param armyOne
+     * @param armyTwo
+     */
     public void Battle(Army armyOne, Army armyTwo){
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
     }
 
+    /**
+     * method to get a random army to attack a random hostile unit with their own random unit
+     * the simulation loops the random process until an army does not have any more units
+     * then it returns the victor team
+     * @return the victorious army
+     */
     public Army simulate(){
         while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
 
@@ -42,13 +53,15 @@ public class Battle {
 
         if (armyOne.getAllUnits().size() == 0){
             return armyTwo;
-            //System.out.println(armyTwo.getName() + " won with " + armyTwo.getAllUnits().size() + " troop(s)");
         } else{
             return armyOne;
-            //System.out.println(armyOne.getName() + " won with " + armyOne.getAllUnits().size() + " troop(s)");
         }
     }
 
+    /**
+     * toString method
+     * @return String
+     */
     @Override
     public String toString(){
         return armyOne.toString() + " versus " + armyTwo.toString();
