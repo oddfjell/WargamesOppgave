@@ -1,6 +1,6 @@
-package Units;
+package Classes.Units;
 
-public class CommanderUnit extends CavalryUnit{
+public class CommanderUnit extends CavalryUnit {
 
     /**
      * Constructor of the CommanderUnit class

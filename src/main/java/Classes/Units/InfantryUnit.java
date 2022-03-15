@@ -1,6 +1,8 @@
-package Units;
+package Classes.Units;
 
-public class InfantryUnit extends Unit{
+import Classes.Unit;
+
+public class InfantryUnit extends Unit {
 
     /**
      * Constructor of the InfantryUnit class

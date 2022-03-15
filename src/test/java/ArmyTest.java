@@ -1,8 +1,15 @@
-import Units.*;
+import Classes.*;
+import Classes.Units.CavalryUnit;
+import Classes.Units.CommanderUnit;
+import Classes.Units.InfantryUnit;
+import Classes.Units.RangedUnit;
+import TestResources.UnitsGnotts;
+import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class ArmyTest {
 
@@ -12,33 +19,68 @@ public class ArmyTest {
      * and uses the different army methods as addAll(), remove(), add(), getAllUnits(), getRandom()
      * @param args
      */
-    public static void main(String[] args) {
 
-        ArrayList<Unit> gnotts = new ArrayList<>();
-        ArrayList<Unit> gnotts2 = new ArrayList<>();
-        Army army = new Army("Gnottene", gnotts);
+    /**
+     * method to test calculate() //TODO
+     */
 
-        System.out.println(army.hasUnits());
 
-        RangedUnit gnott1 = new RangedUnit("Stella", 10);
-        CavalryUnit gnott2 = new CavalryUnit("Kaisa", 20);
-        InfantryUnit gnott3 = new InfantryUnit("Tander", 5);
-        CommanderUnit gnott4 = new CommanderUnit("Sanpler", 1);
+    //ASSERT
+    @Test
+    public void testAddToArmy() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
 
-        gnotts2.add(gnott2);
-        gnotts2.add(gnott3);
-        gnotts2.add(gnott4);
+        ArrayList<Unit> gnotts = unitsGnotts.getGnotts();
 
-        army.add(gnott1);
-        army.addAll(gnotts2);
+        gnotts.add(unitsGnotts.getGnott1());
+        assertEquals(1, gnotts.size());
 
-        System.out.println(army.getAllUnits());
-
-        army.remove(gnott2);
-        System.out.println(army.getAllUnits());
-
-        System.out.println(army.hasUnits());
-
-        System.out.println("\n"+ army.getRandom().toString());
+        gnotts.add(unitsGnotts.getGnott1());
+        assertEquals(2, gnotts.size());
     }
+
+    @Test
+    public void testAddAllToArmy() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        ArrayList<Unit> gnotts = unitsGnotts.getGnotts();
+
+        gnotts.addAll(unitsGnotts.getSevralGnotts());
+        assertEquals(4, gnotts.size());
+
+        gnotts.addAll(unitsGnotts.getSevralGnotts());
+        assertEquals(8, gnotts.size());
+    }
+
+    @Test
+    public void testRemoveFromArmy() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        ArrayList<Unit> gnotts = unitsGnotts.getSevralGnotts();
+
+        gnotts.remove(0);
+        assertEquals(3, gnotts.size());
+
+        gnotts.remove(1);
+        assertEquals(2, gnotts.size());
+    }
+
+    /*@Test
+    public void testGetRandom() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        ArrayList<Unit> gnotts = unitsGnotts.getSevralGnotts();
+
+
+    }*///TODO
+
+    @Test
+    public void testHasUnits() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertTrue(unitsGnotts.premier().hasUnits());
+
+        assertFalse(unitsGnotts.deuxieme().hasUnits());
+    }
+
 }
