@@ -1,4 +1,7 @@
-import Units.*;
+import Classes.*;
+import Classes.Units.CommanderUnit;
+import Classes.Units.InfantryUnit;
+import Classes.Units.RangedUnit;
 
 import java.util.ArrayList;
 

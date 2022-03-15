@@ -1,6 +1,8 @@
-package Units;
+package Classes.Units;
 
-public class RangedUnit extends Unit{
+import Classes.Unit;
+
+public class RangedUnit extends Unit {
 
     /**
      * Constructor of the RangedUnit class

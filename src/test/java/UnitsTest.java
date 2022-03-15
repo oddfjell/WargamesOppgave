@@ -1,58 +1,59 @@
-import Units.*;
+import Classes.Units.CavalryUnit;
+import Classes.Units.CommanderUnit;
+import Classes.Units.InfantryUnit;
+import Classes.Units.RangedUnit;
+import TestResources.UnitsNotGnotts;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class UnitsTest {
-    public static void main(String[] args) {
-        //test1();
-        test2();
-        //test3();
+
+    @Test
+    public void testUnitProperties(){
+        UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
+
+        CommanderUnit u = unitsNotGnotts.getDictator();
+
+        assertEquals("Borat", u.getName());
+        assertEquals(5, u.getHealth());
+        assertEquals(25, u.getAttack());
+        assertEquals(15, u.getArmor());
     }
 
     /**
-     * test to check if you can make the different units
+     * MOUNTED FORCE HAS BONUS ON FIRST ATTACK WHILE BARD HAS SHIELD//TODO
      */
-    public static void test1(){
-        RangedUnit bard = new RangedUnit("Jaskier", 20);
-        CavalryUnit mountedForce = new CavalryUnit("Monty", 50);
-        CommanderUnit dictator = new CommanderUnit("Borat", 5);
-        InfantryUnit christian = new InfantryUnit("The spanish inquisition", 200);
+    @Test
+    public void testAttack(){
+        UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
 
-        System.out.println(bard.toString());
-        System.out.println(mountedForce.toString());
-        System.out.println(dictator.toString());
-        System.out.println(christian.toString());
+        RangedUnit u1 = unitsNotGnotts.getBard();
+        CavalryUnit u2 = unitsNotGnotts.getMountedForce();
+        InfantryUnit u3 = unitsNotGnotts.getChristian();
+
+        u2.attack(u1);
+        assertEquals(12, u1.getHealth());
+        //bonuses
+
+        u2.attack(u1);
+        assertEquals(2, u1.getHealth());
+        //bonuses
     }
 
-    /**
-     * test to check if the attack method works
-     */
-    public static void test2(){
-        RangedUnit bard = new RangedUnit("Jaskier", 20);
-        InfantryUnit christian = new InfantryUnit("The spanish inquisition", 200);
+    @Test
+    public void testSetHealth(){
+        UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
 
-        for(int i = 0; i < 2; i++){
-            bard.attack(christian);
-        }
-        for(int i = 0; i < 1; i++){
-            christian.attack(bard);
-        }
+        RangedUnit u = unitsNotGnotts.getBard();
 
-        System.out.println(christian.getName() + " have " + christian.getHealth() + " HP left");
-        System.out.println(bard.getName() + " have " + bard.getHealth() + " HP left");
-        //TODO bard should have 4 resistance bonus on the second attack against it
-    }
+        u.setHealth(88);
 
-    /**
-     * test to check if mounted force has a bonus on its first attack
-     */
-    public static void test3(){
-        RangedUnit bard = new RangedUnit("Jaskier", 200);
-        CavalryUnit mountedForce = new CavalryUnit("Monty", 50);
-
-        for(int i = 0; i < 5; i++){
-            System.out.println(bard.toString());
-            System.out.println(mountedForce.toString());
-            mountedForce.attack(bard);
-            System.out.println(bard.getHealth());
-        }
+        assertEquals(88, u.getHealth());
     }
 }
+
+
+
+
+
+
