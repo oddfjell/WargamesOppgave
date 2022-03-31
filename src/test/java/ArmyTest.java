@@ -90,4 +90,24 @@ public class ArmyTest {
         assertEquals(1,unitsGnotts.premier().getInfantryUnits().size());
     }
 
+    @Test
+    public void testGetCommanderUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getCommanderUnits().size());
+    }
+
+    @Test
+    public void testCavalryUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getCavalryUnits().size());
+    }
+
+    @Test
+    public void testGetRangedUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
+    }
 }

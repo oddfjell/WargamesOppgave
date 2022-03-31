@@ -3,6 +3,7 @@ package Classes;
 import Classes.Units.RangedUnit;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Army {
     private String name;
@@ -114,42 +115,28 @@ public class Army {
 
 
     public List<Unit> getInfantryUnits(){
-        List<Unit> listOfInfantryUnits = new ArrayList<>();
-        for(Unit unit:units){
-            if(unit.getID() == 2){
-                listOfInfantryUnits.add(unit);
-            }
-        }
-        return listOfInfantryUnits;
+        return units.stream()
+                .filter(unit -> unit.getID() == 2)
+                .collect((Collectors.toList()));
     }
 
     public List<Unit> getCavalryUnits(){
-        List<Unit> listOfCavalryUnits = new ArrayList<>();
-        for(Unit unit:units){
-            if(unit.getID() == 0){
-                listOfCavalryUnits.add(unit);
-            }
-        }
-        return listOfCavalryUnits;
+        return units.stream()
+                .filter(unit -> unit.getID() == 0)
+                .collect((Collectors.toList()));
     }
 
     public List<Unit> getRangedUnits(){
-        List<Unit> listOfRangedUnits = new ArrayList<>();
-        for(Unit unit:units){
-            if(unit.getID() == 3){
-                listOfRangedUnits.add(unit);
-            }
-        }
-        return listOfRangedUnits;
+        return units.stream()
+                .filter(unit -> unit.getID() == 3)
+                .collect((Collectors.toList()));
     }
 
     public List<Unit> getCommanderUnits(){
-        List<Unit> listOfCommanderUnit = new ArrayList<>();
-        for(Unit unit:units){
-            if(unit.getID() == 1){
-                listOfCommanderUnit.add(unit);
-            }
-        }
-        return listOfCommanderUnit;
+        return units.stream()
+                .filter(unit -> unit.getID() == 1)
+                .collect((Collectors.toList()));
     }
+
+    //hundredSortedClub.forEach(person -> System.out.println(person.name));//TODO
 }
