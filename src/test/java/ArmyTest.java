@@ -83,4 +83,11 @@ public class ArmyTest {
         assertFalse(unitsGnotts.deuxieme().hasUnits());
     }
 
+    @Test
+    public void testGetInfantryUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getInfantryUnits().size());
+    }
+
 }

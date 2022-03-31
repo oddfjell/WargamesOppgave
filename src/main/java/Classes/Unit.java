@@ -90,4 +90,6 @@ public abstract class Unit {
      * abstract class which gets the resist bonus
      */
     public abstract int getResistBonus();
+
+    public abstract int getID();//TODO
 }

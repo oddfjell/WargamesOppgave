@@ -1,5 +1,7 @@
 package Classes;
 
+import Classes.Units.RangedUnit;
+
 import java.util.*;
 
 public class Army {
@@ -18,7 +20,7 @@ public class Army {
      * constructor of army with name and list
      * @param name
      * @param units
-     */
+       */
     public Army(String name, List<Unit> units){
         this.name = name;
         this.units = units;
@@ -108,5 +110,46 @@ public class Army {
     @Override
     public int hashCode() {
         return Objects.hash(name, units);
+    }
+
+
+    public List<Unit> getInfantryUnits(){
+        List<Unit> listOfInfantryUnits = new ArrayList<>();
+        for(Unit unit:units){
+            if(unit.getID() == 2){
+                listOfInfantryUnits.add(unit);
+            }
+        }
+        return listOfInfantryUnits;
+    }
+
+    public List<Unit> getCavalryUnits(){
+        List<Unit> listOfCavalryUnits = new ArrayList<>();
+        for(Unit unit:units){
+            if(unit.getID() == 0){
+                listOfCavalryUnits.add(unit);
+            }
+        }
+        return listOfCavalryUnits;
+    }
+
+    public List<Unit> getRangedUnits(){
+        List<Unit> listOfRangedUnits = new ArrayList<>();
+        for(Unit unit:units){
+            if(unit.getID() == 3){
+                listOfRangedUnits.add(unit);
+            }
+        }
+        return listOfRangedUnits;
+    }
+
+    public List<Unit> getCommanderUnits(){
+        List<Unit> listOfCommanderUnit = new ArrayList<>();
+        for(Unit unit:units){
+            if(unit.getID() == 1){
+                listOfCommanderUnit.add(unit);
+            }
+        }
+        return listOfCommanderUnit;
     }
 }
