@@ -108,6 +108,22 @@ public class ArmyTest {
     public void testGetRangedUnits(){
         UnitsGnotts unitsGnotts = new UnitsGnotts();
 
+        Filewriter filewriter = new Filewriter();
+
+        filewriter.writeArmyInFile(unitsGnotts.premier());
+        filewriter.writeArmyFromFile(unitsGnotts.premier());
+
         assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
     }
+
+   /* @Test
+    public void testWriteArmyInFile(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        Filewriter filewriter = new Filewriter();
+
+        filewriter.writeArmyInFile(unitsGnotts.deuxieme());
+
+
+    }*/
 }

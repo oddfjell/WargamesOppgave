@@ -91,5 +91,5 @@ public abstract class Unit {
      */
     public abstract int getResistBonus();
 
-    public abstract int getID();//TODO
+    public abstract String getID();//TODO public abstract int getID();
 }

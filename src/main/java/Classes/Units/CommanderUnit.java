@@ -23,7 +23,7 @@ public class CommanderUnit extends CavalryUnit {
     }
 
     @Override
-    public int getID(){
-        return 1;
+    public String getID(){
+        return "CommanderUnit";
     }
 }

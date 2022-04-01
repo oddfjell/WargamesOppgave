@@ -49,7 +49,7 @@ public class CavalryUnit extends Unit {
     }
 
     @Override
-    public int getID(){
-        return 0;
+    public String getID(){
+        return "CavalryUnit";
     }
 }

@@ -1,5 +1,7 @@
 package Classes;
 
+import Classes.Units.CavalryUnit;
+import Classes.Units.CommanderUnit;
 import Classes.Units.RangedUnit;
 
 import java.util.*;
@@ -116,25 +118,25 @@ public class Army {
 
     public List<Unit> getInfantryUnits(){
         return units.stream()
-                .filter(unit -> unit.getID() == 2)
+                .filter(unit -> unit.getID().equals("InfantryUnit")) //unit -> unit.getID() == 2
                 .collect((Collectors.toList()));
     }
 
     public List<Unit> getCavalryUnits(){
         return units.stream()
-                .filter(unit -> unit.getID() == 0)
+                .filter(unit -> unit.getID().equals("CavalryUnit")) //unit -> unit.getID() == 0
                 .collect((Collectors.toList()));
     }
 
     public List<Unit> getRangedUnits(){
         return units.stream()
-                .filter(unit -> unit.getID() == 3)
+                .filter(unit -> unit.getID().equals("RangedUnit")) //unit -> unit.getID() == 3
                 .collect((Collectors.toList()));
     }
 
     public List<Unit> getCommanderUnits(){
         return units.stream()
-                .filter(unit -> unit.getID() == 1)
+                .filter(unit -> unit.getID().equals("CommanderUnit")) //unit -> unit.getID() == 1
                 .collect((Collectors.toList()));
     }
 
