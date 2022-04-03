@@ -1,31 +1,13 @@
 import Classes.*;
-import Classes.Units.CavalryUnit;
-import Classes.Units.CommanderUnit;
-import Classes.Units.InfantryUnit;
-import Classes.Units.RangedUnit;
 import TestResources.UnitsGnotts;
 import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class ArmyTest {
 
-    /**
-     * testing all the methods from the army class as addAll()
-     * test which makes an instance of an Army, makes the troops, puts them into the army
-     * and uses the different army methods as addAll(), remove(), add(), getAllUnits(), getRandom()
-     * @param args
-     */
+    //TODO make tests so that the coverage is 100%
 
-    /**
-     * method to test calculate() //TODO
-     */
-
-
-    //ASSERT
     @Test
     public void testAddToArmy() {
         UnitsGnotts unitsGnotts = new UnitsGnotts();
@@ -65,14 +47,6 @@ public class ArmyTest {
         assertEquals(2, gnotts.size());
     }
 
-    /*@Test
-    public void testGetRandom() {
-        UnitsGnotts unitsGnotts = new UnitsGnotts();
-
-        ArrayList<Unit> gnotts = unitsGnotts.getSevralGnotts();
-
-
-    }*///TODO
 
     @Test
     public void testHasUnits() {
@@ -83,4 +57,33 @@ public class ArmyTest {
         assertFalse(unitsGnotts.deuxieme().hasUnits());
     }
 
+    @Test
+    public void testGetInfantryUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getInfantryUnits().size());
+    }
+
+    @Test
+    public void testGetCommanderUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getCommanderUnits().size());
+    }
+
+    @Test
+    public void testCavalryUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        assertEquals(1,unitsGnotts.premier().getCavalryUnits().size());
+    }
+
+    @Test
+    public void testGetRangedUnits(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+
+        Filewriter filewriter = new Filewriter();
+
+        assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
+    }
 }

@@ -47,4 +47,9 @@ public class CavalryUnit extends Unit {
     public int getResistBonus(){
         return 1;
     }
+
+    @Override
+    public String getID(){
+        return "CavalryUnit";
+    }
 }

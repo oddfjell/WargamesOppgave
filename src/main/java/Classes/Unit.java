@@ -78,7 +78,7 @@ public abstract class Unit {
      */
     @Override
     public String toString(){
-        return "Name: " + this.getName() + "\nHealth: " + this.getHealth() + "\nAttack: " + this.getAttack() + " (" + this.getAttackBonus() + ")\nArmor: " + this.getArmor() + " (" + this.getResistBonus() + ")";
+        return this.getID() + "\nName: " + this.getName() + "\nHealth: " + this.getHealth() + "\nAttack: " + this.getAttack() + " (" + this.getAttackBonus() + ")\nArmor: " + this.getArmor() + " (" + this.getResistBonus() + ")";
     }
 
     /**
@@ -90,4 +90,9 @@ public abstract class Unit {
      * abstract class which gets the resist bonus
      */
     public abstract int getResistBonus();
+
+    /**
+     * abstract class which gets the type of unit as an identification string
+     */
+    public abstract String getID();
 }

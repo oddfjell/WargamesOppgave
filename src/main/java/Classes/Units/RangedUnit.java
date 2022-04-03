@@ -49,4 +49,9 @@ public class RangedUnit extends Unit {
         }
 
     }
+
+    @Override
+    public String getID(){
+        return "RangedUnit";
+    }
 }

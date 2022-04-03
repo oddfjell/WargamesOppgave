@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Army {
     private String name;
@@ -18,7 +19,7 @@ public class Army {
      * constructor of army with name and list
      * @param name
      * @param units
-     */
+       */
     public Army(String name, List<Unit> units){
         this.name = name;
         this.units = units;
@@ -61,11 +62,7 @@ public class Army {
      * @return true if army is not empty, false otherwise
      */
     public boolean hasUnits(){
-        if(units.size() > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return units.size() > 0;
     }
 
     /**
@@ -79,8 +76,8 @@ public class Army {
     }
 
     /**
-     * method to get a random index wHich fits the army.size()
-     * @return
+     * method to get a random index which fits the army.size()
+     * @return null
      */
     public Unit getRandom() {
         if (units.size() > 0) {
@@ -92,11 +89,20 @@ public class Army {
         }
     }
 
+    /**
+     * toString method
+     * @return String
+     */
     @Override
     public String toString(){
         return this.getName() + ": " + units.size() + " units";
     }
 
+    /**
+     * equals method
+     * @param o
+     * @return true/false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,8 +111,53 @@ public class Army {
         return Objects.equals(name, army.name) && Objects.equals(units, army.units);
     }
 
+    /**
+     * hashCode method
+     * @return int
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, units);
+    }
+
+
+    /**
+     * returns a list of the InfantryUnits of the army
+     * @return list
+     */
+    public List<Unit> getInfantryUnits(){
+        return units.stream()
+                .filter(unit -> unit.getID().equals("InfantryUnit"))
+                .collect((Collectors.toList()));
+    }
+
+    /**
+     * returns a list of the CavalryUnits of the army
+     * @return list
+     */
+    public List<Unit> getCavalryUnits(){
+        return units.stream()
+                .filter(unit -> unit.getID().equals("CavalryUnit"))
+                .collect((Collectors.toList()));
+    }
+
+    /**
+     * returns a list of the RangedUnits of the army
+     * @return list
+     */
+    public List<Unit> getRangedUnits(){
+        return units.stream()
+                .filter(unit -> unit.getID().equals("RangedUnit"))
+                .collect((Collectors.toList()));
+    }
+
+    /**
+     * returns a list of the CommanderUnits of the army
+     * @return list
+     */
+    public List<Unit> getCommanderUnits(){
+        return units.stream()
+                .filter(unit -> unit.getID().equals("CommanderUnit"))
+                .collect((Collectors.toList()));
     }
 }
