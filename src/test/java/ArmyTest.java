@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 public class ArmyTest {
 
+    //TODO make tests so that the coverage is 100%
+
     @Test
     public void testAddToArmy() {
         UnitsGnotts unitsGnotts = new UnitsGnotts();
@@ -81,8 +83,6 @@ public class ArmyTest {
         UnitsGnotts unitsGnotts = new UnitsGnotts();
 
         Filewriter filewriter = new Filewriter();
-
-        filewriter.makeArmyFromFile("testArmy");//TODO
 
         assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
     }

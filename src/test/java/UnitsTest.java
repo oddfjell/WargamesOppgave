@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 public class UnitsTest {
 
+    //TODO make tests so that the coverage is 100%
+
     @Test
     public void testUnitProperties(){
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
@@ -20,9 +22,7 @@ public class UnitsTest {
         assertEquals(15, u.getArmor());
     }
 
-    /**
-     * MOUNTED FORCE HAS BONUS ON FIRST ATTACK WHILE BARD HAS SHIELD//TODO
-     */
+
     @Test
     public void testAttack(){
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();

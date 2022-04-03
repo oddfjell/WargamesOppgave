@@ -1,32 +1,24 @@
 import Classes.*;
-import Classes.Units.CommanderUnit;
-import Classes.Units.InfantryUnit;
-import Classes.Units.RangedUnit;
-
-import java.util.ArrayList;
+import TestResources.UnitsGnotts;
+import TestResources.UnitsNotGnotts;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class BattleTest {
 
-    /**
-     * test which makes an instance of a Battle, makes the army, puts them into the constructor
-     * and uses the simulate method to se who wins
-     * @param args
-     */
-    public static void main(String[] args) {
-        Battle fight = new Battle();
 
-        ArrayList<Unit> mcuFans = new ArrayList<>();
-        Army mcu = new Army("MCUFans", mcuFans);
-        ArrayList<Unit> dcFans = new ArrayList<>();
-        Army dc = new Army("DCFans", dcFans);
+    @Test
+    public void battleTest(){
+        Battle war = new Battle();
+        UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
 
-        mcuFans.add(new InfantryUnit("Steve", 30));
-        mcuFans.add(new RangedUnit("Wanda", 30));
+        Army notGnotts = unitsNotGnotts.premier();
+        Army gnotts = unitsGnotts.premier();
 
-        dcFans.add(new CommanderUnit("Bruce", 30));
-        dcFans.add(new RangedUnit("Robin", 30));
+        war.Battle(notGnotts, gnotts);
+        Army winner = war.simulate();
 
-        fight.Battle(dc,mcu);
-        System.out.println(fight.simulate().getName() + " won");
+        assertTrue(winner.getName().equals(notGnotts.getName()) || winner.getName().equals(gnotts.getName()));
     }
 }

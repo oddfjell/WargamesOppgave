@@ -62,11 +62,7 @@ public class Army {
      * @return true if army is not empty, false otherwise
      */
     public boolean hasUnits(){
-        if(units.size() > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return units.size() > 0;
     }
 
     /**
