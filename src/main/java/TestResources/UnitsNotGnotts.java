@@ -9,6 +9,10 @@ import Classes.Units.RangedUnit;
 
 import java.util.ArrayList;
 
+/**
+ * UnitsotGnotts is used as test data
+ */
+
 public class UnitsNotGnotts {
 
     public RangedUnit getBard(){
@@ -31,7 +35,7 @@ public class UnitsNotGnotts {
         return dictator;
     }
 
-    /*public ArrayList<Unit> getNotGnotts(){
+    public ArrayList<Unit> getNotGnotts(){
         ArrayList<Unit> herd = new ArrayList<>();
         return herd;
     }
@@ -43,17 +47,17 @@ public class UnitsNotGnotts {
         herd.add(getChristian());
         herd.add(getDictator());
         return herd;
-    }*/
+    }
 
-    /*public Army premier(){
-        ArrayList<Unit> gnotts = getSevralGnotts();
-        Army army = new Army("g1", gnotts);
+    public Army premier(){
+        ArrayList<Unit> herd = getSevralNotGnotts();
+        Army army = new Army("f4", herd);//"The fantastic four"
         return army;
     }
 
     public Army deuxieme(){
-        ArrayList<Unit> gnotts = getGnotts();
-        Army army = new Army("g2", gnotts);
+        ArrayList<Unit> herd = getNotGnotts();
+        Army army = new Army("No one", herd);
         return army;
-    }*/
+    }
 }

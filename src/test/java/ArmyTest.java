@@ -1,31 +1,11 @@
 import Classes.*;
-import Classes.Units.CavalryUnit;
-import Classes.Units.CommanderUnit;
-import Classes.Units.InfantryUnit;
-import Classes.Units.RangedUnit;
 import TestResources.UnitsGnotts;
 import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class ArmyTest {
 
-    /**
-     * testing all the methods from the army class as addAll()
-     * test which makes an instance of an Army, makes the troops, puts them into the army
-     * and uses the different army methods as addAll(), remove(), add(), getAllUnits(), getRandom()
-     * @param args
-     */
-
-    /**
-     * method to test calculate() //TODO
-     */
-
-
-    //ASSERT
     @Test
     public void testAddToArmy() {
         UnitsGnotts unitsGnotts = new UnitsGnotts();
@@ -65,14 +45,6 @@ public class ArmyTest {
         assertEquals(2, gnotts.size());
     }
 
-    /*@Test
-    public void testGetRandom() {
-        UnitsGnotts unitsGnotts = new UnitsGnotts();
-
-        ArrayList<Unit> gnotts = unitsGnotts.getSevralGnotts();
-
-
-    }*///TODO
 
     @Test
     public void testHasUnits() {
@@ -110,20 +82,8 @@ public class ArmyTest {
 
         Filewriter filewriter = new Filewriter();
 
-        filewriter.writeArmyInFile(unitsGnotts.premier());
-        filewriter.writeArmyFromFile(unitsGnotts.premier());
+        filewriter.makeArmyFromFile("testArmy");//TODO
 
         assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
     }
-
-   /* @Test
-    public void testWriteArmyInFile(){
-        UnitsGnotts unitsGnotts = new UnitsGnotts();
-
-        Filewriter filewriter = new Filewriter();
-
-        filewriter.writeArmyInFile(unitsGnotts.deuxieme());
-
-
-    }*/
 }

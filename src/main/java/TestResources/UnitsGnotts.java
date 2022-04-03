@@ -10,10 +10,11 @@ import Classes.Units.RangedUnit;
 import java.util.ArrayList;
 
 /**
- * UnitsGnotts is used by the class ArmyTest to test the Army class//TODO
+ * UnitsGnotts is used as test data
  */
 
 public class UnitsGnotts {
+
     public RangedUnit getGnott1(){
         RangedUnit gnott1 = new RangedUnit("Stella", 10);
         return gnott1;

@@ -1,5 +1,0 @@
-g1
-CavalryUnit,Kaisa,20
-CommanderUnit,Sanpler,1
-InfantryUnit,Tander,5
-RangedUnit,Stella,10
