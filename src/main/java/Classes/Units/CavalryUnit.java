@@ -12,7 +12,7 @@ public class CavalryUnit extends Unit {
      * @param armor
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
-        super(name, health, attack, armor);
+        super(name, health, attack, armor, "");
     }
 
     /**
@@ -21,35 +21,46 @@ public class CavalryUnit extends Unit {
      * @param health
      */
     public CavalryUnit(String name, int health) {
-        super(name, health, 20, 12);
+        super(name, health, 20, 12,"");
     }
 
     /**
      * the abstract method from Unit has now a body
      * I used int attacking to change the attack bonus value
+     * If the unit attacks in the terrain "PLAINS", it gains a little attack bonus
      * @return attackBonus
      */
     int attacking = -1;
     @Override
     public int getAttackBonus(){
+        int plainBonus = 0;
+        if(getTerrain().toUpperCase().trim().equals("PLAINS")){
+            plainBonus = 1;
+        }
         attacking++;
         switch (attacking){
-            case 0: return 6;
-            default: return 2;
+            case 0: return 6 + plainBonus;
+            default: return 2 + plainBonus;
         }
     }
 
     /**
      * the abstract method from Unit now has a body
+     * If the unit defends in the terrain "FOREST", it gains no resistance bonus
      * @return resistBonus
      */
     @Override
     public int getResistBonus(){
-        return 1;
+        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     @Override
     public String getID(){
         return "CavalryUnit";
     }
+
 }

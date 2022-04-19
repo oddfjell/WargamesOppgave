@@ -1,9 +1,11 @@
 package Classes;
 
 public abstract class Unit {
-    private String name;
+    private String name, terrain;
     private int health;
     private final int attack, armor;
+
+    //TODO fiks javadoc etter terrain (get, set og inne i klassene)
 
     /**
      * The constructor of the Unit class
@@ -11,12 +13,14 @@ public abstract class Unit {
      * @param health health
      * @param attack attack
      * @param armor armor
+     * @param terrain terrain
      */
-    public Unit(String name, int health, int attack, int armor){
+    public Unit(String name, int health, int attack, int armor, String terrain){
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.armor = armor;
+        this.terrain = terrain;
     }
 
     /**
@@ -73,6 +77,22 @@ public abstract class Unit {
     }
 
     /**
+     * gets the terrain/environment which the unit is in
+     * @return terrain
+     */
+    public String getTerrain(){
+        return terrain.toUpperCase().trim();
+    }
+
+    /**
+     * sets the terrain/environment which the unit is in
+     * @param terrain terrain
+     */
+    public void setTerrain(String terrain){
+        this.terrain = terrain.toUpperCase().trim();
+    }
+
+    /**
      * toString method
      * @return String
      */
@@ -95,4 +115,5 @@ public abstract class Unit {
      * abstract class which gets the type of unit as an identification string
      */
     public abstract String getID();
+
 }

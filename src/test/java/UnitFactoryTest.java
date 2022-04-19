@@ -4,13 +4,13 @@ import org.junit.Test;
 
 public class UnitFactoryTest {
 
-    @Test
+    /*@Test
     public void unitFactoryCavalryTest(){
         UnitFactory unitFactory = new UnitFactory();
         RangedUnit rangedUnit = unitFactory.
 
 
-        /*
+
         List<Shape> shapes = new ArrayList<Shape>();
 
     shapes.add(ShapeFactory.getShape(ShapeType.CIRCLE));
@@ -18,7 +18,7 @@ public class UnitFactoryTest {
     shapes.add(ShapeFactory.getShape(ShapeType.SQUARE));
 
     shapes.forEach(s -> s.draw());
-         */
+
     }
 
     @Test
@@ -34,5 +34,5 @@ public class UnitFactoryTest {
     @Test
     public void unitFactoryRangedTest(){
 
-    }
+    }*/
 }

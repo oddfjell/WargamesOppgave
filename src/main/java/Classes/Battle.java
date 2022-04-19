@@ -1,19 +1,30 @@
 package Classes;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+//TODO enum
 
 public class Battle {
     private Army armyOne;
     private Army armyTwo;
+
+    private String terrain;
+
+    public final String[] terrains ={"FOREST", "HILL", "PLAINS"};
 
     /**
      * constructor of the battle class
      * @param armyOne
      * @param armyTwo
      */
-    public void Battle(Army armyOne, Army armyTwo){
+    public void Battle(Army armyOne, Army armyTwo, String terrain){
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+        if(terrain.equals("PLAINS") || terrain.equals("HILL") || terrain.equals("FOREST")){//TODO
+            this.terrain = terrain.toUpperCase().trim();
+        }
+
     }
 
     /**

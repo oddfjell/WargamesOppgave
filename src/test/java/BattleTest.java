@@ -16,7 +16,7 @@ public class BattleTest {
         Army notGnotts = unitsNotGnotts.premier();
         Army gnotts = unitsGnotts.premier();
 
-        war.Battle(notGnotts, gnotts);
+        war.Battle(notGnotts, gnotts, war.terrains[2]);
         Army winner = war.simulate();
 
         assertTrue(winner.getName().equals(notGnotts.getName()) || winner.getName().equals(gnotts.getName()));
