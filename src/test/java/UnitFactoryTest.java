@@ -1,38 +1,32 @@
-import Classes.UnitFactory;
-import Classes.Units.RangedUnit;
+import TestResources.UnitsGnotts;
+import WGames.Model.Army;
+import WGames.Model.Unit;
+import WGames.Model.UnitFactory;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class UnitFactoryTest {
 
     @Test
-    public void unitFactoryCavalryTest(){
+    public void unitFactoryTest(){
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
         UnitFactory unitFactory = new UnitFactory();
-        RangedUnit rangedUnit = unitFactory.
+
+        Army army = unitsGnotts.premier();
+
+        for(int i = 0; i < 2; i++){
+            army.add(unitFactory.getUnit("RangedUnit", "Geir", 100));
+        }
+
+        assertEquals(6, army.getAllUnits().size());
 
 
-        /*
-        List<Shape> shapes = new ArrayList<Shape>();
-
-    shapes.add(ShapeFactory.getShape(ShapeType.CIRCLE));
-    shapes.add(ShapeFactory.getShape(ShapeType.RECTANGLE));
-    shapes.add(ShapeFactory.getShape(ShapeType.SQUARE));
-
-    shapes.forEach(s -> s.draw());
-         */
-    }
-
-    @Test
-    public void unitFactoryCommanderTest(){
 
     }
 
-    @Test
-    public void unitFactoryInfantryTest(){
 
-    }
-
-    @Test
-    public void unitFactoryRangedTest(){
-
-    }
 }

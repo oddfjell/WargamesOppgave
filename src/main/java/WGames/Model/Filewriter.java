@@ -1,9 +1,5 @@
-package Classes;
+package WGames.Model;
 
-import Classes.Units.CavalryUnit;
-import Classes.Units.CommanderUnit;
-import Classes.Units.InfantryUnit;
-import Classes.Units.RangedUnit;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -57,6 +53,8 @@ public class Filewriter {
 
         Army army = new Army(armyName, u);
 
+
+
         try {
             BufferedReader br = new BufferedReader(
                     new FileReader("src\\main\\Files\\" + armyName + ".csv"));
@@ -65,7 +63,9 @@ public class Filewriter {
 
             for (String theUnit : theUnits) {
                 String[] unitStats = theUnit.trim().split(",");
-                if(unitStats[0].equals("CavalryUnit")){
+                UnitFactory unitFactory = new UnitFactory();
+                u.add(unitFactory.getUnit(unitStats[0], unitStats[1], Integer.parseInt(unitStats[2])));
+                /*if(unitStats[0].equals("CavalryUnit")){
                     CavalryUnit cavalryUnit = new CavalryUnit(unitStats[1], Integer.parseInt(unitStats[2]));
                     u.add(cavalryUnit);
                 } else if(unitStats[0].equals("CommanderUnit")){
@@ -77,7 +77,7 @@ public class Filewriter {
                 } else if(unitStats[0].equals("RangedUnit")) {
                     RangedUnit rangedUnit = new RangedUnit(unitStats[1], Integer.parseInt(unitStats[2]));
                     u.add(rangedUnit);
-                }
+                }*/
             }
             br.close();
             System.out.println(army.getAllUnits());

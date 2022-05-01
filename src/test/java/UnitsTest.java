@@ -1,7 +1,7 @@
-import Classes.Units.CavalryUnit;
-import Classes.Units.CommanderUnit;
-import Classes.Units.InfantryUnit;
-import Classes.Units.RangedUnit;
+import WGames.Model.Units.CavalryUnit;
+import WGames.Model.Units.CommanderUnit;
+import WGames.Model.Units.InfantryUnit;
+import WGames.Model.Units.RangedUnit;
 import TestResources.UnitsNotGnotts;
 import org.junit.Test;
 import static org.junit.Assert.*;

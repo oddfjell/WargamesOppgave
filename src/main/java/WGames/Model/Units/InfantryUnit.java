@@ -1,6 +1,6 @@
-package Classes.Units;
+package WGames.Model.Units;
 
-import Classes.Unit;
+import WGames.Model.Unit;
 
 public class InfantryUnit extends Unit {
 
@@ -12,7 +12,7 @@ public class InfantryUnit extends Unit {
      * @param armor
      */
     public InfantryUnit(String name, int health, int attack, int armor) {
-        super(name, health, attack, armor);
+        super(name, health, attack, armor, "");
     }
 
     /**
@@ -21,29 +21,40 @@ public class InfantryUnit extends Unit {
      * @param health
      */
     public InfantryUnit(String name, int health) {
-        super(name, health, 15, 10);
+        super(name, health, 15, 10, "");
     }
 
     /**
      * the abstract method from Unit has now a body
+     * If the unit attacks in the terrain "FOREST", it gains a little attack bonus
      * @return attackBonus
      */
     @Override
     public int getAttackBonus(){
-        return 2;
+        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+            return 3;
+        } else{
+            return 2;
+        }
     }
 
     /**
      * the abstract method from Unit has now a body
+     * If the unit defends in the terrain "FOREST", it gains a little resistance bonus
      * @return resistBonus
      */
     @Override
     public int getResistBonus(){
-        return 1;
+        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+            return 2;
+        } else{
+            return 1;
+        }
     }
 
     @Override
     public String getID(){
         return "InfantryUnit";
     }
+
 }

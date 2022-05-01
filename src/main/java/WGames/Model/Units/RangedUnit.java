@@ -1,6 +1,6 @@
-package Classes.Units;
+package WGames.Model.Units;
 
-import Classes.Unit;
+import WGames.Model.Unit;
 
 public class RangedUnit extends Unit {
 
@@ -12,7 +12,7 @@ public class RangedUnit extends Unit {
      * @param armor
      */
     public RangedUnit(String name, int health, int attack, int armor) {
-        super(name, health, attack, armor);
+        super(name, health, attack, armor, "");
     }
 
     /**
@@ -21,16 +21,24 @@ public class RangedUnit extends Unit {
      * @param health
      */
     public RangedUnit(String name, int health) {
-        super(name, health, 15, 8);
+        super(name, health, 15, 8, "");
     }
 
     /**
      * the abstract method from Unit has now a body
+     * If the unit attacks in the terrain "HILL", it gains a little attack bonus
+     * If the unit attacks in the terrain "FOREST", it loses some of its attack bonus
      * @return attackBonus
      */
     @Override
     public int getAttackBonus(){
-        return 3;
+        if(getTerrain().toUpperCase().trim().equals("HILL")){
+            return 4;
+        } else if(getTerrain().toUpperCase().trim().equals("FOREST")){
+            return 2;
+        } else{
+            return 3;
+        }
     }
 
     /**
@@ -54,4 +62,5 @@ public class RangedUnit extends Unit {
     public String getID(){
         return "RangedUnit";
     }
+
 }
