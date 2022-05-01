@@ -1,4 +1,4 @@
-package Classes;
+package WGames.Model;
 
 public abstract class Unit {
     private String name, terrain;

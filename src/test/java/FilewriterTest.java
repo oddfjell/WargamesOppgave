@@ -1,5 +1,5 @@
-import Classes.Army;
-import Classes.Filewriter;
+import WGames.Model.Army;
+import WGames.Model.Filewriter;
 import TestResources.UnitsNotGnotts;
 import org.junit.Test;
 

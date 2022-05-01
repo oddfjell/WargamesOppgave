@@ -1,6 +1,5 @@
-package Classes;
+package WGames.Model;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 //TODO enum

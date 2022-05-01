@@ -1,4 +1,4 @@
-package Classes;
+package WGames.Model;
 
 import java.util.*;
 import java.util.stream.Collectors;

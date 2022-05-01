@@ -1,6 +1,6 @@
-package Classes.Units;
+package WGames.Model.Units;
 
-import Classes.Unit;
+import WGames.Model.Unit;
 
 public class RangedUnit extends Unit {
 
