@@ -98,7 +98,7 @@ public abstract class Unit {
      */
     @Override
     public String toString(){
-        return this.getID() + "\nName: " + this.getName() + "\nHealth: " + this.getHealth() + "\nAttack: " + this.getAttack() + " (" + this.getAttackBonus() + ")\nArmor: " + this.getArmor() + " (" + this.getResistBonus() + ")";
+        return this.getID() + " || Name: " + this.getName() + " || Health: " + this.getHealth() + " || Attack: " + this.getAttack() + " (" + this.getAttackBonus() + ") || Armor: " + this.getArmor() + " (" + this.getResistBonus() + ")\n";
     }
 
     /**

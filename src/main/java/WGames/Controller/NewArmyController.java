@@ -54,25 +54,34 @@ public class NewArmyController implements Initializable {
 
 
     private Desktop desktop = Desktop.getDesktop();
-    FileChooser fileChooser = new FileChooser();
+
 
     @FXML
     void fileUpload() {
-        File file = fileChooser.showOpenDialog(WApplication.primaryStage);
-        if (file != null) {
+        FileChooser fileChooser = new FileChooser();
+        Filewriter filewriter = new Filewriter();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV-Files", "*.csv"));
+        //File file = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
+
+        /*if (file != null) {
             openFile(file);
-        }
+        }*/
     }
 
-    private void openFile(File file) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+   /* private void openFile(File file) {
         try {
             //Filewriter filewriter = new Filewriter();
             //TODO What is its name?
 
             //filewriter.makeArmyFromFile(name);
-            System.out.println("yes");
 
             desktop.open(file);
+
         } catch (IOException ex) {
             Logger.getLogger(
                     WApplication.class.getName()).log(
@@ -85,5 +94,5 @@ public class NewArmyController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> units = FXCollections.observableArrayList("CavalryUnit", "CommanderUnit", "InfantryUnit", "RangedUnit");
         unitType.setItems(units);
-    }
+    }*/
 }

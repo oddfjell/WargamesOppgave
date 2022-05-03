@@ -13,5 +13,7 @@ module Wargames {
     opens TestResources to test;
     exports TestResources;
 
+    exports WGames.Model;
+
 
 }

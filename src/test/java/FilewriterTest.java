@@ -24,7 +24,7 @@ public class FilewriterTest {
 
         try{
             BufferedReader br = new BufferedReader(
-                    new FileReader("src\\main\\Files\\f4.csv"));
+                    new FileReader("src\\main\\resources\\Files\\f4.csv"));
 
             theUnits = br.lines().collect(Collectors.toList());
             br.close();
@@ -33,7 +33,7 @@ public class FilewriterTest {
         }
 
 
-        File file = new File("src\\main\\Files\\f4.csv");
+        File file = new File("src\\main\\resources\\Files\\f4.csv");
 
         assertTrue(file.isFile());
         assertEquals(unitsNotGnotts.premier().getAllUnits().size() + 1, theUnits.size());
@@ -45,7 +45,11 @@ public class FilewriterTest {
     public void makeArmyFromFileTest(){
         Filewriter filewriter = new Filewriter();
 
-        Army army = filewriter.makeArmyFromFile("testArmy");
+        //Army army = filewriter.makeArmyFromFile("testArmy");
+
+        File file = new File("src\\main\\resources\\Files\\testArmy.csv");
+
+        Army army = filewriter.makeArmyFromFile(file);
 
         assertEquals(army.getName(), "testArmy");
         assertEquals(6, army.getAllUnits().size());
