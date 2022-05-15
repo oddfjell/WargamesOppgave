@@ -1,5 +1,6 @@
 import TestResources.UnitsGnotts;
 import WGames.Model.Armies;
+import WGames.Model.Army;
 import WGames.Model.Filewriter;
 import WGames.Model.Unit;
 import org.junit.Test;
@@ -87,5 +88,10 @@ public class ArmyTest {
         Filewriter filewriter = new Filewriter();
 
         assertEquals(1,unitsGnotts.premier().getRangedUnits().size());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNameException(){
+        Army army = new Army("");
     }
 }

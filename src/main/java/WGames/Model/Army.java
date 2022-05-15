@@ -11,8 +11,12 @@ public class Army {
      * constructor of army
      * @param name
      */
-    public Army(String name){
-        this.name = name;
+    public Army(String name) throws IllegalArgumentException{
+        if(!Objects.equals(name, "")){
+            this.name = name;
+        }else{
+            throw new IllegalArgumentException("The army must have a name");
+        }
     }
 
     /**

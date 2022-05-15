@@ -1,7 +1,9 @@
 package WGames.Model;
 
+import java.util.Objects;
+
 public abstract class Unit {
-    private String name;
+    private final String name;
     private int health;
     private final int attack, armor;
 
@@ -12,11 +14,43 @@ public abstract class Unit {
      * @param attack attack
      * @param armor armor
      */
-    public Unit(String name, int health, int attack, int armor){
-        this.name = name;
-        this.health = health;
-        this.attack = attack;
-        this.armor = armor;
+    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException{
+        if(!Objects.equals(name, "")){
+            this.name = name;
+        } else{
+            throw new IllegalArgumentException("The unit must have a name");
+        }
+
+        if(health>0 && health<=500){
+            this.health = health;
+        }else{
+            throw new IllegalArgumentException("The health must be a positive integer between 1 and 500");
+        }
+
+        if(attack>0 && attack<=100){
+            this.attack = attack;
+        }else{
+            throw new IllegalArgumentException("The attack must be a positive integer between 1 and 100");
+        }
+
+        if(armor>=0 && armor<=100){
+            this.armor = armor;
+        }else{
+            throw new IllegalArgumentException("The armor must be a positive integer between 1 and 100");
+        }
+
+
+        /*
+        try{
+            this.name = name;
+            this.health = health;
+            this.attack = attack;
+            this.armor = armor;
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("Illegal format");//TODO
+        }
+         */
     }
 
     /**

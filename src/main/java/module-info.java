@@ -13,7 +13,13 @@ module Wargames {
     opens TestResources to test;
     exports TestResources;
 
+    opens WGames.Model to javafx.fxml;
     exports WGames.Model;
+
+    opens WGames.Model.Units to javafx.fxml;
+    exports WGames.Model.Units;
+
+
 
 
 }

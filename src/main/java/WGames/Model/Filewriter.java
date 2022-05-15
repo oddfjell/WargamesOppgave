@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 public class Filewriter {
 
+
+
+    //TODO implement exeptions
+
     /**
      * Method to write an army to a file. The method has an army as its parameter. The BufferedWriter
      * class will write the information in a path with the name of the army. It will write the army name
