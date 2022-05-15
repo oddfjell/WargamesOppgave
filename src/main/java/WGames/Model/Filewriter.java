@@ -1,5 +1,7 @@
 package WGames.Model;
 
+import WGames.Model.Units.Unit;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -1,8 +1,7 @@
 import TestResources.UnitsGnotts;
-import WGames.Model.Armies;
 import WGames.Model.Army;
 import WGames.Model.Filewriter;
-import WGames.Model.Unit;
+import WGames.Model.Units.Unit;
 import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.*;
@@ -49,6 +48,16 @@ public class ArmyTest {
         gnotts.remove(1);
         assertEquals(2, gnotts.size());
     }
+/*
+    @Test(expected = AssertionError.class)
+    public void testRemoveExceptionFromArmy() {
+        UnitsGnotts unitsGnotts = new UnitsGnotts();
+        RangedUnit rangedUnit = new RangedUnit("Robin Hood", 1,1,1);
+
+        ArrayList<Unit> gnotts = unitsGnotts.getSevralGnotts();
+
+        gnotts.remove(rangedUnit);
+    }*/
 
 
     @Test

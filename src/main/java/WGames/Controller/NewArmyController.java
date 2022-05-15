@@ -1,6 +1,8 @@
 package WGames.Controller;
 
 import WGames.WApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,15 +19,9 @@ public class NewArmyController implements Initializable {
     @FXML
     private Button back;
 
-    //@FXML
-    //private Button fileUploadButton;
-
-
     @FXML
     private ComboBox unitType;
 
-    //@FXML
-    //private Text unitAdded;
 
     @FXML
     void backButtonClicked() throws IOException {
@@ -34,19 +30,14 @@ public class NewArmyController implements Initializable {
 
 
 
-    /*@FXML
-    public void fileUpload() {
-        unitAdded.setVisible(false);
-        FileChooser fileChooser = new FileChooser();
-        Filewriter filewriter = new Filewriter();
-        Army army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-        System.out.println(army.getAllUnits());
-        unitAdded.setVisible(true);
-    }*/
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> u = FXCollections.observableArrayList("CavalryUnit", "CommanderUnit", "InfantryUnit", "RangedUnit");
+        unitType.setItems(u);
+        /*ObservableList<Terrain> terrains = FXCollections.observableArrayList(Terrain.values());
+        unitType.setItems(terrains);*///TODO add to battle
         //unitAdded.setVisible(false);
     }
 

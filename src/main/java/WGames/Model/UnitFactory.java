@@ -1,9 +1,6 @@
 package WGames.Model;
 
-import WGames.Model.Units.CavalryUnit;
-import WGames.Model.Units.CommanderUnit;
-import WGames.Model.Units.InfantryUnit;
-import WGames.Model.Units.RangedUnit;
+import WGames.Model.Units.*;
 
 public class UnitFactory {
 

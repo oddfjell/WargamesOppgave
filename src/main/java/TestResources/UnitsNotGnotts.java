@@ -1,7 +1,7 @@
 package TestResources;
 
 import WGames.Model.Army;
-import WGames.Model.Unit;
+import WGames.Model.Units.Unit;
 import WGames.Model.Units.CavalryUnit;
 import WGames.Model.Units.CommanderUnit;
 import WGames.Model.Units.InfantryUnit;

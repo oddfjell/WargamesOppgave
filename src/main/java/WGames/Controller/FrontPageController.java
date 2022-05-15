@@ -21,6 +21,8 @@ public class FrontPageController implements Initializable {
     private Button commenceBattleButton;
     @FXML
     private Button newArmyButton;
+    @FXML
+    private Button addArmyFromFileButton;
 
     @FXML
     private Button exit;
@@ -42,17 +44,29 @@ public class FrontPageController implements Initializable {
         WApplication.changeScene("/Views/NewArmy.fxml");
     }
 
+    @FXML
+    void addArmyFromFileButtonClicked() throws IOException {
+        WApplication.changeScene("/Views/AddArmiesFromFile.fxml");
+    }
+
+
+
 
     @FXML
     void exitTheGame(){
         System.exit(0);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
 
 
 
 
+/*
     @FXML
     private Button fileUploadButton;
 
@@ -73,6 +87,6 @@ public class FrontPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         unitAdded.setVisible(false);
-    }
+    }*/
 
 }

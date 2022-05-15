@@ -1,5 +1,7 @@
 package WGames.Model;
 
+import WGames.Model.Units.Unit;
+
 import java.util.Random;
 
 //TODO enum

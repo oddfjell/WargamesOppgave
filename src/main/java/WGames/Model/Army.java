@@ -1,5 +1,7 @@
 package WGames.Model;
 
+import WGames.Model.Units.Unit;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -57,8 +59,15 @@ public class Army {
      * method to remove a unit from the army
      * @param unit
      */
-    public void remove(Unit unit){
+    public void remove(Unit unit){//throws AssertionError
         units.remove(unit);
+        /*//boolean contains = this.units.contains(unit);
+        if(this.units.contains(unit)){
+            units.remove(unit);
+        } else{
+            throw new AssertionError("The unit does not exist");
+        }*/
+
     }
 
     /**

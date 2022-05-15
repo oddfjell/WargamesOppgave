@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #000000, #98948c);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WGames.Controller.FrontPageController">
    <center>
@@ -40,16 +39,11 @@
                            <font>
                               <Font name="Papyrus" size="36.0" />
                            </font></Button>
-                        <Button fx:id="fileUploadButton" layoutX="480.0" layoutY="324.0" mnemonicParsing="false" onAction="#fileUpload" style="-fx-background-color: transparent;" text="add army from file" textFill="WHITE">
+                        <Button fx:id="addArmyFromFileButton" layoutX="480.0" layoutY="324.0" mnemonicParsing="false" onAction="#addArmyFromFileButtonClicked" style="-fx-background-color: transparent;" text="add army from file" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="36.0" />
                            </font>
                         </Button>
-                        <Text fx:id="unitAdded" fill="WHITE" layoutX="502.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="army added">
-                           <font>
-                              <Font name="Papyrus" size="20.0" />
-                           </font>
-                        </Text>
                      </children>
                   </AnchorPane>
                </children>

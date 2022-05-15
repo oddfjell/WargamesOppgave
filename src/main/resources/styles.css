@@ -1,3 +1,13 @@
 Button:hover{
     -fx-underline: true;
 }
+
+.Combobox{
+    -fx-font-family: papyrus;
+    -fx-font-size: 20;
+}
+
+.TextField{
+    -fx-font-family: papyrus;
+    -fx-font-size: 20;
+}

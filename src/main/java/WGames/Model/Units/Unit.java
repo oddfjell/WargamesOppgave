@@ -1,4 +1,6 @@
-package WGames.Model;
+package WGames.Model.Units;
+
+import WGames.Model.Terrain;
 
 import java.util.Objects;
 
@@ -59,7 +61,7 @@ public abstract class Unit {
      * @param opponent opponent
      */
     public void attack(Unit opponent){
-        Terrain defaultTerrain = Terrain.FOREST;
+        Terrain defaultTerrain = Terrain.DESERT;
         if ((this.attack + this.getAttackBonus(defaultTerrain)) > (this.armor + this.getResistBonus(defaultTerrain))){
             int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());
