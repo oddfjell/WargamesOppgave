@@ -1,5 +1,6 @@
 package WGames.Model.Units;
 
+import WGames.Model.Terrain;
 import WGames.Model.Unit;
 
 public class CavalryUnit extends Unit {
@@ -12,7 +13,7 @@ public class CavalryUnit extends Unit {
      * @param armor
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
-        super(name, health, attack, armor, "");
+        super(name, health, attack, armor);
     }
 
     /**
@@ -21,7 +22,7 @@ public class CavalryUnit extends Unit {
      * @param health
      */
     public CavalryUnit(String name, int health) {
-        super(name, health, 20, 12,"");
+        super(name, health, 20, 12);
     }
 
     /**
@@ -32,9 +33,9 @@ public class CavalryUnit extends Unit {
      */
     int attacking = -1;
     @Override
-    public int getAttackBonus(){
+    public int getAttackBonus(Terrain terrain){
         int plainBonus = 0;
-        if(getTerrain().toUpperCase().trim().equals("PLAINS")){
+        if(terrain.equals(Terrain.PLAINS)){
             plainBonus = 1;
         }
         attacking++;
@@ -50,8 +51,8 @@ public class CavalryUnit extends Unit {
      * @return resistBonus
      */
     @Override
-    public int getResistBonus(){
-        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+    public int getResistBonus(Terrain terrain){
+        if(terrain.equals(Terrain.FOREST)){
             return 0;
         } else {
             return 1;

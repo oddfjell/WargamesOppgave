@@ -1,11 +1,9 @@
 package WGames.Model;
 
 public abstract class Unit {
-    private String name, terrain;
+    private String name;
     private int health;
     private final int attack, armor;
-
-    //TODO fiks javadoc etter terrain (get, set og inne i klassene)
 
     /**
      * The constructor of the Unit class
@@ -13,14 +11,12 @@ public abstract class Unit {
      * @param health health
      * @param attack attack
      * @param armor armor
-     * @param terrain terrain
      */
-    public Unit(String name, int health, int attack, int armor, String terrain){
+    public Unit(String name, int health, int attack, int armor){
         this.name = name;
         this.health = health;
         this.attack = attack;
         this.armor = armor;
-        this.terrain = terrain;
     }
 
     /**
@@ -29,8 +25,17 @@ public abstract class Unit {
      * @param opponent opponent
      */
     public void attack(Unit opponent){
-        if ((this.attack + this.getAttackBonus()) > (this.armor + this.getResistBonus())){
-            int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus()) + (opponent.getArmor()+ opponent.getResistBonus());
+        Terrain defaultTerrain = Terrain.FOREST;
+        if ((this.attack + this.getAttackBonus(defaultTerrain)) > (this.armor + this.getResistBonus(defaultTerrain))){
+            int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
+            System.out.println(this.getName() + " attacks " + opponent.getName());
+            opponent.setHealth(opponentHealth);
+        }
+    }
+
+    public void attack(Unit opponent, Terrain terrain){
+        if ((this.attack + this.getAttackBonus(terrain)) > (this.armor + this.getResistBonus(terrain))){
+            int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(terrain)) + (opponent.getArmor()+ opponent.getResistBonus(terrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
@@ -77,39 +82,25 @@ public abstract class Unit {
     }
 
     /**
-     * gets the terrain/environment which the unit is in
-     * @return terrain
-     */
-    public String getTerrain(){
-        return terrain.toUpperCase().trim();
-    }
-
-    /**
-     * sets the terrain/environment which the unit is in
-     * @param terrain terrain
-     */
-    public void setTerrain(String terrain){
-        this.terrain = terrain.toUpperCase().trim();
-    }
-
-    /**
      * toString method
      * @return String
      */
     @Override
     public String toString(){
-        return this.getID() + " || Name: " + this.getName() + " || Health: " + this.getHealth() + " || Attack: " + this.getAttack() + " (" + this.getAttackBonus() + ") || Armor: " + this.getArmor() + " (" + this.getResistBonus() + ")\n";
+        return this.getID() + " || Name: " + this.getName() + " || Health: " + this.getHealth() + " || Attack: " + this.getAttack() + " || Armor: " + this.getArmor() + "\n";
+    // return this.getID() + " || Name: " + this.getName() + " || Health: " + this.getHealth() + " || Attack: " + this.getAttack() + " (" + this.getAttackBonus() + ") || Armor: " + this.getArmor() + " (" + this.getResistBonus() + ")\n";
+        //
     }
 
     /**
      * abstract class which gets the attack bonus
      */
-    public abstract int getAttackBonus();
+    public abstract int getAttackBonus(Terrain terrain);
 
     /**
      * abstract class which gets the resist bonus
      */
-    public abstract int getResistBonus();
+    public abstract int getResistBonus(Terrain terrain);
 
     /**
      * abstract class which gets the type of unit as an identification string

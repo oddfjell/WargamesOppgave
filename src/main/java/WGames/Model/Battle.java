@@ -7,22 +7,20 @@ import java.util.Random;
 public class Battle {
     private Army armyOne;
     private Army armyTwo;
+    private Terrain terrain;
 
-    private String terrain;
 
-    public final String[] terrains ={"FOREST", "HILL", "PLAINS"};
 
     /**
      * constructor of the battle class
      * @param armyOne
      * @param armyTwo
+     * @param terrain
      */
-    public void Battle(Army armyOne, Army armyTwo, String terrain){
+    public void Battle(Army armyOne, Army armyTwo, Terrain terrain){
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
-        if(terrain.equals("PLAINS") || terrain.equals("HILL") || terrain.equals("FOREST")){//TODO
-            this.terrain = terrain.toUpperCase().trim();
-        }
+        this.terrain = terrain;
 
     }
 
@@ -44,14 +42,14 @@ public class Battle {
 
             switch (whoIsFirst) {
                 case 0 -> {
-                    arm1.attack(arm2);
+                    arm1.attack(arm2, terrain);
                     if (arm2.getHealth() <= 0) {
                         armyTwo.remove(arm2);
                         System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
                     }
                 }
                 case 1 -> {
-                    arm2.attack(arm1);
+                    arm2.attack(arm1, terrain);
                     if (arm1.getHealth() <= 0) {
                         armyOne.remove(arm1);
                         System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");

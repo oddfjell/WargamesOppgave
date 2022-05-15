@@ -1,3 +1,4 @@
+import WGames.Model.Terrain;
 import WGames.Model.Units.CavalryUnit;
 import WGames.Model.Units.CommanderUnit;
 import WGames.Model.Units.InfantryUnit;
