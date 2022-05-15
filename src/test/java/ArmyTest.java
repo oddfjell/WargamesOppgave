@@ -1,4 +1,5 @@
 import TestResources.UnitsGnotts;
+import WGames.Model.Armies;
 import WGames.Model.Filewriter;
 import WGames.Model.Unit;
 import org.junit.Test;

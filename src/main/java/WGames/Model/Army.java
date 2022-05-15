@@ -160,4 +160,6 @@ public class Army {
                 .filter(unit -> unit.getID().equals("CommanderUnit"))
                 .collect((Collectors.toList()));
     }
+
+
 }

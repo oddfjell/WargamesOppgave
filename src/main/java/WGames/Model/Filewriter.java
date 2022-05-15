@@ -96,7 +96,7 @@ public class Filewriter {
 
             }
             br.close();
-            System.out.println(army.getAllUnits());
+            //System.out.println(army.getAllUnits());
         }catch(Exception ex){
             return null;
         }

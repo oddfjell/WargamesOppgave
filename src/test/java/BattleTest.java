@@ -1,5 +1,6 @@
 import TestResources.UnitsGnotts;
 import TestResources.UnitsNotGnotts;
+import WGames.Model.Armies;
 import WGames.Model.Army;
 import WGames.Model.Battle;
 import org.junit.Test;
@@ -21,5 +22,10 @@ public class BattleTest {
         Army winner = war.simulate();
 
         assertTrue(winner.getName().equals(notGnotts.getName()) || winner.getName().equals(gnotts.getName()));
+
+        //TODO
+        Armies armies = new Armies();
+        armies.addArmy(gnotts);
+        assertEquals(1, armies.listAllArmies().size());
     }
 }
