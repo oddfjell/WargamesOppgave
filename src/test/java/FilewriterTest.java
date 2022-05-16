@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class FilewriterTest {
 
     @Test
-    public void writeArmyFromFileTest(){
+    public void writeArmyInFileTest(){
         Filewriter filewriter = new Filewriter();
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
 
@@ -50,9 +50,13 @@ public class FilewriterTest {
         File file = new File("src\\main\\resources\\Files\\testArmy.csv");
 
         Army army = filewriter.makeArmyFromFile(file);
+        System.out.println(army.getAllUnits());
 
         assertEquals(army.getName(), "testArmy");
         assertEquals(6, army.getAllUnits().size());
+
+        //filewriter.writeData("testArmy", "noe");
+       // filewriter.removeLineFromFile("testArmy", "noe");
 
 
 

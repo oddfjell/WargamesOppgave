@@ -24,30 +24,18 @@
                                     </font>
                                 </Button>
                         <ComboBox fx:id="unitType" layoutX="161.0" layoutY="188.0" prefHeight="55.0" prefWidth="239.0" styleClass="Combobox" stylesheets="@../styles.css" />
-                        <TextField layoutX="607.0" layoutY="203.0" prefHeight="25.0" prefWidth="121.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <Text fill="WHITE" layoutX="528.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                        <TextField layoutX="488.0" layoutY="188.0" prefHeight="55.0" prefWidth="192.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Text fill="WHITE" layoutX="410.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
                            <font>
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="704.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health:">
+                        <Text fill="WHITE" layoutX="685.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health:">
                            <font>
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="770.0" layoutY="203.0" prefHeight="25.0" prefWidth="32.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <TextField layoutX="982.0" layoutY="203.0" prefHeight="25.0" prefWidth="32.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <TextField layoutX="879.0" layoutY="203.0" prefHeight="25.0" prefWidth="32.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <Text fill="WHITE" layoutX="921.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Armor:">
-                           <font>
-                              <Font name="Papyrus" size="25.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="812.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:">
-                           <font>
-                              <Font name="Papyrus" size="25.0" />
-                           </font>
-                        </Text>
+                        <TextField layoutX="772.0" layoutY="186.0" prefHeight="55.0" prefWidth="73.0" styleClass="TextField" stylesheets="@../styles.css" />
                         <Text fill="WHITE" layoutX="37.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit type:">
                            <font>
                               <Font name="Papyrus" size="25.0" />
@@ -68,8 +56,8 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="171.0" layoutY="115.0" prefHeight="25.0" prefWidth="121.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <Button layoutX="304.0" layoutY="95.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="comfirm" textFill="WHITE">
+                        <TextField fx:id="armyName" layoutX="171.0" layoutY="115.0" prefHeight="25.0" prefWidth="121.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Button fx:id="confirm" layoutX="304.0" layoutY="95.0" mnemonicParsing="false" onAction="#confirmButtonClicked" style="-fx-background-color: transparent;" text="comfirm" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="25.0" />
                            </font>
