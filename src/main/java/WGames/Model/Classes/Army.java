@@ -1,4 +1,4 @@
-package WGames.Model;
+package WGames.Model.Classes;
 
 import WGames.Model.Units.Unit;
 

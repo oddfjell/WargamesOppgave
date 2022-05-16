@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -31,6 +33,20 @@
                         </Text>
                         <ComboBox layoutX="40.0" layoutY="195.0" prefWidth="150.0" />
                         <ComboBox layoutX="225.0" layoutY="195.0" prefWidth="150.0" />
+                        <TableView layoutX="40.0" layoutY="264.0" prefHeight="277.0" prefWidth="336.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                          <columns>
+                            <TableColumn prefWidth="109.33333969116211" text="unit type" />
+                            <TableColumn prefWidth="103.3333740234375" text="name" />
+                              <TableColumn prefWidth="122.66664123535156" text="health" />
+                          </columns>
+                        </TableView>
+                        <TableView layoutX="400.0" layoutY="264.0" prefHeight="277.0" prefWidth="336.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                           <columns>
+                              <TableColumn prefWidth="109.33333969116211" text="unit type" />
+                              <TableColumn prefWidth="103.3333740234375" text="name" />
+                              <TableColumn prefWidth="122.66664123535156" text="health" />
+                           </columns>
+                        </TableView>
                             </children>
                         </AnchorPane>
                     </children>

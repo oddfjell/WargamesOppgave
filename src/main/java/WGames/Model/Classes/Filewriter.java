@@ -1,4 +1,4 @@
-package WGames.Model;
+package WGames.Model.Classes;
 
 import WGames.Model.Units.Unit;
 
@@ -8,12 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import com.opencsv.CSVIterator;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
-import com.opencsv.exceptions.CsvValidationException;
-import org.apache.commons.lang3.ObjectUtils;
 
 
 public class Filewriter {

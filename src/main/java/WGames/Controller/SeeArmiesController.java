@@ -1,24 +1,18 @@
 package WGames.Controller;
 
-import WGames.Model.Army;
-import WGames.Model.Filewriter;
+import WGames.Model.Classes.Filewriter;
 import WGames.WApplication;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class SeeArmiesController implements Initializable {
     @FXML
@@ -42,7 +36,6 @@ public class SeeArmiesController implements Initializable {
 
     @FXML
     public void fileUpload() {
-        //unitAdded.setVisible(false);
         Filewriter filewriter = new Filewriter();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("src\\main\\resources\\Files"));
@@ -59,13 +52,7 @@ public class SeeArmiesController implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //unitAdded.setVisible(false);
-        /*List<String> armies =
-                br.lines().skip(1).collect(Collectors.toList());
-        ObservableList<String> armyNames = FXCollections.observableArrayList("CavalryUnit", "CommanderUnit", "InfantryUnit", "RangedUnit");
-        unitType.setItems(armyNames);*/
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 
 
 }

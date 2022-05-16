@@ -16,3 +16,8 @@ Button:hover{
     -fx-font-family: papyrus;
     -fx-font-size: 20;
 }
+
+.TableView{
+    -fx-font-family: papyrus;
+    -fx-font-size: 20;
+}

@@ -1,8 +1,9 @@
 package WGames.Controller;
 
-import WGames.Model.Army;
-import WGames.Model.Filewriter;
-import WGames.Model.UnitFactory;
+import WGames.Dialog.Dialog;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.Filewriter;
+import WGames.Model.Classes.UnitFactory;
 import WGames.Model.Units.Unit;
 import WGames.WApplication;
 import javafx.collections.FXCollections;
@@ -46,36 +47,43 @@ public class NewArmyController implements Initializable {
 
     @FXML
     void addUnitButtonClicked() throws IllegalArgumentException{
-        UnitFactory unitFactory = new UnitFactory();
-        Filewriter filewriter = new Filewriter();
+        try {
+            UnitFactory unitFactory = new UnitFactory();
+            Filewriter filewriter = new Filewriter();
 
-        List<Unit> units = new ArrayList<>();
-        Army army = new Army(armyName.getText(), units);
+            List<Unit> units = new ArrayList<>();
+            Army army = new Army(armyName.getText(), units);
 
-        Unit unit;
+            Unit unit = null;
 
 
-        String nameOfTheArmy = armyName.getText();
-        if(name.getText()!=null && health.getText()!=null && unitType.getValue()!=null){
-            String unitName = name.getText();
-            int unitHealth = Integer.parseInt(health.getText());
-            String typeOfUnit = String.valueOf(unitType.getValue());
-            unit = unitFactory.getUnit(typeOfUnit, unitName, unitHealth);
-        } else if(unitType.getValue()!=null){
-            String typeOfUnit = String.valueOf(unitType.getValue());
-            Random random = new Random();
-            int unitHealth = random.nextInt(50) + 1;
-            unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
-        } else{
-            throw new IllegalArgumentException("Illegal unit format");
-        }
+            String nameOfTheArmy = armyName.getText();
+            if (name.getText() != null && health.getText() != null && unitType.getValue() != null) {
+                String unitName = name.getText().trim();
+                int unitHealth = Integer.parseInt(health.getText());
+                String typeOfUnit = String.valueOf(unitType.getValue());
+                unit = unitFactory.getUnit(typeOfUnit, unitName, unitHealth);
 
-        if(!(new File( "src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()){
-            army.add(unit);
-            filewriter.writeArmyInFile(army);
-        } else{
-            filewriter.writeData(armyName.getText(), unit);
-        }
+            } else if (unitType.getValue() != null) {
+                String typeOfUnit = String.valueOf(unitType.getValue());
+                Random random = new Random();
+                int unitHealth = random.nextInt(50) + 1;
+                unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
+                //TODO fiks det at du ikke bare kan generelt lage en ranged unit
+            } 
+            /*else {
+                throw new IllegalArgumentException("Illegal unit format");
+            }*/
+
+            if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists() && unit!=null) {
+                army.add(unit);
+                filewriter.writeArmyInFile(army);
+            } else {
+                filewriter.writeData(armyName.getText(), unit);
+            }
+        }catch (IllegalArgumentException e){
+                Dialog.error(e);
+            }
 
 
         //back button skrive til fil

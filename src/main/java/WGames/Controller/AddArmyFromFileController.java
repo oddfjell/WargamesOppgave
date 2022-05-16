@@ -1,7 +1,7 @@
 package WGames.Controller;
 
-import WGames.Model.Army;
-import WGames.Model.Filewriter;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.Filewriter;
 import WGames.WApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

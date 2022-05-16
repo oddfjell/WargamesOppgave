@@ -1,6 +1,6 @@
 import TestResources.UnitsGnotts;
-import WGames.Model.Army;
-import WGames.Model.UnitFactory;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.UnitFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

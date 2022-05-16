@@ -1,6 +1,6 @@
 import TestResources.UnitsGnotts;
-import WGames.Model.Army;
-import WGames.Model.Filewriter;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.Filewriter;
 import WGames.Model.Units.Unit;
 import org.junit.Test;
 import java.util.ArrayList;

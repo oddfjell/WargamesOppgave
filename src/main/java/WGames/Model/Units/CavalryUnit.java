@@ -1,6 +1,6 @@
 package WGames.Model.Units;
 
-import WGames.Model.Terrain;
+import WGames.Model.Classes.Terrain;
 
 public class CavalryUnit extends Unit {
 

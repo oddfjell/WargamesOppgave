@@ -1,9 +1,8 @@
 import TestResources.UnitsGnotts;
 import TestResources.UnitsNotGnotts;
-import WGames.Model.Armies;
-import WGames.Model.Army;
-import WGames.Model.Battle;
-import WGames.Model.Terrain;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.Battle;
+import WGames.Model.Classes.Terrain;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

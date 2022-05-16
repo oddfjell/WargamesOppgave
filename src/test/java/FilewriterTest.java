@@ -1,5 +1,5 @@
-import WGames.Model.Army;
-import WGames.Model.Filewriter;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.Filewriter;
 import TestResources.UnitsNotGnotts;
 import WGames.Model.Units.RangedUnit;
 import org.junit.Test;

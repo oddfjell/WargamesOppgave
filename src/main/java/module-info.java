@@ -9,18 +9,27 @@ module Wargames {
 
     opens WGames to javafx.fxml;
     exports WGames;
+
     opens WGames.Controller to javafx.fxml;
     exports WGames.Controller;
 
     opens TestResources to test;
     exports TestResources;
 
-    opens WGames.Model to javafx.fxml;
-    exports WGames.Model;
+    opens WGames.Dialog to javafx.fxml;
+    exports WGames.Dialog;
+
+
+    opens WGames.Model to javafx.fxml;x
 
     opens WGames.Model.Units to javafx.fxml;
     exports WGames.Model.Units;
 
+    opens WGames.Model.Units.Mages to javafx.fxml;
+    exports WGames.Model.Units.Mages;
+
+    opens WGames.Model.Classes to javafx.fxml;
+    exports WGames.Model.Classes;
 
 
 

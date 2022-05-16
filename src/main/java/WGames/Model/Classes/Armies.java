@@ -1,4 +1,4 @@
-package WGames.Model;
+package WGames.Model.Classes;
 
 import java.util.ArrayList;
 import java.util.Comparator;
