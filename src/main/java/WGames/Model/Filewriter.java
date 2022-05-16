@@ -103,7 +103,7 @@ public class Filewriter {
 
 
 
-    public void writeData(String armyName, String info)
+    public void writeData(String armyName, Unit unit)//public void writeData(String armyName, String info)
     {
         //TODO bytt ut string info med unit
 
@@ -118,9 +118,15 @@ public class Filewriter {
             csvWriter = new  PrintWriter(new FileWriter(file,true));
 
 
-            //csvWriter.println(data+","+"hello");
-            csvWriter.println(info);
 
+            //csvWriter.println(data+","+"hello");
+            //csvWriter.println(info);
+
+            String unitInformation = unit.getID() + "," + unit.getName() + "," + unit.getHealth();
+
+
+
+            csvWriter.println(unitInformation);
 
             csvWriter.close();
 

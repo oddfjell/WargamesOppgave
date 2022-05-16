@@ -1,5 +1,9 @@
 package WGames.Controller;
 
+import WGames.Model.Army;
+import WGames.Model.Filewriter;
+import WGames.Model.UnitFactory;
+import WGames.Model.Units.Unit;
 import WGames.WApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,8 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 
@@ -28,10 +36,7 @@ public class NewArmyController implements Initializable {
     private TextField name;
     @FXML
     private TextField health;
-    @FXML
-    private TextField attack;
-    @FXML
-    private TextField armor;
+
 
 
     @FXML
@@ -41,18 +46,34 @@ public class NewArmyController implements Initializable {
 
     @FXML
     void addUnitButtonClicked() throws IllegalArgumentException{
-        if(name.getText()!=null && health.getText()!=null && attack.getText()!=null && armor.getText()!=null && unitType.getValue()!=null){
+        UnitFactory unitFactory = new UnitFactory();
+        Filewriter filewriter = new Filewriter();
+
+        List<Unit> units = new ArrayList<>();
+        Army army = new Army(armyName.getText(), units);
+
+        Unit unit;
+
+
+        String nameOfTheArmy = armyName.getText();
+        if(name.getText()!=null && health.getText()!=null && unitType.getValue()!=null){
             String unitName = name.getText();
             int unitHealth = Integer.parseInt(health.getText());
-            int unitAttack = Integer.parseInt(attack.getText());
-            int unitArmor = Integer.parseInt(armor.getText());
             String typeOfUnit = String.valueOf(unitType.getValue());
-        } else if(name.getText()!=null && health.getText()!=null && unitType.getValue()!=null){
-            String unitName = name.getText();
-            int unitHealth = Integer.parseInt(health.getText());
+            unit = unitFactory.getUnit(typeOfUnit, unitName, unitHealth);
+        } else if(unitType.getValue()!=null){
             String typeOfUnit = String.valueOf(unitType.getValue());
+            Random random = new Random();
+            int unitHealth = random.nextInt(50) + 1;
+            unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
         } else{
             throw new IllegalArgumentException("Illegal unit format");
+        }
+
+        if(!(new File( "src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()){
+            filewriter.writeArmyInFile(army);
+        } else{
+            filewriter.writeData(armyName.getText(), unit);
         }
 
 

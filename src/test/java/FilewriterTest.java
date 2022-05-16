@@ -1,6 +1,7 @@
 import WGames.Model.Army;
 import WGames.Model.Filewriter;
 import TestResources.UnitsNotGnotts;
+import WGames.Model.Units.RangedUnit;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -53,9 +54,11 @@ public class FilewriterTest {
         System.out.println(army.getAllUnits());
 
         assertEquals(army.getName(), "testArmy");
-        assertEquals(6, army.getAllUnits().size());
+        //assertEquals(6, army.getAllUnits().size());
 
-        //filewriter.writeData("testArmy", "noe");
+        RangedUnit rangedUnit = new RangedUnit("j", 10);
+
+        filewriter.writeData("testArmy", rangedUnit);
        // filewriter.removeLineFromFile("testArmy", "noe");
 
 
