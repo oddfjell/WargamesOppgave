@@ -71,6 +71,7 @@ public class NewArmyController implements Initializable {
         }
 
         if(!(new File( "src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()){
+            army.add(unit);
             filewriter.writeArmyInFile(army);
         } else{
             filewriter.writeData(armyName.getText(), unit);

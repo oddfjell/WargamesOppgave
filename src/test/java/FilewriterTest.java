@@ -60,6 +60,7 @@ public class FilewriterTest {
 
         filewriter.writeData("testArmy", rangedUnit);
        // filewriter.removeLineFromFile("testArmy", "noe");
+        //filewriter.removeLineFromFile("testArmy", "j");
 
 
 

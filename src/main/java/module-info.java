@@ -4,6 +4,8 @@ module Wargames {
     requires javafx.controls;
     requires java.desktop;
     requires java.logging;
+    requires com.opencsv;
+    requires org.apache.commons.lang3;
 
     opens WGames to javafx.fxml;
     exports WGames;

@@ -9,6 +9,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.opencsv.CSVIterator;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvValidationException;
+import org.apache.commons.lang3.ObjectUtils;
+
+
 public class Filewriter {
 
 
@@ -139,10 +146,43 @@ public class Filewriter {
 
     }
 
+    public List<String> copyCSVFile(File file){
+
+        List<String> theUnits;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+            theUnits = br.lines().collect(Collectors.toList());
+
+            theUnits.removeIf(theUnit -> Objects.equals(theUnit, ""));
+
+            /*for (String theUnit : theUnits) {
+                String[] unitStats = theUnit.trim().split(",");
+                if(!Objects.equals(unitStats[0], "")&& unitStats[2].matches("[0-9]+") && !Objects.equals(unitStats[1], "") && !Objects.equals(unitStats[2], "")){
+                    theUnit = unitStats[0] + " || Name: " + unitStats[1] + " || Health: " + unitStats[2];
+                }
+            }
+
+            for (String theUnit : theUnits) {
+                if (theUnit.contains(",")) {
+                    String[] unitStats = theUnit.trim().split(",");
+                    theUnit = unitStats[0] + " || Name: " + unitStats[1] + " || Health: " + unitStats[2];
+                }
+            }*/
+
+            br.close();
+
+        }catch(Exception ex){
+            return null;
+        }
+        return theUnits;
+    }
 
 
 
-   /* public void removeLineFromFile(String armyName, String lineToRemove) {
+
+   /*public void removeLineFromFile(String armyName, String lineToRemove) {
 
         try {
 
@@ -197,6 +237,130 @@ public class Filewriter {
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+
+    }*/
+
+    /*public void removeLineFromFile(String armyName, String lineToRemove) {
+        try {
+
+            File inFile = new File("src\\main\\resources\\Files\\" + armyName + ".csv");
+
+            if (!inFile.isFile()) {
+                System.out.println("Parameter is not an existing file");
+                return;
+            }
+
+
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
+            //PrintWriter pw = new PrintWriter(new FileWriter(inFile));
+            CSVReader csvFileReader = new CSVReader(br);
+            CSVIterator csvIterator = new CSVIterator(csvFileReader);
+            String line = null;
+            List<String> theUnits = br.lines().skip(0).collect(Collectors.toList());
+
+
+
+            for (String theUnit : theUnits) {
+                System.out.println(theUnit);
+                if(!Objects.equals(theUnit, "")){
+                    String[] unitStats = theUnit.trim().split(",");
+                    System.out.println(6);
+                    if(!Objects.equals(unitStats[1], lineToRemove)){
+                        System.out.println(7);
+                        csvIterator.remove();
+                        //pw.println(unitStats[1]);
+                        //pw.flush();
+                    }
+                }
+            }
+
+
+
+
+            //List<String> theUnits = br.lines().skip(0).collect(Collectors.toList());
+
+
+            //Read from the original file and write to the new
+            //unless content matches data to be removed.
+
+
+            //int read = 0;
+
+
+
+            //pw.close();
+            br.close();
+            csvFileReader.close();
+
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (CsvValidationException e) {
+            e.printStackTrace();
+        }
+
+    }*/
+
+    /*public void removeLineFromFile(String armyName, String lineToRemove) {
+        try {
+
+            File inFile = new File("src\\main\\resources\\Files\\" + armyName + ".csv");
+
+            if (!inFile.isFile()) {
+                System.out.println("Parameter is not an existing file");
+                return;
+            }
+            BufferedReader br = new BufferedReader(new FileReader(inFile));
+            List<String> theUnits = br.lines().skip(0).collect(Collectors.toList());
+            List<Integer> rows = new ArrayList<>();
+            int rowCount = 1;
+            for (String theUnit : theUnits) {
+                System.out.println(theUnit);
+                if(!Objects.equals(theUnit, "")){
+                    String[] unitStats = theUnit.trim().split(",");
+                    System.out.println(6);
+                    if(!Objects.equals(unitStats[1], lineToRemove)){
+                        System.out.println(7);
+                        rows.add(rowCount);
+                        rowCount++;
+                    }
+                }else{
+                    rowCount++;
+                }
+            }
+
+
+            CSVReader reader2 = new CSVReader(new FileReader(inFile));
+            List<String[]> allElements = reader2.readAll();
+            for (Integer row : rows) {
+                allElements.remove(row);
+            }
+            /*
+            for(int i = 0; i < rows.size(); i++){
+                allElements.remove(rows.get(i));
+            }
+            FileWriter sw = new FileWriter(filelocation);
+            CSVWriter writer = new CSVWriter(sw);
+            writer.writeAll(allElements);
+            writer.close();
+
+
+            reader2.close();
+            br.close();
+
+
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (CsvValidationException e) {
+            e.printStackTrace();
+        } catch (CsvException e) {
+            e.printStackTrace();
         }
 
     }*/
