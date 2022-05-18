@@ -64,7 +64,7 @@ public abstract class Unit {
         Terrain defaultTerrain = Terrain.DESERT;
         if ((this.attack + this.getAttackBonus(defaultTerrain)) > (this.armor + this.getResistBonus(defaultTerrain))){
             int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
+            System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
             opponent.setHealth(opponentHealth);
         }
     }
@@ -72,7 +72,7 @@ public abstract class Unit {
     public void attack(Unit opponent, Terrain terrain){
         if ((this.attack + this.getAttackBonus(terrain)) > (this.armor + this.getResistBonus(terrain))){
             int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(terrain)) + (opponent.getArmor()+ opponent.getResistBonus(terrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
+            System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
             opponent.setHealth(opponentHealth);
         }
     }

@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -41,6 +43,16 @@
                               <Font name="Papyrus" size="48.0" />
                            </font>
                         </Text>
+                        <TableView fx:id="armyTable" layoutX="476.0" layoutY="282.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                           <columns>
+                              <TableColumn fx:id="unitString" prefWidth="500.0" text="noe" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="updateTable" layoutX="539.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateTables" style="-fx-background-color: transparent;" text="her" textFill="WHITE">
+                           <font>
+                              <Font name="Papyrus" size="36.0" />
+                           </font>
+                        </Button>
                      </children>
                </AnchorPane>
             </children>

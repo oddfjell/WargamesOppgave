@@ -13,6 +13,9 @@ public class Battle {
 
 
 
+    public static String battleText = "";
+
+
     /**
      * constructor of the battle class
      * @param armyOne
@@ -70,6 +73,42 @@ public class Battle {
             return armyOne;
         }
     }
+
+    public String slowSimulate(){
+        Random random = new Random();
+
+        Unit arm1 = armyOne.getRandom();
+        Unit arm2 = armyTwo.getRandom();
+
+        int whoIsFirst = random.nextInt(2);
+
+        switch (whoIsFirst) {
+            case 0 -> {
+                arm1.attack(arm2, terrain);
+                if (arm2.getHealth() <= 0) {
+                    armyTwo.remove(arm2);
+                    System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
+                    return arm1.getName() + " kills " + arm2.getName() + " (" + armyTwo.getName() + ")";
+                    //return arm1.getName() + " attacks " + arm2.getName() + "\n" + arm2.getName() + " (" + armyTwo.getName() + ") died";
+                }
+                return arm1.getName() + " attacks " + arm2.getName();
+            }
+            case 1 -> {
+                arm2.attack(arm1, terrain);
+                if (arm1.getHealth() <= 0) {
+                    armyOne.remove(arm1);
+                    System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");
+                    return arm2.getName() + " kills " + arm1.getName() + " (" + armyOne.getName() + ")";
+                    //return arm2.getName() + " attacks " + arm1.getName() + "\n" + arm1.getName() + " (" + armyOne.getName() + ") died";
+                }
+                return arm2.getName() + " attacks " + arm1.getName();
+            }
+        }
+        return "";
+    }
+
+//TODO ha en fast paste simulate med en notepad over hendelsene
+
 
     /**
      * toString method

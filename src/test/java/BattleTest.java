@@ -10,7 +10,7 @@ public class BattleTest {
 
 
     @Test
-    public void battleTest(){
+    public void battleTest() throws InterruptedException {
         //Battle war = new Battle();
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
         UnitsGnotts unitsGnotts = new UnitsGnotts();

@@ -26,18 +26,18 @@
                                     </font>
                                 </Button>
                         <ButtonBar layoutX="400.0" layoutY="316.0" prefHeight="40.0" prefWidth="200.0" />
-                        <TableView layoutX="40.0" layoutY="264.0" prefHeight="450.0" prefWidth="336.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                        <TableView fx:id="armyOneTable" layoutX="40.0" layoutY="264.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: transparent;" styleClass="TextField">
                           <columns>
-                            <TableColumn prefWidth="109.33333969116211" text="unit type" />
-                            <TableColumn prefWidth="103.3333740234375" text="name" />
-                              <TableColumn prefWidth="122.66664123535156" text="health" />
+                            <TableColumn fx:id="unitTypeArmyOne" prefWidth="200.0" text="unit type" />
+                            <TableColumn fx:id="nameArmyOne" prefWidth="200.0" text="name" />
+                              <TableColumn fx:id="healthArmyOne" prefWidth="100.0" text="health" />
                           </columns>
                         </TableView>
-                        <TableView layoutX="583.0" layoutY="264.0" prefHeight="450.0" prefWidth="336.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                        <TableView fx:id="armyTwoTable" layoutX="692.0" layoutY="264.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: transparent;" styleClass="TextField">
                            <columns>
-                              <TableColumn prefWidth="109.33333969116211" text="unit type" />
-                              <TableColumn prefWidth="103.3333740234375" text="name" />
-                              <TableColumn prefWidth="122.66664123535156" text="health" />
+                              <TableColumn fx:id="unitTypeArmyTwo" prefWidth="200.0" text="unit type" />
+                              <TableColumn fx:id="nameArmyTwo" prefWidth="200.0" text="name" />
+                              <TableColumn fx:id="healthArmyTwo" prefWidth="100.0" text="health" />
                            </columns>
                         </TableView>
                         <Button fx:id="fileUploadButton" layoutX="14.0" layoutY="88.0" mnemonicParsing="false" onAction="#fileUpload" style="-fx-background-color: transparent;" text="press here to choose armies" textFill="WHITE">
@@ -51,11 +51,21 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <Text fx:id="terrainText" fill="WHITE" layoutX="397.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.47384643554688">
+                        <Text fx:id="terrainText" fill="WHITE" layoutX="551.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="140.47384643554688">
                            <font>
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
+                        <Text fx:id="battleAction" fill="WHITE" layoutX="579.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tekst">
+                           <font>
+                              <Font name="Papyrus" size="25.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="fight" layoutX="547.0" layoutY="39.0" mnemonicParsing="false" onAction="#theBattle" style="-fx-background-color: transparent;" text="fight" textFill="WHITE">
+                           <font>
+                              <Font name="Papyrus" size="36.0" />
+                           </font>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </children>

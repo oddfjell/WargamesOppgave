@@ -5,14 +5,14 @@ import WGames.Model.Classes.Army;
 import WGames.Model.Classes.Battle;
 import WGames.Model.Classes.Filewriter;
 import WGames.Model.Classes.Terrain;
+import WGames.Model.Units.Unit;
 import WGames.WApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
@@ -68,11 +68,111 @@ public class BattleController implements Initializable {
             battle = new Battle(armyOne,armyTwo, terrain);
             terrainText.setText(String.valueOf(terrain));
 
+            //for(Unit unit:armyOne.getAllUnits()){}
+
+            updateTables();
+
+           // battle.simulate();
+            //updateTables();
+
+
+
         } catch (Exception exception){
             Dialog.error(exception);
         }
 
     }
+
+
+
+    @FXML
+    private TableView armyOneTable;
+    @FXML
+    private TableColumn unitTypeArmyOne;
+    @FXML
+    private TableColumn nameArmyOne;
+    @FXML
+    private TableColumn healthArmyOne;
+
+    @FXML
+    private TableView armyTwoTable;
+    @FXML
+    private TableColumn unitTypeArmyTwo;
+    @FXML
+    private TableColumn nameArmyTwo;
+    @FXML
+    private TableColumn healthArmyTwo;
+
+
+
+    @FXML
+    public void updateTables(){
+        if(armyOne != null){
+            //sett en tekst med navnet
+
+            unitTypeArmyOne.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            nameArmyOne.setCellValueFactory(new PropertyValueFactory<>("name"));
+            healthArmyOne.setCellValueFactory(new PropertyValueFactory<>("health"));
+
+
+            armyOneTable.setItems(FXCollections.observableArrayList(armyOne.getAllUnits()));
+
+        }
+        if(armyTwo != null){
+            //sett en tekst med navnet
+
+            unitTypeArmyTwo.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            nameArmyTwo.setCellValueFactory(new PropertyValueFactory<>("name"));
+            healthArmyTwo.setCellValueFactory(new PropertyValueFactory<>("health"));
+
+
+            armyTwoTable.setItems(FXCollections.observableArrayList(armyTwo.getAllUnits()));
+
+        }
+
+        armyOneTable.refresh();
+        armyTwoTable.refresh();
+        //battleAction.setText(Battle.battleText);
+
+
+        /*
+            if army != null
+            sett navn
+            navncol.settcallvalfac(new property val fac(id eller navn eller health)
+            ref
+             */
+
+
+    }
+
+    @FXML
+    private Button fight;
+    @FXML
+    private Text battleAction;
+    @FXML
+    public void theBattle() throws InterruptedException {
+        new Thread(()->{
+            while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
+                battleAction.setText(battle.slowSimulate());
+                updateTables();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (armyOne.getAllUnits().size() == 0){
+                battleAction.setText(armyTwo + " won");
+            } else{
+                battleAction.setText(armyOne + " won");
+            }
+        }).start();
+
+
+
+    }
+
 
 
 

@@ -15,6 +15,7 @@ public class Filewriter {
 
 
     //TODO implement exeptions
+    //kan bare velge csv fil fra files
 
     /**
      * Method to write an army to a file. The method has an army as its parameter. The BufferedWriter
@@ -172,6 +173,8 @@ public class Filewriter {
         }
         return theUnits;
     }
+
+
 
 
 
