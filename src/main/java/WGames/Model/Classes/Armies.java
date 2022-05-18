@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Armies {
+    //TODO slett
 
     /*private ArrayList<Army> armies;
 

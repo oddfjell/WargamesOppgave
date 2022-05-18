@@ -11,14 +11,15 @@ public class BattleTest {
 
     @Test
     public void battleTest(){
-        Battle war = new Battle();
+        //Battle war = new Battle();
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
         UnitsGnotts unitsGnotts = new UnitsGnotts();
 
         Army notGnotts = unitsNotGnotts.premier();
         Army gnotts = unitsGnotts.premier();
 
-        war.Battle(notGnotts, gnotts, Terrain.FOREST);
+        //war.Battle(notGnotts, gnotts, Terrain.FOREST);
+        Battle war = new Battle(notGnotts, gnotts, Terrain.FOREST);
         Army winner = war.simulate();
 
         assertTrue(winner.getName().equals(notGnotts.getName()) || winner.getName().equals(gnotts.getName()));

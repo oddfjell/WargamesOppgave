@@ -25,8 +25,17 @@ public class BlackMage extends Mage {
     @Override
     public void attack(Unit opponent){
         Terrain defaultTerrain = Terrain.DESERT;
-        if ((this.getAttack() + this.getAttackBonus(defaultTerrain)) > (this.getArmor() + this.getResistBonus(defaultTerrain))){
-            int opponentHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
+        int unitAttack = this.getAttack() + this.getAttackBonus(defaultTerrain);
+        if (unitAttack > (this.getArmor() + this.getResistBonus(defaultTerrain))){
+            int manaAttack;
+            if(unitAttack < this.getMana()){
+                this.setMana(this.getMana() - unitAttack);
+                manaAttack = unitAttack;
+            }else{
+                manaAttack = getMana();
+                this.setMana(0);
+            }
+            int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
@@ -34,8 +43,17 @@ public class BlackMage extends Mage {
 
     @Override
     public void attack(Unit opponent, Terrain terrain){
-        if ((this.getAttack() + this.getAttackBonus(terrain)) > (this.getArmor() + this.getResistBonus(terrain))){
-            int opponentHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus(terrain)) + (opponent.getArmor()+ opponent.getResistBonus(terrain));
+        int unitAttack = this.getAttack() + this.getAttackBonus(terrain);
+        if (unitAttack > (this.getArmor() + this.getResistBonus(terrain))){
+            int manaAttack;
+            if(unitAttack < this.getMana()){
+                this.setMana(this.getMana() - unitAttack);
+                manaAttack = unitAttack;
+            }else{
+                manaAttack = getMana();
+                this.setMana(0);
+            }
+            int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(terrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }

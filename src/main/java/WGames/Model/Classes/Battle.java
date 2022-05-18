@@ -19,11 +19,15 @@ public class Battle {
      * @param armyTwo
      * @param terrain
      */
-    public void Battle(Army armyOne, Army armyTwo, Terrain terrain){
-        this.armyOne = armyOne;
-        this.armyTwo = armyTwo;
-        this.terrain = terrain;
-
+    public Battle(Army armyOne, Army armyTwo, Terrain terrain) throws IllegalStateException{
+        //used to be void
+        if(!armyOne.getName().trim().equals(armyTwo.getName().trim())){
+            this.armyOne = armyOne;
+            this.armyTwo = armyTwo;
+            this.terrain = terrain;
+        } else {
+            throw new IllegalStateException("You cannot make an army attack itself");
+        }
     }
 
     /**

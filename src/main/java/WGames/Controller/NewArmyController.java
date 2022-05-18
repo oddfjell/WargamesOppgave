@@ -85,7 +85,6 @@ public class NewArmyController implements Initializable {
                 Dialog.error(e);
             }
 
-
         //back button skrive til fil
         //om army fil eksisterer putter man nye units inn i dan gamle filen
         //ellers lages det en ny fil

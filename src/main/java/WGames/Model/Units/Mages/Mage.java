@@ -24,6 +24,10 @@ public abstract class Mage extends Unit {
         return mana;
     }
 
+    public void setMana(int mana){
+        this.mana = mana;
+    }
+
     @Override
     public int getAttackBonus(Terrain terrain) {
         if(terrain.equals(Terrain.DESERT)){

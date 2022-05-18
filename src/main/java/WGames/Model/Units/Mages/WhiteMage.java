@@ -22,22 +22,24 @@ public class WhiteMage extends Mage {
         return "WhiteMage";
     }
 
+    //TODO heal own team
+
     @Override
-    public void attack(Unit opponent){
+    public void attack(Unit companion){
         Terrain defaultTerrain = Terrain.DESERT;
         if ((this.getAttack() + this.getAttackBonus(defaultTerrain)) > (this.getArmor() + this.getResistBonus(defaultTerrain))){
-            int opponentHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
-            opponent.setHealth(opponentHealth);
+            int opponentHealth = companion.getHealth() - (this.getAttack() + this.getAttackBonus(defaultTerrain)) + (companion.getArmor()+ companion.getResistBonus(defaultTerrain));
+            System.out.println(this.getName() + " heals " + companion.getName());
+            companion.setHealth(opponentHealth);
         }
     }
 
     @Override
-    public void attack(Unit opponent, Terrain terrain){
+    public void attack(Unit companion, Terrain terrain){
         if ((this.getAttack() + this.getAttackBonus(terrain)) > (this.getArmor() + this.getResistBonus(terrain))){
-            int opponentHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus(terrain)) + (opponent.getArmor()+ opponent.getResistBonus(terrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
-            opponent.setHealth(opponentHealth);
+            int opponentHealth = companion.getHealth() - (this.getAttack() + this.getAttackBonus(terrain)) + (companion.getArmor()+ companion.getResistBonus(terrain));
+            System.out.println(this.getName() + " heals " + companion.getName());
+            companion.setHealth(opponentHealth);
         }
     }
 }

@@ -20,8 +20,6 @@ module Wargames {
     exports WGames.Dialog;
 
 
-    opens WGames.Model to javafx.fxml;x
-
     opens WGames.Model.Units to javafx.fxml;
     exports WGames.Model.Units;
 

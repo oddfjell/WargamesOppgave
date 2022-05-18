@@ -16,4 +16,15 @@ public class Dialog {
 
         alert.showAndWait();
     }
+
+    public static void information(String string){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("");
+        alert.setContentText(string);
+        alert.initOwner(WApplication.primaryStage);
+
+        alert.showAndWait();
+    }
+
 }
