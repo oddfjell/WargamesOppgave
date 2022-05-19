@@ -1,5 +1,6 @@
 package WGames.Controller;
 
+import WGames.Dialog.Dialog;
 import WGames.Model.Classes.Army;
 import WGames.Model.Classes.Filewriter;
 import WGames.WApplication;
@@ -32,13 +33,18 @@ public class AddArmyFromFileController implements Initializable {
 
     @FXML
     public void fileUpload() {
-        unitAdded.setVisible(false);
-        FileChooser fileChooser = new FileChooser();
-        Filewriter filewriter = new Filewriter();
-        Army army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-        filewriter.writeArmyInFile(army);
-        System.out.println(army.getAllUnits());
-        unitAdded.setVisible(true);
+        try{
+            unitAdded.setVisible(false);
+            FileChooser fileChooser = new FileChooser();
+            Filewriter filewriter = new Filewriter();
+            Army army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
+            filewriter.writeArmyInFile(army);
+            System.out.println(army.getAllUnits());
+            unitAdded.setVisible(true);
+        }catch (Exception exception){
+            Dialog.error(exception);
+        }
+
     }
 
 

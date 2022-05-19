@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,12 @@ import java.util.ResourceBundle;
 
 
 public class NewArmyController implements Initializable {
+
+    //TODO fix delete unit
+    //TODO the user can make several units from one button click
+    //make a textfield for the number or a combobox up til 1000
+
+    //TODO remove confirm
 
 
     @FXML
@@ -52,30 +59,43 @@ public class NewArmyController implements Initializable {
             Filewriter filewriter = new Filewriter();
 
             List<Unit> units = new ArrayList<>();
-            Army army = new Army(armyName.getText(), units);
+            //Army army = new Army(armyName.getText(), units);
+
+
+            Army army;
+            if(!armyName.getText().trim().equals("")){
+                army = new Army(armyName.getText(), units);
+            } else {
+                throw new IllegalArgumentException("The army must have a name");
+            }
 
             Unit unit = null;
 
 
             String nameOfTheArmy = armyName.getText();
             if (name.getText() != null && health.getText() != null && unitType.getValue() != null) {
-                String unitName = name.getText().trim();
-                int unitHealth = Integer.parseInt(health.getText());
+
+                String unitName;
+                if(!name.getText().trim().equals("")){
+                    unitName = name.getText().trim();
+                } else{
+                    throw new IllegalArgumentException("The unit must have a name");
+                }
+                int unitHealth;
+                if(Integer.parseInt(health.getText()) == (int)Integer.parseInt(health.getText())){
+                    unitHealth = Integer.parseInt(health.getText());
+                }else{
+                    throw new IllegalArgumentException("The health must be an integer");
+                }
                 String typeOfUnit = String.valueOf(unitType.getValue());
                 unit = unitFactory.getUnit(typeOfUnit, unitName, unitHealth);
+                standardUnitText.setText(unit.toString());
 
-            } else if (unitType.getValue() != null) {
-                String typeOfUnit = String.valueOf(unitType.getValue());
-                Random random = new Random();
-                int unitHealth = random.nextInt(50) + 1;
-                unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
-                //TODO fiks det at du ikke bare kan generelt lage en ranged unit
-            } 
-            /*else {
-                throw new IllegalArgumentException("Illegal unit format");
-            }*/
+            } else {
+                throw new IllegalArgumentException("Please fill in the boxes");
+            }
 
-            if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists() && unit!=null) {
+            if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()) {
                 army.add(unit);
                 filewriter.writeArmyInFile(army);
             } else {
@@ -91,10 +111,6 @@ public class NewArmyController implements Initializable {
 
         //new army/edit army
 
-        /*
-        String username = userField.getText();
-    String passw = passField.getText();
-         */
     }
 
     @FXML
@@ -104,6 +120,54 @@ public class NewArmyController implements Initializable {
     @FXML
     public void confirmButtonClicked(){
         armyName.setEditable(false);
+    }
+
+
+    @FXML
+    private Button standardUnitBox;
+    @FXML
+    private Text standardUnitText;
+    @FXML
+    public void makeStandardUnit(){
+        try{
+
+            UnitFactory unitFactory = new UnitFactory();
+            Unit unit = null;
+
+            Filewriter filewriter = new Filewriter();
+            List<Unit> units = new ArrayList<>();
+            Army army;
+            if(!armyName.getText().trim().equals("")){
+                army = new Army(armyName.getText(), units);
+            } else {
+                throw new IllegalArgumentException("The army must have a name");
+            }
+
+            if (unitType.getValue() != null) {
+                String typeOfUnit = String.valueOf(unitType.getValue());
+                Random random = new Random();
+                int unitHealth = random.nextInt(50) + 1;
+                unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
+                System.out.println(unit.toString());
+                standardUnitText.setText(unit.toString());
+            }else {
+                throw new IllegalArgumentException("Please choose the unit type from the box above");
+            }
+
+
+            if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists() && unit!=null) {
+                army.add(unit);
+                filewriter.writeArmyInFile(army);
+            } else {
+                filewriter.writeData(armyName.getText(), unit);
+            }
+
+
+
+        }catch (IllegalArgumentException exception){
+            Dialog.error(exception);
+        }
+        //choose the unit type from the box
     }
 
 

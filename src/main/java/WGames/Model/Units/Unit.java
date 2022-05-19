@@ -40,19 +40,6 @@ public abstract class Unit {
         }else{
             throw new IllegalArgumentException("The armor must be a positive integer between 1 and 100");
         }
-
-
-        /*
-        try{
-            this.name = name;
-            this.health = health;
-            this.attack = attack;
-            this.armor = armor;
-        }
-        catch (IllegalArgumentException e){
-            System.out.println("Illegal format");//TODO
-        }
-         */
     }
 
     /**
@@ -64,15 +51,17 @@ public abstract class Unit {
         Terrain defaultTerrain = Terrain.DESERT;
         if ((this.attack + this.getAttackBonus(defaultTerrain)) > (this.armor + this.getResistBonus(defaultTerrain))){
             int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(defaultTerrain)) + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
+            //System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
             opponent.setHealth(opponentHealth);
         }
     }
 
+    //TODO javadoc
+
     public void attack(Unit opponent, Terrain terrain){
         if ((this.attack + this.getAttackBonus(terrain)) > (this.armor + this.getResistBonus(terrain))){
             int opponentHealth = opponent.getHealth() - (this.attack + this.getAttackBonus(terrain)) + (opponent.getArmor()+ opponent.getResistBonus(terrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
+            //System.out.println(this.getName() + " attacks " + opponent.getName());//TODO
             opponent.setHealth(opponentHealth);
         }
     }

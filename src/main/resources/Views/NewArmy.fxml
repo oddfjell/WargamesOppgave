@@ -62,6 +62,16 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Button>
+                        <Button fx:id="standardUnitBox" layoutX="22.0" layoutY="417.0" mnemonicParsing="false" onAction="#makeStandardUnit" style="-fx-background-color: transparent;" text="make a standard unit" textFill="WHITE">
+                           <font>
+                              <Font name="Papyrus" size="30.0" />
+                           </font>
+                        </Button>
+                        <Text fx:id="standardUnitText" fill="WHITE" layoutX="37.0" layoutY="614.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Papyrus" size="25.0" />
+                           </font>
+                        </Text>
                             </children>
                         </AnchorPane>
                     </children>

@@ -36,8 +36,10 @@ public class FrontPageController implements Initializable {
 
     @FXML
     void newArmyButtonClicked() throws IOException{
-        System.out.println("hekko");
         WApplication.changeScene("/Views/NewArmy.fxml");
+
+
+
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package WGames.Model.Classes;
 
+import WGames.Dialog.Dialog;
 import WGames.Model.Units.Unit;
 
 import java.io.*;
@@ -89,12 +90,15 @@ public class Filewriter {
                         u.add(unitFactory.getUnit(unitStats[0], unitStats[1], Integer.parseInt(unitStats[2])));
                         System.out.println(7);
                     }
+                } else{
+                    throw new IllegalArgumentException("Illegal format");
                 }
             }
             br.close();
             System.out.println(4);
             //System.out.println(army.getAllUnits());
         }catch(Exception ex){
+            Dialog.error(ex);
             return null;
         }
         return army;
@@ -105,9 +109,7 @@ public class Filewriter {
 
 
 
-    public void writeData(String armyName, Unit unit)//public void writeData(String armyName, String info)
-    {
-        //TODO bytt ut string info med unit
+    public void writeData(String armyName, Unit unit){
 
         PrintWriter csvWriter;
         try
@@ -118,11 +120,6 @@ public class Filewriter {
                 file = new File("src\\main\\resources\\Files\\" + armyName + ".csv");
             }
             csvWriter = new  PrintWriter(new FileWriter(file,true));
-
-
-
-            //csvWriter.println(data+","+"hello");
-            //csvWriter.println(info);
 
             String unitInformation = unit.getID() + "," + unit.getName() + "," + unit.getHealth();
 
@@ -141,7 +138,10 @@ public class Filewriter {
 
     }
 
+
     public List<String> copyCSVFile(File file){
+
+        //TODO bedre string
 
         List<String> theUnits;
 
@@ -151,20 +151,6 @@ public class Filewriter {
             theUnits = br.lines().collect(Collectors.toList());
 
             theUnits.removeIf(theUnit -> Objects.equals(theUnit, ""));
-
-            /*for (String theUnit : theUnits) {
-                String[] unitStats = theUnit.trim().split(",");
-                if(!Objects.equals(unitStats[0], "")&& unitStats[2].matches("[0-9]+") && !Objects.equals(unitStats[1], "") && !Objects.equals(unitStats[2], "")){
-                    theUnit = unitStats[0] + " || Name: " + unitStats[1] + " || Health: " + unitStats[2];
-                }
-            }
-
-            for (String theUnit : theUnits) {
-                if (theUnit.contains(",")) {
-                    String[] unitStats = theUnit.trim().split(",");
-                    theUnit = unitStats[0] + " || Name: " + unitStats[1] + " || Health: " + unitStats[2];
-                }
-            }*/
 
             br.close();
 

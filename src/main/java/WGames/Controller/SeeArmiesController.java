@@ -2,7 +2,9 @@ package WGames.Controller;
 
 import WGames.Model.Classes.Filewriter;
 import WGames.WApplication;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,6 +21,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SeeArmiesController implements Initializable {
+    //TODO fiks denne sida
+
+
+
     @FXML
     private Button back;
 
@@ -45,40 +51,32 @@ public class SeeArmiesController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("src\\main\\resources\\Files"));
         chosenArmy = filewriter.copyCSVFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-        String troops = "";
+        nameOfTheArmies.setText(chosenArmy.get(0));
+        chosenArmy.remove(0);
+        /*String troops = "";
         for(int i = 1; chosenArmy.size() > i; i++){
             troops += chosenArmy.get(i) + "\n";
 
         }
         System.out.println(troops);
-        textInBox.setText(troops);
-        nameOfTheArmies.setText(chosenArmy.get(0));
+        textInBox.setText(troops);*/
+
     }
 
     @FXML
     private TableView armyTable;
     @FXML
-    private TableColumn unitString;
+    private TableColumn<String, String> unitString;
     @FXML
     private Button updateTable;
     @FXML
     public void updateTables(){
         if(chosenArmy != null){
-            //sett en tekst med navnet
-
-            /*for (String s : chosenArmy) {
-                unitString.setCellValueFactory(new PropertyValueFactory<List<String>, String>(s));
-            }*/
-
-
-            unitString.setCellValueFactory(new PropertyValueFactory<>("String"));
-            armyTable.setItems(FXCollections.observableArrayList(chosenArmy));
+            ObservableList<String> unitList = FXCollections.observableArrayList(chosenArmy);
+            unitString.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+            armyTable.setItems(unitList);
 
         }
-        /*for(String s : chosenArmy){
-            unitString.setCellValueFactory(chosenArmy-> s);
-        }
-        armyTable.setItems(FXCollections.observableArrayList(chosenArmy));*/
     }
 
 

@@ -27,4 +27,14 @@ public class Dialog {
         alert.showAndWait();
     }
 
+    public static void tableInformation(Object object){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("TABLE INFORMATION");
+        alert.setHeaderText("Information about the unit");
+        alert.setContentText(String.valueOf(object));
+        alert.initOwner(WApplication.primaryStage);
+
+        alert.showAndWait();
+    }
+
 }
