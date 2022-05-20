@@ -11,6 +11,10 @@ import java.util.ResourceBundle;
 
 public class FrontPageController implements Initializable {
 
+    //TODO add a user manual
+
+
+
     @FXML
     private Button seeArmiesButton;
     @FXML

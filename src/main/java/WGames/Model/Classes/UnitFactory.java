@@ -2,6 +2,8 @@ package WGames.Model.Classes;
 
 import WGames.Dialog.Dialog;
 import WGames.Model.Units.*;
+import WGames.Model.Units.Mages.BlackMage;
+import WGames.Model.Units.Mages.WhiteMage;
 
 public class UnitFactory {
 
@@ -18,6 +20,12 @@ public class UnitFactory {
             }
             else if("RangedUnit".equals(typeOfUnit)){
                 return new RangedUnit(name, health);
+            }
+            else if("BlackMage".equals(typeOfUnit)){
+                return new BlackMage(name, health);
+            }
+            else if("WhiteMage".equals(typeOfUnit)){
+                return new WhiteMage(name, health);
             }
             //else{
               //  return null;

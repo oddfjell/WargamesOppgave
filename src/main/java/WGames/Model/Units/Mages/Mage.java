@@ -18,6 +18,12 @@ public abstract class Mage extends Unit {
      */
     public Mage(String name, int health, int attack, int armor, int mana) throws IllegalArgumentException {
         super(name, health, attack, armor);
+        if(mana > 0 && mana <= 500){
+            this.mana = mana;
+        }else{
+            throw new IllegalArgumentException("The mana must be a positive integer between 1 and 500");
+        }
+
     }
 
     public int getMana() {

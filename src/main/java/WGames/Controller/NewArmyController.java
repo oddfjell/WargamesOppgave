@@ -178,7 +178,7 @@ public class NewArmyController implements Initializable {
     private ComboBox unitType;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> u = FXCollections.observableArrayList("CavalryUnit", "CommanderUnit", "InfantryUnit", "RangedUnit");
+        ObservableList<String> u = FXCollections.observableArrayList("CavalryUnit", "CommanderUnit", "InfantryUnit", "RangedUnit", "BlackMage", "WhiteMage");
         unitType.setItems(u);
         /*ObservableList<Terrain> terrains = FXCollections.observableArrayList(Terrain.values());
         unitType.setItems(terrains);*///TODO add to battle

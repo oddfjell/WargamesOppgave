@@ -181,6 +181,10 @@ public class BattleController implements Initializable {
             if(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
                 new Thread(()->{
                     while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
+                        if(battle.slowSimulate().equals("stalemate")){
+                            battleAction.setText(battle.slowSimulate());
+                            break;
+                        }
                         battleAction.setText(battle.slowSimulate());
                         updateTables();
                         try {
@@ -191,10 +195,10 @@ public class BattleController implements Initializable {
                     }
 
                     if (armyOne.getAllUnits().size() == 0 && armyTwo.getAllUnits().size() != 0){
-                        battleAction.setText(armyTwo + " won");
+                        battleAction.setText(armyTwo.getName() + " won with " + armyTwo.getAllUnits().size() + " units left");
                     } else if(armyTwo.getAllUnits().size() == 0 && armyOne.getAllUnits().size() != 0){
-                        battleAction.setText(armyOne + " won");
-                    } else{
+                        battleAction.setText(armyOne.getName() + " won with " + armyOne.getAllUnits().size() + " units left");
+                    } else if (!battleAction.getText().equals("stalemate")){
                         battleAction.setText("restarted");
                     }
                 }).start();
@@ -259,6 +263,10 @@ public class BattleController implements Initializable {
     private Button doubleSpeedButton;
     @FXML
     private Button quadrupleSpeedButton;
+    @FXML
+    private Button doubleQuadrupleSpeedButton;
+    @FXML
+    private Button quadrupleQuadrupleSpeedButton;
 
     @FXML
     public void halfSpeed(){
@@ -279,6 +287,14 @@ public class BattleController implements Initializable {
     @FXML
     public void quadrupleSpeed(){
         speed = 250;
+    }
+    @FXML
+    public void doubleQuadrupleSpeed(){
+        speed = 125;
+    }
+    @FXML
+    public void quadrupleQuadrupleSpeed(){
+        speed = 62;
     }
 
 

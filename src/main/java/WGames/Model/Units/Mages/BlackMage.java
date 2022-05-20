@@ -17,6 +17,14 @@ public class BlackMage extends Mage {
         super(name, health, attack, armor, mana);
     }
 
+    public BlackMage(String name, int health, int mana) throws IllegalArgumentException {
+        super(name, health, 25, 5, mana);
+    }
+
+    public BlackMage(String name, int health) throws IllegalArgumentException {
+        super(name, health, 25, 5, 100);
+    }
+
     @Override
     public String getID() {
         return "BlackMage";
@@ -31,9 +39,13 @@ public class BlackMage extends Mage {
             if(unitAttack < this.getMana()){
                 this.setMana(this.getMana() - unitAttack);
                 manaAttack = unitAttack;
-            }else{
+            }
+            /*else if(this.getMana() == 0){
+                manaAttack = 1;
+            }*/ else{
                 manaAttack = getMana();
-                this.setMana(0);
+                //this.setMana(0);
+                this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());
@@ -49,9 +61,15 @@ public class BlackMage extends Mage {
             if(unitAttack < this.getMana()){
                 this.setMana(this.getMana() - unitAttack);
                 manaAttack = unitAttack;
-            }else{
+            }else if(this.getMana() == 0){
+                manaAttack = 1;
+            }
+            /*else if(this.getMana() == 0){
+                manaAttack = 1;
+            }*/ else{
                 manaAttack = getMana();
-                this.setMana(0);
+                //this.setMana(0);
+                this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(terrain));
             System.out.println(this.getName() + " attacks " + opponent.getName());

@@ -80,28 +80,54 @@ public class Battle {
         Unit arm1 = armyOne.getRandom();
         Unit arm2 = armyTwo.getRandom();
 
+        if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && arm1.getID().equals("WhiteMage") && arm2.getID().equals("WhiteMage")){
+            return "stalemate";
+        }
+
         int whoIsFirst = random.nextInt(2);
 
         switch (whoIsFirst) {
             case 0 -> {
-                arm1.attack(arm2, terrain);
-                if (arm2.getHealth() <= 0) {
-                    armyTwo.remove(arm2);
-                    System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
-                    return arm1.getName() + " kills " + arm2.getName() + " (" + armyTwo.getName() + ")";
-                    //return arm1.getName() + " attacks " + arm2.getName() + "\n" + arm2.getName() + " (" + armyTwo.getName() + ") died";
+                if(arm1.getID().equals("WhiteMage")){
+                    Unit patientFromSameArmy = armyOne.getRandom();
+                    arm1.attack(patientFromSameArmy);
+                    if(arm1.getHealth()==0){
+                        armyOne.remove(arm1);
+                        return arm1.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm1.getAttack() + arm1.getAttackBonus(terrain)) + " hp and dies";
+                    }
+                    return arm1.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm1.getAttack() + arm1.getAttackBonus(terrain)) + " hp";
+                } else{
+                    arm1.attack(arm2, terrain);
+                    if (arm2.getHealth() <= 0) {
+                        armyTwo.remove(arm2);
+                        System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
+                        return arm1.getName() + " kills " + arm2.getName() + " (" + armyTwo.getName() + ")";
+                        //return arm1.getName() + " attacks " + arm2.getName() + "\n" + arm2.getName() + " (" + armyTwo.getName() + ") died";
+                    }
+                    return arm1.getName() + " attacks " + arm2.getName();
                 }
-                return arm1.getName() + " attacks " + arm2.getName();
             }
             case 1 -> {
-                arm2.attack(arm1, terrain);
-                if (arm1.getHealth() <= 0) {
-                    armyOne.remove(arm1);
-                    System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");
-                    return arm2.getName() + " kills " + arm1.getName() + " (" + armyOne.getName() + ")";
-                    //return arm2.getName() + " attacks " + arm1.getName() + "\n" + arm1.getName() + " (" + armyOne.getName() + ") died";
+                if(arm2.getID().equals("WhiteMage")){
+                    Unit patientFromSameArmy = armyTwo.getRandom();
+                    arm2.attack(patientFromSameArmy);
+                    if(arm2.getHealth()==0){
+                        armyTwo.remove(arm2);
+                        return arm2.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm2.getAttack() + arm2.getAttackBonus(terrain)) + " hp and dies";
+                    }
+                    return arm2.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm2.getAttack() + arm2.getAttackBonus(terrain)) + " hp";
+                }else{
+                    arm2.attack(arm1, terrain);
+                    if (arm1.getHealth() <= 0) {
+                        armyOne.remove(arm1);
+                        System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");
+                        return arm2.getName() + " kills " + arm1.getName() + " (" + armyOne.getName() + ")";
+                        //return arm2.getName() + " attacks " + arm1.getName() + "\n" + arm1.getName() + " (" + armyOne.getName() + ") died";
+                    }
+                    return arm2.getName() + " attacks " + arm1.getName();
                 }
-                return arm2.getName() + " attacks " + arm1.getName();
+
+
             }
         }
         return "";
