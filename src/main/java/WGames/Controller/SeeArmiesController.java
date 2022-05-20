@@ -1,5 +1,6 @@
 package WGames.Controller;
 
+import WGames.Model.Classes.Army;
 import WGames.Model.Classes.Filewriter;
 import WGames.WApplication;
 import javafx.beans.property.SimpleStringProperty;
@@ -34,50 +35,41 @@ public class SeeArmiesController implements Initializable {
     }
 
 
-
     @FXML
     private Text nameOfTheArmies;
 
     @FXML
-    private Text textInBox;
-
-    @FXML
     private Button fileUploadButton;
 
-    private List<String> chosenArmy;
+    private Army army;
     @FXML
     public void fileUpload() {
         Filewriter filewriter = new Filewriter();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("src\\main\\resources\\Files"));
-        chosenArmy = filewriter.copyCSVFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-        nameOfTheArmies.setText(chosenArmy.get(0));
-        chosenArmy.remove(0);
-        /*String troops = "";
-        for(int i = 1; chosenArmy.size() > i; i++){
-            troops += chosenArmy.get(i) + "\n";
 
-        }
-        System.out.println(troops);
-        textInBox.setText(troops);*/
+        army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
+        nameOfTheArmies.setText(army.getName());
 
-    }
+        if(army != null){
+            theArmyTableType.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            theArmyTableName.setCellValueFactory(new PropertyValueFactory<>("name"));
+            theArmyTableHealth.setCellValueFactory(new PropertyValueFactory<>("health"));
 
-    @FXML
-    private TableView armyTable;
-    @FXML
-    private TableColumn<String, String> unitString;
-    @FXML
-    private Button updateTable;
-    @FXML
-    public void updateTables(){
-        if(chosenArmy != null){
-            ObservableList<String> unitList = FXCollections.observableArrayList(chosenArmy);
-            unitString.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-            armyTable.setItems(unitList);
 
+            theArmyTable.setItems(FXCollections.observableArrayList(army.getAllUnits()));
         }
     }
+
+    @FXML
+    private TableView theArmyTable;
+    @FXML
+    private TableColumn theArmyTableType;
+    @FXML
+    private TableColumn theArmyTableName;
+    @FXML
+    private TableColumn theArmyTableHealth;
+
 
 
     @Override

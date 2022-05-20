@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,30 +29,22 @@
                               <Font name="Papyrus" size="36.0" />
                            </font>
                         </Button>
-                        <ScrollPane layoutX="32.0" layoutY="285.0" prefHeight="505.0" prefWidth="415.0" AnchorPane.bottomAnchor="9.666666666666686" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="752.6666666666667" AnchorPane.topAnchor="285.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="5000.0" prefWidth="420.0">
-                                 <children>
-                                    <Text fx:id="textInBox" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Text" text="troops" />
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </ScrollPane>
                         <Text fx:id="nameOfTheArmies" fill="WHITE" layoutX="32.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name of army">
                            <font>
                               <Font name="Papyrus" size="48.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="armyTable" layoutX="476.0" layoutY="282.0" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: transparent;" styleClass="TextField">
+                        <TableView fx:id="theArmyTable" layoutX="32.0" layoutY="282.0" prefHeight="505.0" prefWidth="761.0" style="-fx-background-color: transparent;">
                            <columns>
-                              <TableColumn fx:id="unitString" prefWidth="500.0" text="noe" />
+                              <TableColumn fx:id="theArmyTableType" prefWidth="200.0" text="unit type" />
+                              <TableColumn fx:id="theArmyTableName" prefWidth="200.0" text="name" />
+                              <TableColumn fx:id="theArmyTableHealth" prefWidth="100.0" text="health" />
                            </columns>
+                           <styleClass>
+                              <String fx:value="TextField" />
+                              <String fx:value="myDialog" />
+                           </styleClass>
                         </TableView>
-                        <Button fx:id="updateTable" layoutX="539.0" layoutY="79.0" mnemonicParsing="false" onAction="#updateTables" style="-fx-background-color: transparent;" text="her" textFill="WHITE">
-                           <font>
-                              <Font name="Papyrus" size="36.0" />
-                           </font>
-                        </Button>
                      </children>
                </AnchorPane>
             </children>
