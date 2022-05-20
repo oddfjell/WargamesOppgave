@@ -64,7 +64,7 @@ public class WhiteMage extends Mage {
             this.setHealth(0);
         }
         int companionHealth = companion.getHealth() + heal;
-        System.out.println(this.getName() + " heals " + companion.getName());
+        //System.out.println(this.getName() + " heals " + companion.getName());
         companion.setHealth(companionHealth);
 
 
@@ -83,7 +83,7 @@ public class WhiteMage extends Mage {
             this.setHealth(0);
         }
         int companionHealth = companion.getHealth() + heal;
-        System.out.println(this.getName() + " heals " + companion.getName());
+       // System.out.println(this.getName() + " heals " + companion.getName());
         companion.setHealth(companionHealth);
 
     }

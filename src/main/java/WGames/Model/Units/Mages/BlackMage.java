@@ -48,7 +48,7 @@ public class BlackMage extends Mage {
                 this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
+           // System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
     }
@@ -72,7 +72,7 @@ public class BlackMage extends Mage {
                 this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(terrain));
-            System.out.println(this.getName() + " attacks " + opponent.getName());
+            //System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
     }

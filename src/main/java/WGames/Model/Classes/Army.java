@@ -25,7 +25,7 @@ public class Army {
      * constructor of army with name and list
      * @param name
      * @param units
-       */
+     */
     public Army(String name, List<Unit> units){
         this.name = name;
         this.units = units;
@@ -97,7 +97,8 @@ public class Army {
             Random random = new Random();
             int r = random.nextInt(units.size());
             return units.get(r);
-        } else {
+        }
+        else {
             return null;
         }
     }

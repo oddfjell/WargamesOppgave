@@ -178,9 +178,9 @@ public class BattleController implements Initializable {
 
 
         try {
-            if(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
+            if(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0 && armyOne.getRandom() != null && armyTwo.getRandom() != null){
                 new Thread(()->{
-                    while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
+                    while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0 && armyOne.getRandom() != null && armyTwo.getRandom() != null){
                         if(battle.slowSimulate().equals("stalemate")){
                             battleAction.setText(battle.slowSimulate());
                             break;
@@ -198,7 +198,7 @@ public class BattleController implements Initializable {
                         battleAction.setText(armyTwo.getName() + " won with " + armyTwo.getAllUnits().size() + " units left");
                     } else if(armyTwo.getAllUnits().size() == 0 && armyOne.getAllUnits().size() != 0){
                         battleAction.setText(armyOne.getName() + " won with " + armyOne.getAllUnits().size() + " units left");
-                    } else if (!battleAction.getText().equals("stalemate")){
+                    } else if (armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && !battleAction.getText().equals("stalemate")){
                         battleAction.setText("restarted");
                     }
                 }).start();
