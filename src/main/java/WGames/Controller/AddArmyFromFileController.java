@@ -38,9 +38,12 @@ public class AddArmyFromFileController implements Initializable {
             FileChooser fileChooser = new FileChooser();
             Filewriter filewriter = new Filewriter();
             Army army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-            filewriter.writeArmyInFile(army);
-            System.out.println(army.getAllUnits());
-            unitAdded.setVisible(true);
+            if (army != null) {
+                filewriter.writeArmyInFile(army);
+                System.out.println(army.getAllUnits());
+                unitAdded.setVisible(true);
+            }
+
         }catch (Exception exception){
             Dialog.error(exception);
         }

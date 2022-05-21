@@ -2,6 +2,7 @@ import WGames.Model.Classes.Army;
 import WGames.Model.Classes.Filewriter;
 import TestResources.UnitsNotGnotts;
 import WGames.Model.Units.RangedUnit;
+import javafx.fxml.FXML;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -65,6 +66,16 @@ public class FilewriterTest {
 
 
     }
+
+    /*@Test
+    public void removeFromArmyTest(){
+        Filewriter filewriter = new Filewriter();
+
+        File file = new File("src\\main\\resources\\Files\\testArmy.csv");
+
+        filewriter.removeLineFromFile(file, "CavalryUnit,CavalryUnit,4");
+
+    }*/
 
 
 }

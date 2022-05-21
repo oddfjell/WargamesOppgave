@@ -28,6 +28,7 @@ public class Filewriter {
         //if(army.hasUnits())
 
         try{
+
             BufferedWriter bw = new BufferedWriter(
                     new FileWriter("src\\main\\resources\\Files\\" + army.getName() + ".csv"));
             //noe if her
@@ -62,6 +63,8 @@ public class Filewriter {
 
 
     public Army makeArmyFromFile(File file) {
+
+        //if(file.endsWith){}
         List<Unit> u = new ArrayList<>();
         System.out.println(1);
 
@@ -84,11 +87,15 @@ public class Filewriter {
                 System.out.println(theUnit);
                 if(!Objects.equals(theUnit, "")){
                     String[] unitStats = theUnit.trim().split(",");
-                    System.out.println(6);
-                    if(!Objects.equals(unitStats[0], "")&& unitStats[2].matches("[0-9]+") && !Objects.equals(unitStats[1], "") && !Objects.equals(unitStats[2], "")){
-                        UnitFactory unitFactory = new UnitFactory();
-                        u.add(unitFactory.getUnit(unitStats[0], unitStats[1], Integer.parseInt(unitStats[2])));
-                        System.out.println(7);
+                    if(unitStats.length == 3){
+                        System.out.println(6);
+                        if(!Objects.equals(unitStats[0], "")&& unitStats[2].matches("[0-9]+") && !Objects.equals(unitStats[1], "") && !Objects.equals(unitStats[2], "")){
+                            UnitFactory unitFactory = new UnitFactory();
+                            u.add(unitFactory.getUnit(unitStats[0], unitStats[1], Integer.parseInt(unitStats[2])));
+                            System.out.println(7);
+                        }
+                    }else{
+                        throw new IllegalArgumentException("Illegal format");
                     }
                 } else{
                     throw new IllegalArgumentException("Illegal format");
@@ -160,6 +167,31 @@ public class Filewriter {
         return theUnits;
     }
 
+
+    /*public void removeLineFromFile(File file, String remove){
+        Army army = makeArmyFromFile(file);
+
+        //List<Unit> unitsList = new ArrayList<>(army.getAllUnits());
+
+        ArrayList<Integer> removeThese = new ArrayList<>();
+
+        int i = 0;
+        for(Unit unit:army.getAllUnits()){
+            if(remove.trim().toLowerCase().equals((unit.getID() + "," + unit.getName() + "," + unit.getHealth()).trim().toLowerCase())){
+                removeThese.add(i);
+            }
+            i++;
+        }
+
+        int j = 0;
+        for(Integer integer:removeThese){
+            army.getAllUnits().remove(integer - j);
+            j++;
+        }
+
+        //file.deleteOnExit();
+        writeArmyInFile(army);
+    }*/
 
 
 

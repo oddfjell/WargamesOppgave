@@ -15,12 +15,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.scene.image.Image;
 
 import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
+import javafx.scene.image.ImageView;
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
@@ -35,6 +36,7 @@ public class BattleController implements Initializable {
     private Army armyOne;
     private Army armyTwo;
     private Battle battle;
+    private Filewriter filewriter = new Filewriter();
     private Terrain terrain;
     private int speed = 1000;
 
@@ -93,7 +95,7 @@ public class BattleController implements Initializable {
     @FXML
     public void fileUpload() {
         try{
-            Filewriter filewriter = new Filewriter();
+
             FileChooser fileChooser = new FileChooser();
 
             fileChooser.setInitialDirectory(new File("src\\main\\resources\\Files"));
@@ -106,6 +108,8 @@ public class BattleController implements Initializable {
             } else{
                 terrain = (Terrain) terrainType.getValue();
             }
+
+            setTerrainImage(terrain);
 
             battle = new Battle(armyOne,armyTwo, terrain);
             terrainText.setText(String.valueOf(terrain));
@@ -133,6 +137,7 @@ public class BattleController implements Initializable {
             healthArmyOne.setCellValueFactory(new PropertyValueFactory<>("health"));
 
 
+            //System.out.println(armyOne.getAllUnits());
             armyOneTable.setItems(FXCollections.observableArrayList(armyOne.getAllUnits()));
 
         }
@@ -143,6 +148,7 @@ public class BattleController implements Initializable {
             healthArmyTwo.setCellValueFactory(new PropertyValueFactory<>("health"));
 
 
+            //System.out.println(armyTwo.getAllUnits());
             armyTwoTable.setItems(FXCollections.observableArrayList(armyTwo.getAllUnits()));
 
         }
@@ -171,8 +177,8 @@ public class BattleController implements Initializable {
 
     @FXML
     public void theBattle() throws InterruptedException, FileNotFoundException {
-
-
+        restartButton.setDisable(true);
+        fileUploadButton.setDisable(true);
        // terrainImage = new ImageView((Element) new Image(BattleController.class.getResourceAsStream("Pictures\\HILL.png")));
 
 
@@ -201,6 +207,8 @@ public class BattleController implements Initializable {
                     } else if (armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && !battleAction.getText().equals("stalemate")){
                         battleAction.setText("restarted");
                     }
+                    restartButton.setDisable(false);
+                    fileUploadButton.setDisable(false);
                 }).start();
             } else{
                 throw new IllegalArgumentException("You must choose armies before the war can start");
@@ -220,17 +228,25 @@ public class BattleController implements Initializable {
         armyOneTable.getItems().clear();
         armyTwoTable.getItems().clear();
 
-        terrainText.setText("");
-        battleAction.setText("");
+        armyOne = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyOne.getName() + ".csv"));
+        armyTwo = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyTwo.getName() + ".csv"));
+
+
+        //terrainText.setText("");
+        //battleAction.setText("");
 
         speed = 1000;
 
-        for(Unit unit: armyOne.getAllUnits()){
+        battle = new Battle(armyOne,armyTwo, terrain);
+
+        updateTables();
+
+        /*for(Unit unit: armyOne.getAllUnits()){
             armyOne.remove(unit);
         }
         for(Unit unit: armyTwo.getAllUnits()){
             armyTwo.remove(unit);
-        }
+        }*/
 
         //fileUploadButton.setVisible(true);
         //terrainType.setVisible(true);
@@ -247,9 +263,14 @@ public class BattleController implements Initializable {
         } else{
             terrain = (Terrain) terrainType.getValue();
         }
-
-        battle = new Battle(armyOne,armyTwo, terrain);
+        if(armyOne != null && armyTwo != null){
+            battle = new Battle(armyOne,armyTwo, terrain);
+        } else {
+            System.out.println(88888);
+        }
+        setTerrainImage(terrain);
         terrainText.setText(String.valueOf(terrain));
+        System.out.println(terrain);
     }
 
 
@@ -299,12 +320,48 @@ public class BattleController implements Initializable {
 
 
     @FXML
-    private ImageView terrainImage;
+    private Pane terrainImage;
+
+    private  ImageView imageView;
+
+    public void setTerrainImage(Terrain terrain){
+        terrainImage.getChildren().remove(imageView);
+        imageView = new ImageView(new Image(BattleController.class.getResourceAsStream("/Pictures/" + terrain + ".png")));
+        if(terrain.equals(Terrain.FOREST) || terrain.equals(Terrain.PLAINS) ){
+            imageView.fitWidthProperty().bind(terrainImage.widthProperty());
+            imageView.fitHeightProperty().bind(terrainImage.heightProperty());
+        }
+        terrainImage.getChildren().add(imageView);
+
+        //570x og 8y på desert
+    }
+
+    /*@FXML
+    private Pane imagePane;*/
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Terrain> u = FXCollections.observableArrayList(Terrain.values());
         terrainType.setItems(u);
+        restartButton.setDisable(true);
+
+        imageView = new ImageView(new Image(BattleController.class.getResourceAsStream("/Pictures/DESERT.png")));
+        terrainImage.getChildren().add(imageView);
+
+
+
+        //terrainImage = new ImageView(new Image(new FileInputStream("src\\main\\resources\\Pictures\\DESERT.png")));
+
+       // ImageView imageView = new ImageView(new Image(BattleController.class.getResourceAsStream("src\\main\\resources\\Pictures\\DESERT.png")));
+
+        /*Image image = new Image(BattleController.class.getResourceAsStream("src\\main\\resources\\Pictures\\DESERT.png"));
+        terrainImage = new ImageView((Element) image);*/
+
+       // terrainImage = new Image(BattleController.class.getResourceAsStream("src\\main\\resources\\Pictures\\DESERT.png"));
+
+        //terrainImage.getImage(new Image("src\\main\\resources\\Pictures\\DESERT.png")));
+
+        //terrainImage.setImage(new Image(BattleController.class.getResourceAsStream("src\\main\\resources\\Pictures\\DESERT.png")));
     }
 }

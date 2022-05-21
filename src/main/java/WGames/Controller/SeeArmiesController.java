@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SeeArmiesController implements Initializable {
-    //TODO fiks denne sida
+    //TODO midtstill kolonnene
 
 
 
@@ -55,7 +55,6 @@ public class SeeArmiesController implements Initializable {
             theArmyTableType.setCellValueFactory(new PropertyValueFactory<>("ID"));
             theArmyTableName.setCellValueFactory(new PropertyValueFactory<>("name"));
             theArmyTableHealth.setCellValueFactory(new PropertyValueFactory<>("health"));
-
 
             theArmyTable.setItems(FXCollections.observableArrayList(army.getAllUnits()));
         }

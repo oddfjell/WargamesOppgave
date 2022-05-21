@@ -34,11 +34,11 @@
                               <Font name="Papyrus" size="48.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="theArmyTable" layoutX="32.0" layoutY="282.0" prefHeight="505.0" prefWidth="761.0" style="-fx-background-color: transparent;">
+                        <TableView fx:id="theArmyTable" layoutX="32.0" layoutY="282.0" prefHeight="505.0" prefWidth="834.0" style="-fx-background-color: transparent;">
                            <columns>
-                              <TableColumn fx:id="theArmyTableType" prefWidth="200.0" text="unit type" />
-                              <TableColumn fx:id="theArmyTableName" prefWidth="200.0" text="name" />
-                              <TableColumn fx:id="theArmyTableHealth" prefWidth="100.0" text="health" />
+                              <TableColumn fx:id="theArmyTableType" prefWidth="300.0" text="unit type" />
+                              <TableColumn fx:id="theArmyTableName" prefWidth="300.0" text="name" />
+                              <TableColumn fx:id="theArmyTableHealth" prefWidth="200.0" text="health" />
                            </columns>
                            <styleClass>
                               <String fx:value="TextField" />
