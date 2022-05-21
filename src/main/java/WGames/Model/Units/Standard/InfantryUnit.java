@@ -1,6 +1,7 @@
-package WGames.Model.Units;
+package WGames.Model.Units.Standard;
 
 import WGames.Model.Classes.Terrain;
+import WGames.Model.Units.Unit;
 
 public class InfantryUnit extends Unit {
 

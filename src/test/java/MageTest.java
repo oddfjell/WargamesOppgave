@@ -1,7 +1,7 @@
 import WGames.Model.Classes.Terrain;
 import WGames.Model.Units.Mages.BlackMage;
 import WGames.Model.Units.Mages.WhiteMage;
-import WGames.Model.Units.RangedUnit;
+import WGames.Model.Units.Standard.RangedUnit;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

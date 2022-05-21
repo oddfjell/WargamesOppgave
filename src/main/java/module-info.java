@@ -28,7 +28,8 @@ module Wargames {
 
     opens WGames.Model.Classes to javafx.fxml;
     exports WGames.Model.Classes;
-
+    exports WGames.Model.Units.Standard;
+    opens WGames.Model.Units.Standard to javafx.fxml;
 
 
 }

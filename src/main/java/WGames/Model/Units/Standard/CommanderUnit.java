@@ -1,4 +1,6 @@
-package WGames.Model.Units;
+package WGames.Model.Units.Standard;
+
+import WGames.Model.Units.Standard.CavalryUnit;
 
 public class CommanderUnit extends CavalryUnit {
 

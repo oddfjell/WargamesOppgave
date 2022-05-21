@@ -1,8 +1,7 @@
 import WGames.Model.Classes.Army;
 import WGames.Model.Classes.Filewriter;
 import TestResources.UnitsNotGnotts;
-import WGames.Model.Units.RangedUnit;
-import javafx.fxml.FXML;
+import WGames.Model.Units.Standard.RangedUnit;
 import org.junit.Test;
 
 import java.io.BufferedReader;

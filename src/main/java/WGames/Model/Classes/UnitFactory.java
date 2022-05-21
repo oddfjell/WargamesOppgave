@@ -4,6 +4,10 @@ import WGames.Dialog.Dialog;
 import WGames.Model.Units.*;
 import WGames.Model.Units.Mages.BlackMage;
 import WGames.Model.Units.Mages.WhiteMage;
+import WGames.Model.Units.Standard.CavalryUnit;
+import WGames.Model.Units.Standard.CommanderUnit;
+import WGames.Model.Units.Standard.InfantryUnit;
+import WGames.Model.Units.Standard.RangedUnit;
 
 public class UnitFactory {
 
