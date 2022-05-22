@@ -9,7 +9,7 @@ public class Dialog {
 
     /**
      * Displays an error message
-     * @param exception exception
+     * @param exception exceptionwarning
      */
     public static void warning(Exception exception){
         Alert alert = new Alert(Alert.AlertType.WARNING);

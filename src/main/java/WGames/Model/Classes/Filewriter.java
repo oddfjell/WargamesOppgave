@@ -137,32 +137,6 @@ public class Filewriter {
             e.printStackTrace();
             Dialog.warning(e);
         }
-
     }
-
-
-   /* public List<String> copyCSVFile(File file){
-
-        //TODO bedre string
-        //TODO fjern om den ikke brukes
-
-        List<String> theUnits;
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
-            theUnits = br.lines().collect(Collectors.toList());
-
-            theUnits.removeIf(theUnit -> Objects.equals(theUnit, ""));
-
-            br.close();
-
-        }catch(Exception ex){
-            return null;
-        }
-        return theUnits;
-    }*/
-
-
 
 }

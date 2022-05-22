@@ -11,6 +11,7 @@ import WGames.Model.Units.Standard.RangedUnit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class UnitFactory {
 
@@ -54,7 +55,14 @@ public class UnitFactory {
     public List<Unit> makeUnits(String typeOfUnit, String name, int health, int amount){
         List<Unit> factoryProducts = new ArrayList<>();
         for(int i = 0; i < amount; i++){
-            factoryProducts.add(getUnit(typeOfUnit,name, health));
+            if(typeOfUnit.equals(name) && health == 13){
+                Random random = new Random();
+                int newHealth = random.nextInt(50) + 1;
+                factoryProducts.add(getUnit(typeOfUnit,name, newHealth));
+            }else{
+                factoryProducts.add(getUnit(typeOfUnit,name, health));
+            }
+
         }
         return factoryProducts;
     }

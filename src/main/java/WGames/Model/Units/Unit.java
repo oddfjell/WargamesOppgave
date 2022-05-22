@@ -10,8 +10,6 @@ public abstract class Unit {
     private int health;
     private final int attack, armor;
 
-    //TODO limit to namelengh (20?)
-
     /**
      * The constructor of the Unit class
      * @param name name
@@ -22,8 +20,8 @@ public abstract class Unit {
      */
     public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
-            if(name.trim().length() > 26){
-                throw new IllegalArgumentException("The unit name can only have 25 characters");
+            if(name.trim().length() > 25 || !name.replaceAll("[^a-zA-Z0-9]","").equals(name.trim())){
+                throw new IllegalArgumentException("The unit name can only have 25 characters without special characters");
             } else{
                 this.name = name.trim();
             }

@@ -38,28 +38,28 @@ public class Battle {
     public Army simulate(){
         while(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0){
 
-            Random random = new Random();
-
-            Unit unitFromArmyOne = armyOne.getRandom();
-            Unit unitFromArmyTwo = armyTwo.getRandom();
-
-            /*if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && unitFromArmyOne.getID().equals("WhiteMage") && unitFromArmyTwo.getID().equals("WhiteMage")){
+            if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && armyOne.getAllUnits().get(0).getID().equals("WhiteMage") && armyTwo.getAllUnits().get(0).getID().equals("WhiteMage")){
                 return null;
-            }*///TODO
+            } else{
+                Random random = new Random();
 
-            int whoIsFirst = random.nextInt(2);
+                Unit unitFromArmyOne = armyOne.getRandom();
+                Unit unitFromArmyTwo = armyTwo.getRandom();
 
-            switch (whoIsFirst) {
-                case 0 -> {
-                    unitFromArmyOne.attack(unitFromArmyTwo, terrain);
-                    if (unitFromArmyTwo.getHealth() <= 0) {
-                        armyTwo.remove(unitFromArmyTwo);
+                int whoIsFirst = random.nextInt(2);
+
+                switch (whoIsFirst) {
+                    case 0 -> {
+                        unitFromArmyOne.attack(unitFromArmyTwo, terrain);
+                        if (unitFromArmyTwo.getHealth() <= 0) {
+                            armyTwo.remove(unitFromArmyTwo);
+                        }
                     }
-                }
-                case 1 -> {
-                    unitFromArmyTwo.attack(unitFromArmyOne, terrain);
-                    if (unitFromArmyOne.getHealth() <= 0) {
-                        armyOne.remove(unitFromArmyOne);
+                    case 1 -> {
+                        unitFromArmyTwo.attack(unitFromArmyOne, terrain);
+                        if (unitFromArmyOne.getHealth() <= 0) {
+                            armyOne.remove(unitFromArmyOne);
+                        }
                     }
                 }
             }
@@ -125,21 +125,35 @@ public class Battle {
                 attacker.attack(patientFromSameArmy);
                 if(attacker.getHealth()==0){
                     attackerArmy.remove(attacker);
-                    return attacker.getName() + " heals " + patientFromSameArmy.getName() + " for " + (attacker.getAttack() + attacker.getAttackBonus(terrain)) + " hp and dies";
+                    return attacker.getName() + " heals " + patientFromSameArmy.getName() + " and dies";
                 }
                 return attacker.getName() + " heals " + patientFromSameArmy.getName() + " for " + (attacker.getAttack() + attacker.getAttackBonus(terrain)) + " hp";
             } else{
                 attacker.attack(victim, terrain);
-                if (victim.getHealth() <= 0) {
+
+                if(victim.getHealth() <= 0 && attacker.getHealth() <= 0){
+                    victimArmy.remove(victim);
+                    attackerArmy.remove(attacker);
+                    return attacker.getName() + " kills " + victim.getName() + " (" + victimArmy.getName() + ") and dies";
+                } else if(victim.getHealth() <= 0 && attacker.getHealth() > 0){
                     victimArmy.remove(victim);
                     return attacker.getName() + " kills " + victim.getName() + " (" + victimArmy.getName() + ")";
+                } else if(victim.getHealth() > 0 && attacker.getHealth() <= 0){
+                    attackerArmy.remove(attacker);
+                    return attacker.getName() + " attacks " + victim.getName() + " and dies";
+                } else{
+                    return attacker.getName() + " attacks " + victim.getName();
                 }
-                return attacker.getName() + " attacks " + victim.getName();
+
+                /*if (victim.getHealth() <= 0) {
+                    victimArmy.remove(victim);
+
+                    return attacker.getName() + " kills " + victim.getName() + " (" + victimArmy.getName() + ")";
+                }
+                return attacker.getName() + " attacks " + victim.getName();*/
             }
         }
     }
-
-//TODO ha en fast paste simulate med en notepad over hendelsene
 
     /**
      * toString method

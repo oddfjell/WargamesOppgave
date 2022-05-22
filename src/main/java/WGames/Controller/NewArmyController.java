@@ -24,13 +24,6 @@ import java.util.*;
 public class NewArmyController implements Initializable {
 
     //TODO fix delete unit
-    //TODO the user can make several units from one button click
-    //make a textfield for the number or a combobox up til 1000
-
-
-    //TODO fiks error varselen til health
-    //TODO begrensning på navn lengde og fjern mellomrom
-
 
     /**
      * Buttons
@@ -90,41 +83,41 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("Please fill in the boxes");
             } else if(armyName.getText().trim().equals("")){
                 throw new IllegalArgumentException("The army must have a name");
-            }  else if(armyName.getText().trim().length() > 26){
-                throw new IllegalArgumentException("The army name can only have 25 characters");
+            } else if(armyName.getText().trim().length() > 25 || !armyName.getText().replaceAll("[^a-zA-Z0-9]","").equals(armyName.getText().trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
             } else if(unitType.getValue() == null){
                 throw new IllegalArgumentException("Please choose the unit type from the box above");
             } else if(name.getText().trim().equals("")){
                 throw new IllegalArgumentException("The unit must have a name");
-            }  else if(name.getText().trim().length() > 26){
-                throw new IllegalArgumentException("The unit name can only have 25 characters");
-            } else if(!health.getText().replaceAll("[^0-9]", "").equals(health.getText()) || Objects.equals(health.getText(), "")){//health.getText().replaceAll("[^0-9]", "").equals("")
+            }  else if(name.getText().trim().length() > 25 || !name.getText().replaceAll("[^a-zA-Z0-9]","").equals(name.getText().trim())){
+                throw new IllegalArgumentException("The unit name can only have 25 characters without special characters");
+            } else if(!health.getText().replaceAll("[^0-9]", "").equals(health.getText().trim()) || Objects.equals(health.getText().trim(), "")){
                 throw new IllegalArgumentException("The health must be an integer");
-            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
+            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText().trim()) || Objects.equals(amount.getText().trim(), "")){
                 throw new IllegalArgumentException("The amount must be an integer between 1 and 100");
-            } else if(Integer.parseInt(amount.getText()) < 1 || Integer.parseInt(amount.getText()) > 100){
+            } else if(Integer.parseInt(amount.getText().trim()) < 1 || Integer.parseInt(amount.getText().trim()) > 100){
                 throw new IllegalArgumentException("The amount must be between 1 and 100");
             } else{
                 UnitFactory unitFactory = new UnitFactory();
                 Filewriter filewriter = new Filewriter();
 
                 List<Unit> units = new ArrayList<>();
-                Army army = new Army(armyName.getText(), units);
+                Army army = new Army(armyName.getText().trim(), units);
 
                 String unitName = name.getText().trim();
-                int unitHealth = Integer.parseInt(health.getText());
+                int unitHealth = Integer.parseInt(health.getText().trim());
                 String typeOfUnit = String.valueOf(unitType.getValue());
-                int amountOfUnits = Integer.parseInt(amount.getText());
+                int amountOfUnits = Integer.parseInt(amount.getText().trim());
 
                 List<Unit> unit = unitFactory.makeUnits(typeOfUnit, unitName, unitHealth, amountOfUnits);
                 standardUnitText.setText(unit.get(0).toString() + " * " + amountOfUnits);
 
-                if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()) {
+                if (!(new File("src\\main\\resources\\Files\\" + armyName.getText().trim() + ".csv")).exists()) {
                     army.addAll(unit);
                     filewriter.writeArmyInFile(army);
                 } else {
                     for(Unit u:unit){
-                        filewriter.writeData(armyName.getText(), u);
+                        filewriter.writeData(armyName.getText().trim(), u);
                     }
                 }
             }
@@ -147,35 +140,34 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("Please fill in the required fields ---> name of army and type of unit");
             } else if(armyName.getText().trim().equals("")){
                 throw new IllegalArgumentException("The army must have a name");
-            } else if(armyName.getText().trim().length() > 26){
-                throw new IllegalArgumentException("The army name can only have 25 characters");
+            } else if(armyName.getText().trim().length() > 25 || !armyName.getText().replaceAll("[^a-zA-Z0-9]","").equals(armyName.getText().trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
             }else if(unitType.getValue() == null){
                 throw new IllegalArgumentException("Please choose the unit type from the box above");
-            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
+            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText().trim()) || Objects.equals(amount.getText().trim(), "")){
                 throw new IllegalArgumentException("The amount must be an integer between 1 and 100");
-            } else if(Integer.parseInt(amount.getText()) < 1 || Integer.parseInt(amount.getText()) > 100){
+            } else if(Integer.parseInt(amount.getText().trim()) < 1 || Integer.parseInt(amount.getText().trim()) > 100){
                 throw new IllegalArgumentException("The amount must be between 1 and 100");
             } else{
                 UnitFactory unitFactory = new UnitFactory();
                 Filewriter filewriter = new Filewriter();
 
                 List<Unit> units = new ArrayList<>();
-                Army army = new Army(armyName.getText(), units);
+                Army army = new Army(armyName.getText().trim(), units);
 
                 String typeOfUnit = String.valueOf(unitType.getValue());
-                Random random = new Random();
-                int unitHealth = random.nextInt(50) + 1;
-                int amountOfUnits = Integer.parseInt(amount.getText());
+                int unitHealth = 13;
+                int amountOfUnits = Integer.parseInt(amount.getText().trim());
 
                 List<Unit> unit = unitFactory.makeUnits(typeOfUnit, typeOfUnit, unitHealth, amountOfUnits);
                 standardUnitText.setText(unit.get(0).toString() + " * " + amountOfUnits);
 
-                if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists() && unit!=null) {
+                if (!(new File("src\\main\\resources\\Files\\" + armyName.getText().trim() + ".csv")).exists() && unit!=null) {
                     army.addAll(unit);
                     filewriter.writeArmyInFile(army);
                 } else {
                     for(Unit u:unit){
-                        filewriter.writeData(armyName.getText(), u);
+                        filewriter.writeData(armyName.getText().trim(), u);
                     }
                 }
             }

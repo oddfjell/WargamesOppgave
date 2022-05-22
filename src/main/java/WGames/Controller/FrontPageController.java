@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public class FrontPageController{
 
-    //TODO add a user manual
-
     /**
      * Buttons
      */

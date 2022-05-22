@@ -26,7 +26,7 @@ public class UnitsNotGnotts {
     }
 
     public InfantryUnit getChristian(){
-        InfantryUnit christian = new InfantryUnit("The spanish inquisition", 200);
+        InfantryUnit christian = new InfantryUnit("TSinquisition", 200);//The spanish inquisition
         return christian;
     }
 

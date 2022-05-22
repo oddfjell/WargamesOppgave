@@ -30,15 +30,9 @@ public class UnitsTest {
 
         RangedUnit u1 = unitsNotGnotts.getBard();
         CavalryUnit u2 = unitsNotGnotts.getMountedForce();
-        InfantryUnit u3 = unitsNotGnotts.getChristian();
-
         u2.attack(u1);
+
         assertEquals(12, u1.getHealth());
-        //bonuses
-
-        u2.attack(u1);
-        assertEquals(2, u1.getHealth());
-        //bonuses
     }
 
     @Test
@@ -46,7 +40,6 @@ public class UnitsTest {
         UnitsNotGnotts unitsNotGnotts = new UnitsNotGnotts();
 
         RangedUnit u = unitsNotGnotts.getBard();
-
         u.setHealth(88);
 
         assertEquals(88, u.getHealth());
@@ -59,46 +52,39 @@ public class UnitsTest {
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionName(){
         Unit rangedUnit = new RangedUnit("",1,1,1);
-
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testExceptionNameLength(){
+        Unit rangedUnit = new RangedUnit("Robin Hood of the Hood by the Hood Hood",1,1,1);
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testExceptionNameSymbols(){
+        Unit rangedUnit = new RangedUnit("Robin Hood++",1,1,1);
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionHealth0(){
         Unit rangedUnit = new RangedUnit("Robin Hood",0,1,1);
-
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionHealthOver500(){
         Unit rangedUnit = new RangedUnit("Robin Hood",501,1,1);
-
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionAttack0(){
         Unit rangedUnit = new RangedUnit("Robin Hood",1,-0,1);
-
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionAttackOver100(){
         Unit rangedUnit = new RangedUnit("Robin Hood",1,101,1);
-
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionArmorNegative(){
         Unit rangedUnit = new RangedUnit("Robin Hood",1,1,-1);
-
     }
     @Test(expected = IllegalArgumentException.class)
     public void testExceptionArmorOver100(){
         Unit rangedUnit = new RangedUnit("Robin Hood",1,1,101);
-
     }
-
-    /*@Test
-    public void noe(){
-        String string = "H8U0";
-        System.out.println(string);
-        String value = string.replaceAll("[^0-9]","");
-        System.out.println(value);
-    }*/
 }
 
 

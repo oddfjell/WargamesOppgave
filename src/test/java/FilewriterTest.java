@@ -66,15 +66,4 @@ public class FilewriterTest {
 
     }
 
-    /*@Test
-    public void removeFromArmyTest(){
-        Filewriter filewriter = new Filewriter();
-
-        File file = new File("src\\main\\resources\\Files\\testArmy.csv");
-
-        filewriter.removeLineFromFile(file, "CavalryUnit,CavalryUnit,4");
-
-    }*/
-
-
 }

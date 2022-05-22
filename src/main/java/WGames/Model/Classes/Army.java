@@ -16,7 +16,11 @@ public class Army {
      */
     public Army(String name) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
-            this.name = name;
+            if(name.trim().length() > 25 || !name.replaceAll("[^a-zA-Z0-9]","").equals(name.trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
+            }else{
+                this.name = name;
+            }
         }else{
             throw new IllegalArgumentException("The army must have a name");
         }
@@ -29,8 +33,8 @@ public class Army {
      */
     public Army(String name, List<Unit> units) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
-            if(name.trim().length() > 26){
-                throw new IllegalArgumentException("The army name can only have 25 characters");
+            if(name.trim().length() > 25 || !name.replaceAll("[^a-zA-Z0-9]","").equals(name.trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
             }else{
                 this.name = name;
                 this.units = units;
@@ -66,15 +70,10 @@ public class Army {
 
     /**
      * method to remove a unit from the army
-     * @param unit
+     * @param unit unit
      */
     public void remove(Unit unit){
-        try{
-            units.remove(unit);
-        }
-        catch (Exception exception){
-            Dialog.warning(exception);
-        }
+        units.remove(unit);
     }
 
     /**

@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class BattleController implements Initializable {
 
-    //TODO edit number of speed buttons
+    //TODO remove the double exceptions
 
     private Army armyOne;
     private Army armyTwo;
