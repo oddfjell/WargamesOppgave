@@ -1,27 +1,28 @@
-package WGames.Model.Units;
+package WGames.Model.Units.Standard;
 
-import WGames.Model.Unit;
+import WGames.Model.Classes.Terrain;
+import WGames.Model.Units.Unit;
 
 public class InfantryUnit extends Unit {
 
     /**
      * Constructor of the InfantryUnit class
-     * @param name
-     * @param health
-     * @param attack
-     * @param armor
+     * @param name name
+     * @param health health
+     * @param attack attack
+     * @param armor armor
      */
     public InfantryUnit(String name, int health, int attack, int armor) {
-        super(name, health, attack, armor, "");
+        super(name, health, attack, armor);
     }
 
     /**
      * Constructor of the InfantryUnit class with defined values for attack and armor
-     * @param name
-     * @param health
+     * @param name name
+     * @param health health
      */
     public InfantryUnit(String name, int health) {
-        super(name, health, 15, 10, "");
+        super(name, health, 15, 10);
     }
 
     /**
@@ -30,8 +31,8 @@ public class InfantryUnit extends Unit {
      * @return attackBonus
      */
     @Override
-    public int getAttackBonus(){
-        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+    public int getAttackBonus(Terrain terrain){
+        if(terrain.equals(Terrain.FOREST)){
             return 3;
         } else{
             return 2;
@@ -44,14 +45,19 @@ public class InfantryUnit extends Unit {
      * @return resistBonus
      */
     @Override
-    public int getResistBonus(){
-        if(getTerrain().toUpperCase().trim().equals("FOREST")){
+    public int getResistBonus(Terrain terrain){
+        if(terrain.equals(Terrain.FOREST)){
             return 2;
         } else{
             return 1;
         }
     }
 
+    /**
+     * the abstract method from Unit has now a body
+     * Provides identification the unit
+     * @return ID
+     */
     @Override
     public String getID(){
         return "InfantryUnit";

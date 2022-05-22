@@ -1,11 +1,7 @@
 import TestResources.UnitsGnotts;
-import WGames.Model.Army;
-import WGames.Model.Unit;
-import WGames.Model.UnitFactory;
+import WGames.Model.Classes.Army;
+import WGames.Model.Classes.UnitFactory;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

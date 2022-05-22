@@ -23,58 +23,51 @@
                                         <Font name="Papyrus" size="36.0" />
                                     </font>
                                 </Button>
-                        <Button fx:id="fileUploadButton" layoutX="72.0" layoutY="569.0" mnemonicParsing="false" onAction="#fileUpload" text="file" />
-                        <ComboBox fx:id="unitType" layoutX="127.0" layoutY="214.0" prefWidth="150.0" />
-                        <TextField layoutX="350.0" layoutY="213.0" prefHeight="25.0" prefWidth="121.0" />
-                        <Text fill="WHITE" layoutX="293.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                        <ComboBox fx:id="unitType" layoutX="161.0" layoutY="188.0" prefHeight="55.0" prefWidth="239.0" styleClass="Combobox" stylesheets="@../styles.css" />
+                        <TextField fx:id="name" layoutX="488.0" layoutY="188.0" prefHeight="55.0" prefWidth="225.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Text fill="WHITE" layoutX="410.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
                            <font>
-                              <Font name="Papyrus" size="20.0" />
+                              <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="482.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health:">
+                        <Text fill="WHITE" layoutX="718.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health:">
                            <font>
-                              <Font name="Papyrus" size="20.0" />
+                              <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="548.0" layoutY="213.0" prefHeight="25.0" prefWidth="32.0" />
-                        <TextField layoutX="760.0" layoutY="213.0" prefHeight="25.0" prefWidth="32.0" />
-                        <TextField layoutX="657.0" layoutY="213.0" prefHeight="25.0" prefWidth="32.0" />
-                        <Text fill="WHITE" layoutX="699.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Armor:">
+                        <TextField fx:id="health" layoutX="805.0" layoutY="186.0" prefHeight="55.0" prefWidth="98.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Text fill="WHITE" layoutX="37.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit type:">
                            <font>
-                              <Font name="Papyrus" size="20.0" />
+                              <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="590.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:">
-                           <font>
-                              <Font name="Papyrus" size="20.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="37.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit type:">
-                           <font>
-                              <Font name="Papyrus" size="20.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="20.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="add this unit" textFill="WHITE">
+                        <Button fx:id="addUnitButton" layoutX="20.0" layoutY="356.0" mnemonicParsing="false" onAction="#addUnitButtonClicked" style="-fx-background-color: transparent;" text="add this unit" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="30.0" />
                            </font>
                         </Button>
-                        <Button layoutX="248.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@../styles.css" text="delete this unit" textFill="WHITE">
+                        <Text fill="WHITE" layoutX="37.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army name:">
+                           <font>
+                              <Font name="Papyrus" size="25.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="armyName" layoutX="171.0" layoutY="97.0" prefHeight="55.0" prefWidth="201.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Button fx:id="standardUnitBox" layoutX="259.0" layoutY="356.0" mnemonicParsing="false" onAction="#makeStandardUnit" style="-fx-background-color: transparent;" text="make a standard unit" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="30.0" />
                            </font>
                         </Button>
-                        <Text fill="WHITE" layoutX="37.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army name:">
+                        <Text fx:id="standardUnitText" fill="WHITE" layoutX="37.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0">
                            <font>
-                              <Font name="Papyrus" size="20.0" />
+                              <Font name="Papyrus" size="36.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="139.0" layoutY="125.0" prefHeight="25.0" prefWidth="121.0" />
-                        <Button layoutX="278.0" layoutY="106.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="comfirm" textFill="WHITE">
+                        <TextField fx:id="amount" layoutX="146.0" layoutY="275.0" prefHeight="55.0" prefWidth="98.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Text fill="WHITE" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount:">
                            <font>
-                              <Font name="Papyrus" size="20.0" />
+                              <Font name="Papyrus" size="25.0" />
                            </font>
-                        </Button>
+                        </Text>
                             </children>
                         </AnchorPane>
                     </children>

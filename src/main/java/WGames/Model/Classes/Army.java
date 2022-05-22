@@ -1,4 +1,7 @@
-package WGames.Model;
+package WGames.Model.Classes;
+
+import WGames.Dialog.Dialog;
+import WGames.Model.Units.Unit;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -9,20 +12,36 @@ public class Army {
 
     /**
      * constructor of army
-     * @param name
+     * @param name name
      */
-    public Army(String name){
-        this.name = name;
+    public Army(String name) throws IllegalArgumentException{
+        if(!Objects.equals(name, "")){
+            if(name.trim().length() > 25 || !name.replaceAll("[^a-zA-Z0-9]","").equals(name.trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
+            }else{
+                this.name = name;
+            }
+        }else{
+            throw new IllegalArgumentException("The army must have a name");
+        }
     }
 
     /**
      * constructor of army with name and list
-     * @param name
-     * @param units
-       */
-    public Army(String name, List<Unit> units){
-        this.name = name;
-        this.units = units;
+     * @param name name
+     * @param units units
+     */
+    public Army(String name, List<Unit> units) throws IllegalArgumentException{
+        if(!Objects.equals(name, "")){
+            if(name.trim().length() > 25 || !name.replaceAll("[^a-zA-Z0-9]","").equals(name.trim())){
+                throw new IllegalArgumentException("The army name can only have 25 characters without special characters");
+            }else{
+                this.name = name;
+                this.units = units;
+            }
+        }else{
+            throw new IllegalArgumentException("The army must have a name");
+        }
     }
 
     /**
@@ -35,7 +54,7 @@ public class Army {
 
     /**
      * method to add a unit to the army
-     * @param unit
+     * @param unit unit
      */
     public void add(Unit unit){
         units.add(unit);
@@ -43,7 +62,7 @@ public class Army {
 
     /**
      * method to add all the units from a certain list to the army
-     * @param units
+     * @param units units
      */
     public void addAll(List<Unit> units){
         this.units.addAll(units);
@@ -51,7 +70,7 @@ public class Army {
 
     /**
      * method to remove a unit from the army
-     * @param unit
+     * @param unit unit
      */
     public void remove(Unit unit){
         units.remove(unit);
@@ -84,7 +103,8 @@ public class Army {
             Random random = new Random();
             int r = random.nextInt(units.size());
             return units.get(r);
-        } else {
+        }
+        else {
             return null;
         }
     }
@@ -100,7 +120,7 @@ public class Army {
 
     /**
      * equals method
-     * @param o
+     * @param o object
      * @return true/false
      */
     @Override
@@ -119,7 +139,6 @@ public class Army {
     public int hashCode() {
         return Objects.hash(name, units);
     }
-
 
     /**
      * returns a list of the InfantryUnits of the army

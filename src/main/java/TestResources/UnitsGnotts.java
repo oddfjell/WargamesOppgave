@@ -1,11 +1,11 @@
 package TestResources;
 
-import WGames.Model.Army;
-import WGames.Model.Unit;
-import WGames.Model.Units.CavalryUnit;
-import WGames.Model.Units.CommanderUnit;
-import WGames.Model.Units.InfantryUnit;
-import WGames.Model.Units.RangedUnit;
+import WGames.Model.Classes.Army;
+import WGames.Model.Units.Unit;
+import WGames.Model.Units.Standard.CavalryUnit;
+import WGames.Model.Units.Standard.CommanderUnit;
+import WGames.Model.Units.Standard.InfantryUnit;
+import WGames.Model.Units.Standard.RangedUnit;
 
 import java.util.ArrayList;
 
