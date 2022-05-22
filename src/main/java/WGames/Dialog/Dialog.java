@@ -11,9 +11,9 @@ public class Dialog {
      * Displays an error message
      * @param exception exception
      */
-    public static void error(Exception exception){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR");
+    public static void warning(Exception exception){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("WARNING");
         alert.setHeaderText("");
         alert.setContentText(exception.getMessage());
         alert.initOwner(WApplication.primaryStage);

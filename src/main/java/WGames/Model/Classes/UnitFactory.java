@@ -46,7 +46,7 @@ public class UnitFactory {
                 throw new IllegalArgumentException("This is not a defined unit");
             }
         }catch (Exception exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
         return null;
     }

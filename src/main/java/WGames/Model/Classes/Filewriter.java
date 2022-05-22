@@ -41,7 +41,7 @@ public class Filewriter {
                 bw.close();
 
             }catch (Exception ex){
-                Dialog.error(ex);
+                Dialog.warning(ex);
             }
         } else{
             throw new IllegalArgumentException("The army cannot be empty");
@@ -96,7 +96,7 @@ public class Filewriter {
                     br.close();
 
                 }catch(Exception ex){
-                    Dialog.error(ex);
+                    Dialog.warning(ex);
                     return null;
                 }
                 return army;
@@ -135,7 +135,7 @@ public class Filewriter {
         catch (Exception e)
         {
             e.printStackTrace();
-            Dialog.error(e);
+            Dialog.warning(e);
         }
 
     }

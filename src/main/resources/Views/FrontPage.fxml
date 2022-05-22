@@ -21,12 +21,12 @@
                               <Font name="Papyrus" size="71.0" />
                            </font>
                         </Label>
-                        <Button fx:id="seeArmiesButton" layoutX="519.0" layoutY="429.0" mnemonicParsing="false" onAction="#seeArmiesButtonClicked" prefHeight="108.0" prefWidth="238.0" style="-fx-background-color: transparent transparent;" text="see armies" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="seeArmiesButton" layoutX="519.0" layoutY="518.0" mnemonicParsing="false" onAction="#seeArmiesButtonClicked" prefHeight="108.0" prefWidth="238.0" style="-fx-background-color: transparent transparent;" text="see armies" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="40.0" />
                            </font>
                         </Button>
-                        <Button fx:id="commenceBattleButton" layoutX="451.0" layoutY="546.0" mnemonicParsing="false" onAction="#commenceBattleButtonClicked" prefHeight="108.0" prefWidth="374.0" style="-fx-background-color: transparent transparent;" text="commence battle" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="commenceBattleButton" layoutX="451.0" layoutY="216.0" mnemonicParsing="false" onAction="#commenceBattleButtonClicked" prefHeight="108.0" prefWidth="374.0" style="-fx-background-color: transparent transparent;" text="commence battle" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="40.0" />
                            </font>
@@ -35,7 +35,7 @@
                            <font>
                               <Font name="Papyrus" size="36.0" />
                            </font></Button>
-                        <Button fx:id="newArmyButton" layoutX="545.0" layoutY="216.0" mnemonicParsing="false" onAction="#newArmyButtonClicked" style="-fx-background-color: transparent;" text="new army" textFill="WHITE">
+                        <Button fx:id="newArmyButton" layoutX="537.0" layoutY="421.0" mnemonicParsing="false" onAction="#newArmyButtonClicked" style="-fx-background-color: transparent;" text="build army" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="36.0" />
                            </font></Button>

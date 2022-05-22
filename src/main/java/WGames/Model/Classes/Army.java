@@ -29,8 +29,12 @@ public class Army {
      */
     public Army(String name, List<Unit> units) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
-            this.name = name;
-            this.units = units;
+            if(name.trim().length() > 26){
+                throw new IllegalArgumentException("The army name can only have 25 characters");
+            }else{
+                this.name = name;
+                this.units = units;
+            }
         }else{
             throw new IllegalArgumentException("The army must have a name");
         }
@@ -69,7 +73,7 @@ public class Army {
             units.remove(unit);
         }
         catch (Exception exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
     }
 

@@ -22,7 +22,11 @@ public abstract class Unit {
      */
     public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
-            this.name = name;
+            if(name.trim().length() > 26){
+                throw new IllegalArgumentException("The unit name can only have 25 characters");
+            } else{
+                this.name = name.trim();
+            }
         } else{
             throw new IllegalArgumentException("The unit must have a name");
         }

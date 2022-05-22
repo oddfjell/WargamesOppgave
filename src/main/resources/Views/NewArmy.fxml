@@ -41,12 +41,7 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <Button fx:id="addUnitButton" layoutX="20.0" layoutY="262.0" mnemonicParsing="false" onAction="#addUnitButtonClicked" style="-fx-background-color: transparent;" text="add this unit" textFill="WHITE">
-                           <font>
-                              <Font name="Papyrus" size="30.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="248.0" layoutY="262.0" mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@../styles.css" text="delete this unit" textFill="WHITE">
+                        <Button fx:id="addUnitButton" layoutX="20.0" layoutY="356.0" mnemonicParsing="false" onAction="#addUnitButtonClicked" style="-fx-background-color: transparent;" text="add this unit" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="30.0" />
                            </font>
@@ -57,17 +52,22 @@
                            </font>
                         </Text>
                         <TextField fx:id="armyName" layoutX="171.0" layoutY="97.0" prefHeight="55.0" prefWidth="201.0" styleClass="TextField" stylesheets="@../styles.css" />
-                        <Button fx:id="standardUnitBox" layoutX="22.0" layoutY="417.0" mnemonicParsing="false" onAction="#makeStandardUnit" style="-fx-background-color: transparent;" text="make a standard unit" textFill="WHITE">
+                        <Button fx:id="standardUnitBox" layoutX="259.0" layoutY="356.0" mnemonicParsing="false" onAction="#makeStandardUnit" style="-fx-background-color: transparent;" text="make a standard unit" textFill="WHITE">
                            <font>
                               <Font name="Papyrus" size="30.0" />
                            </font>
                         </Button>
-                        <Text fx:id="standardUnitText" fill="WHITE" layoutX="37.0" layoutY="614.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <Text fx:id="standardUnitText" fill="WHITE" layoutX="37.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Papyrus" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="amount" layoutX="146.0" layoutY="275.0" prefHeight="55.0" prefWidth="98.0" styleClass="TextField" stylesheets="@../styles.css" />
+                        <Text fill="WHITE" layoutX="37.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount:">
                            <font>
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="amount" layoutX="718.0" layoutY="335.0" prefHeight="55.0" prefWidth="98.0" styleClass="TextField" stylesheets="@../styles.css" />
                             </children>
                         </AnchorPane>
                     </children>

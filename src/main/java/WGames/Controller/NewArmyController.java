@@ -90,10 +90,14 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("Please fill in the boxes");
             } else if(armyName.getText().trim().equals("")){
                 throw new IllegalArgumentException("The army must have a name");
+            }  else if(armyName.getText().trim().length() > 26){
+                throw new IllegalArgumentException("The army name can only have 25 characters");
             } else if(unitType.getValue() == null){
                 throw new IllegalArgumentException("Please choose the unit type from the box above");
             } else if(name.getText().trim().equals("")){
                 throw new IllegalArgumentException("The unit must have a name");
+            }  else if(name.getText().trim().length() > 26){
+                throw new IllegalArgumentException("The unit name can only have 25 characters");
             } else if(!health.getText().replaceAll("[^0-9]", "").equals(health.getText()) || Objects.equals(health.getText(), "")){//health.getText().replaceAll("[^0-9]", "").equals("")
                 throw new IllegalArgumentException("The health must be an integer");
             } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
@@ -125,7 +129,7 @@ public class NewArmyController implements Initializable {
                 }
             }
         }catch (IllegalArgumentException exception){
-                Dialog.error(exception);
+                Dialog.warning(exception);
         }
     }
 
@@ -143,7 +147,9 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("Please fill in the required fields ---> name of army and type of unit");
             } else if(armyName.getText().trim().equals("")){
                 throw new IllegalArgumentException("The army must have a name");
-            } else if(unitType.getValue() == null){
+            } else if(armyName.getText().trim().length() > 26){
+                throw new IllegalArgumentException("The army name can only have 25 characters");
+            }else if(unitType.getValue() == null){
                 throw new IllegalArgumentException("Please choose the unit type from the box above");
             } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
                 throw new IllegalArgumentException("The amount must be an integer between 1 and 100");
@@ -175,7 +181,7 @@ public class NewArmyController implements Initializable {
             }
 
         }catch (IllegalArgumentException exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
     }
 

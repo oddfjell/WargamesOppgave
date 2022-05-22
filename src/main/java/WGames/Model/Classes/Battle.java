@@ -54,14 +54,12 @@ public class Battle {
                     unitFromArmyOne.attack(unitFromArmyTwo, terrain);
                     if (unitFromArmyTwo.getHealth() <= 0) {
                         armyTwo.remove(unitFromArmyTwo);
-                        System.out.println(unitFromArmyTwo.getName() + " (" + armyTwo.getName() + ") died");
                     }
                 }
                 case 1 -> {
                     unitFromArmyTwo.attack(unitFromArmyOne, terrain);
                     if (unitFromArmyOne.getHealth() <= 0) {
                         armyOne.remove(unitFromArmyOne);
-                        System.out.println(unitFromArmyOne.getName() + " (" + armyOne.getName() + ") died");
                     }
                 }
             }
@@ -134,7 +132,6 @@ public class Battle {
                 attacker.attack(victim, terrain);
                 if (victim.getHealth() <= 0) {
                     victimArmy.remove(victim);
-                    System.out.println(victim.getName() + " (" + victimArmy.getName() + ") died");
                     return attacker.getName() + " kills " + victim.getName() + " (" + victimArmy.getName() + ")";
                 }
                 return attacker.getName() + " attacks " + victim.getName();

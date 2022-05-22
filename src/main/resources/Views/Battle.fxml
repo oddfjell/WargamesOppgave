@@ -95,39 +95,24 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="halfSpeedButton" layoutX="554.0" layoutY="408.0" mnemonicParsing="false" onAction="#halfSpeed" style="-fx-background-color: transparent;" text="0.5x speed" textFill="WHITE">
+                        <Button fx:id="normalSpeedButton" layoutX="525.0" layoutY="432.0" mnemonicParsing="false" onAction="#normalSpeed" style="-fx-background-color: transparent;" text="normal speed" textFill="WHITE">
                            <font>
-                              <Font name="Papyrus" size="18.0" />
+                              <Font name="Papyrus" size="24.0" />
                            </font>
                         </Button>
-                        <Button fx:id="normalSpeedButton" layoutX="545.0" layoutY="458.0" mnemonicParsing="false" onAction="#normalSpeed" style="-fx-background-color: transparent;" text="normal speed" textFill="WHITE">
+                        <Button fx:id="quadrupleSpeedButton" layoutX="547.0" layoutY="497.0" mnemonicParsing="false" onAction="#quadrupleSpeed" style="-fx-background-color: transparent;" text="4x speed" textFill="WHITE">
                            <font>
-                              <Font name="Papyrus" size="18.0" />
+                              <Font name="Papyrus" size="24.0" />
                            </font>
                         </Button>
-                        <Button fx:id="doubleSpeedButton" layoutX="562.0" layoutY="508.0" mnemonicParsing="false" onAction="#doubleSpeed" style="-fx-background-color: transparent;" text="2x speed" textFill="WHITE">
+                        <Button fx:id="oneQuarterSpeedButton" layoutX="530.0" layoutY="367.0" mnemonicParsing="false" onAction="#oneQuarterSpeed" style="-fx-background-color: transparent;" text="0.25x speed" textFill="WHITE">
                            <font>
-                              <Font name="Papyrus" size="18.0" />
+                              <Font name="Papyrus" size="24.0" />
                            </font>
                         </Button>
-                        <Button fx:id="quadrupleSpeedButton" layoutX="561.0" layoutY="558.0" mnemonicParsing="false" onAction="#quadrupleSpeed" style="-fx-background-color: transparent;" text="4x speed" textFill="WHITE">
+                        <Button fx:id="quadrupleQuadrupleSpeedButton" layoutX="539.0" layoutY="562.0" mnemonicParsing="false" onAction="#quadrupleQuadrupleSpeed" style="-fx-background-color: transparent;" text="16x speed" textFill="WHITE">
                            <font>
-                              <Font name="Papyrus" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="oneQuarterSpeedButton" layoutX="550.0" layoutY="358.0" mnemonicParsing="false" onAction="#oneQuarterSpeed" style="-fx-background-color: transparent;" text="0.25x speed" textFill="WHITE">
-                           <font>
-                              <Font name="Papyrus" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="doubleQuadrupleSpeedButton" layoutX="561.0" layoutY="608.0" mnemonicParsing="false" onAction="#doubleQuadrupleSpeed" style="-fx-background-color: transparent;" text="8x speed" textFill="WHITE">
-                           <font>
-                              <Font name="Papyrus" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="quadrupleQuadrupleSpeedButton" layoutX="557.0" layoutY="658.0" mnemonicParsing="false" onAction="#quadrupleQuadrupleSpeed" style="-fx-background-color: transparent;" text="16x speed" textFill="WHITE">
-                           <font>
-                              <Font name="Papyrus" size="18.0" />
+                              <Font name="Papyrus" size="24.0" />
                            </font>
                         </Button>
                             </children>

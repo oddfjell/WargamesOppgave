@@ -84,7 +84,7 @@ public class SeeArmiesController{
                 theArmyTable.setItems(FXCollections.observableArrayList(army.getAllUnits()));
             }
         } catch (Exception exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
     }
 }

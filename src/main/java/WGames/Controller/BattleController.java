@@ -51,17 +51,11 @@ public class BattleController implements Initializable {
     private Button restartButton;
 
     @FXML
-    private Button halfSpeedButton;
-    @FXML
     private Button normalSpeedButton;
     @FXML
     private Button oneQuarterSpeedButton;
     @FXML
-    private Button doubleSpeedButton;
-    @FXML
     private Button quadrupleSpeedButton;
-    @FXML
-    private Button doubleQuadrupleSpeedButton;
     @FXML
     private Button quadrupleQuadrupleSpeedButton;
 
@@ -119,10 +113,6 @@ public class BattleController implements Initializable {
      * Changes the speed of the battle when a certain button in clicked
      */
     @FXML
-    public void halfSpeed(){
-        speed = 2000;
-    }
-    @FXML
     public void normalSpeed(){
         speed = 1000;
     }
@@ -131,15 +121,7 @@ public class BattleController implements Initializable {
         speed = 4000;
     }
     @FXML
-    public void doubleSpeed(){
-        speed = 500;
-    }
-    @FXML
     public void quadrupleSpeed(){speed = 250;}
-    @FXML
-    public void doubleQuadrupleSpeed(){
-        speed = 125;
-    }
     @FXML
     public void quadrupleQuadrupleSpeed(){
         speed = 62;
@@ -167,12 +149,9 @@ public class BattleController implements Initializable {
         }
         if(armyOne != null && armyTwo != null){
             battle = new Battle(armyOne,armyTwo, terrain);
-        } else {
-            System.out.println(88888);
         }
         setTerrainImage(terrain);
         terrainText.setText(String.valueOf(terrain));
-        System.out.println(terrain);
     }
 
     /**
@@ -233,7 +212,7 @@ public class BattleController implements Initializable {
             updateTables();
 
         } catch (Exception exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
 
     }
@@ -341,7 +320,7 @@ public class BattleController implements Initializable {
                             Thread.sleep(speed);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
-                            Dialog.error(e);
+                            Dialog.warning(e);
                         }
                     }
 
@@ -363,7 +342,7 @@ public class BattleController implements Initializable {
             }*/
 
         } catch (Exception exception){
-            Dialog.error(exception);
+            Dialog.warning(exception);
         }
     }
 
