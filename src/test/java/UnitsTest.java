@@ -91,6 +91,14 @@ public class UnitsTest {
         Unit rangedUnit = new RangedUnit("Robin Hood",1,1,101);
 
     }
+
+    /*@Test
+    public void noe(){
+        String string = "H8U0";
+        System.out.println(string);
+        String value = string.replaceAll("[^0-9]","");
+        System.out.println(value);
+    }*/
 }
 
 

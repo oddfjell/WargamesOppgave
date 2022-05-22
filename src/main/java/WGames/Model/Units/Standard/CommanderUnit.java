@@ -1,15 +1,13 @@
 package WGames.Model.Units.Standard;
 
-import WGames.Model.Units.Standard.CavalryUnit;
-
 public class CommanderUnit extends CavalryUnit {
 
     /**
      * Constructor of the CommanderUnit class
-     * @param name
-     * @param health
-     * @param attack
-     * @param armor
+     * @param name name
+     * @param health health
+     * @param attack attack
+     * @param armor armor
      */
     public CommanderUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
@@ -17,13 +15,18 @@ public class CommanderUnit extends CavalryUnit {
 
     /**
      * Constructor of the CommanderUnit class with defined values for attack and armor
-     * @param name
-     * @param health
+     * @param name name
+     * @param health health
      */
     public CommanderUnit(String name, int health) {
         super(name, health, 25, 15);
     }
 
+    /**
+     * the abstract method from Unit has now a body
+     * Provides identification the unit
+     * @return ID
+     */
     @Override
     public String getID(){
         return "CommanderUnit";

@@ -1,5 +1,6 @@
 package WGames.Model.Classes;
 
+import WGames.Dialog.Dialog;
 import WGames.Model.Units.Unit;
 
 import java.util.*;
@@ -11,7 +12,7 @@ public class Army {
 
     /**
      * constructor of army
-     * @param name
+     * @param name name
      */
     public Army(String name) throws IllegalArgumentException{
         if(!Objects.equals(name, "")){
@@ -23,12 +24,16 @@ public class Army {
 
     /**
      * constructor of army with name and list
-     * @param name
-     * @param units
+     * @param name name
+     * @param units units
      */
-    public Army(String name, List<Unit> units){
-        this.name = name;
-        this.units = units;
+    public Army(String name, List<Unit> units) throws IllegalArgumentException{
+        if(!Objects.equals(name, "")){
+            this.name = name;
+            this.units = units;
+        }else{
+            throw new IllegalArgumentException("The army must have a name");
+        }
     }
 
     /**
@@ -41,7 +46,7 @@ public class Army {
 
     /**
      * method to add a unit to the army
-     * @param unit
+     * @param unit unit
      */
     public void add(Unit unit){
         units.add(unit);
@@ -49,7 +54,7 @@ public class Army {
 
     /**
      * method to add all the units from a certain list to the army
-     * @param units
+     * @param units units
      */
     public void addAll(List<Unit> units){
         this.units.addAll(units);
@@ -59,15 +64,13 @@ public class Army {
      * method to remove a unit from the army
      * @param unit
      */
-    public void remove(Unit unit){//throws AssertionError
-        units.remove(unit);
-        /*//boolean contains = this.units.contains(unit);
-        if(this.units.contains(unit)){
+    public void remove(Unit unit){
+        try{
             units.remove(unit);
-        } else{
-            throw new AssertionError("The unit does not exist");
-        }*/
-
+        }
+        catch (Exception exception){
+            Dialog.error(exception);
+        }
     }
 
     /**
@@ -114,7 +117,7 @@ public class Army {
 
     /**
      * equals method
-     * @param o
+     * @param o object
      * @return true/false
      */
     @Override
@@ -133,7 +136,6 @@ public class Army {
     public int hashCode() {
         return Objects.hash(name, units);
     }
-
 
     /**
      * returns a list of the InfantryUnits of the army
@@ -174,6 +176,4 @@ public class Army {
                 .filter(unit -> unit.getID().equals("CommanderUnit"))
                 .collect((Collectors.toList()));
     }
-
-
 }

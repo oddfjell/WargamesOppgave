@@ -2,93 +2,70 @@ package WGames.Controller;
 
 import WGames.WApplication;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class FrontPageController implements Initializable {
+public class FrontPageController{
 
     //TODO add a user manual
 
-
-
+    /**
+     * Buttons
+     */
     @FXML
-    private Button seeArmiesButton;
+    private Button addArmyFromFileButton;
     @FXML
     private Button commenceBattleButton;
     @FXML
+    private Button exit;
+    @FXML
     private Button newArmyButton;
     @FXML
-    private Button addArmyFromFileButton;
+    private Button seeArmiesButton;
 
-    @FXML
-    private Button exit;
-
-
-    @FXML
-    void seeArmiesButtonClicked() throws IOException {
-        WApplication.changeScene("/Views/SeeArmies.fxml");
-    }
-
-    @FXML
-    void commenceBattleButtonClicked() throws IOException {
-        WApplication.changeScene("/Views/Battle.fxml");
-    }
-
-    @FXML
-    void newArmyButtonClicked() throws IOException{
-        WApplication.changeScene("/Views/NewArmy.fxml");
-
-
-
-    }
-
+    /**
+     * Sends the user to the AddArmiesFromFile page
+     * @throws IOException IOException
+     */
     @FXML
     void addArmyFromFileButtonClicked() throws IOException {
         WApplication.changeScene("/Views/AddArmiesFromFile.fxml");
     }
 
+    /**
+     * Sends the user to the Battle page
+     * @throws IOException IOException
+     */
+    @FXML
+    void commenceBattleButtonClicked() throws IOException {
+        WApplication.changeScene("/Views/Battle.fxml");
+    }
 
-
-
+    /**
+     * Exits the game
+     * @throws IOException IOException
+     */
     @FXML
     void exitTheGame(){
         System.exit(0);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    /**
+     * Sends the user to the NewArmy page
+     * @throws IOException IOException
+     */
+    @FXML
+    void newArmyButtonClicked() throws IOException{
+        WApplication.changeScene("/Views/NewArmy.fxml");
     }
 
-
-
-
-
-/*
+    /**
+     * Sends the user to the SeeArmies page
+     * @throws IOException IOException
+     */
     @FXML
-    private Button fileUploadButton;
-
-    @FXML
-    private Text unitAdded;
-
-    @FXML
-    public void fileUpload() {
-        unitAdded.setVisible(false);
-        FileChooser fileChooser = new FileChooser();
-        Filewriter filewriter = new Filewriter();
-        Army army = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-        System.out.println(army.getAllUnits());
-        unitAdded.setVisible(true);
+    void seeArmiesButtonClicked() throws IOException {
+        WApplication.changeScene("/Views/SeeArmies.fxml");
     }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        unitAdded.setVisible(false);
-    }*/
-
 }

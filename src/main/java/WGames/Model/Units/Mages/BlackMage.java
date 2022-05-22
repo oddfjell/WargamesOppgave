@@ -4,32 +4,45 @@ import WGames.Model.Classes.Terrain;
 import WGames.Model.Units.Unit;
 
 public class BlackMage extends Mage {
+
     /**
-     * The constructor of the Unit class
-     *
-     * @param name   name
+     * Constructor of the BlackMage class
+     * @param name name
      * @param health health
      * @param attack attack
-     * @param armor  armor
-     * @param mana   mana
+     * @param armor armor
+     * @param mana mana
      */
-    public BlackMage(String name, int health, int attack, int armor, int mana) throws IllegalArgumentException {
+    public BlackMage(String name, int health, int attack, int armor, int mana){
         super(name, health, attack, armor, mana);
     }
 
-    public BlackMage(String name, int health, int mana) throws IllegalArgumentException {
+    /**
+     * Constructor of the BlackMage class with defined values for attack and armor
+     * @param name name
+     * @param health health
+     * @param mana mana
+     */
+    public BlackMage(String name, int health, int mana){
         super(name, health, 25, 5, mana);
     }
 
-    public BlackMage(String name, int health) throws IllegalArgumentException {
+    /**
+     * Constructor of the BlackMage class with defined values for attack, armor and mana
+     * @param name name
+     * @param health health
+     */
+    public BlackMage(String name, int health){
         super(name, health, 25, 5, 100);
     }
 
-    @Override
-    public String getID() {
-        return "BlackMage";
-    }
-
+    /**
+     * Altered attack method from the Unit class
+     * The BlackMage attacks as normal, however, the mage uses mana to attack. If the mage starts
+     * with 50 mana, then it can only do up to 50 damage.
+     * WhiteMage and BlackMage falls to zero health if they have zero mana
+     * @param opponent opponent
+     */
     @Override
     public void attack(Unit opponent){
         Terrain defaultTerrain = Terrain.DESERT;
@@ -39,20 +52,23 @@ public class BlackMage extends Mage {
             if(unitAttack < this.getMana()){
                 this.setMana(this.getMana() - unitAttack);
                 manaAttack = unitAttack;
-            }
-            /*else if(this.getMana() == 0){
-                manaAttack = 1;
-            }*/ else{
+            } else{
                 manaAttack = getMana();
-                //this.setMana(0);
                 this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(defaultTerrain));
-           // System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
     }
 
+    /**
+     * Altered attack method from the Unit class with terrain
+     * The BlackMage attacks as normal, however, the mage uses mana to attack. If the mage starts
+     * with 50 mana, then it can only do up to 50 damage.
+     *  WhiteMage and BlackMage falls to zero health if they have zero mana
+     * @param opponent opponent
+     * @param terrain terrain
+     */
     @Override
     public void attack(Unit opponent, Terrain terrain){
         int unitAttack = this.getAttack() + this.getAttackBonus(terrain);
@@ -63,17 +79,22 @@ public class BlackMage extends Mage {
                 manaAttack = unitAttack;
             }else if(this.getMana() == 0){
                 manaAttack = 1;
-            }
-            /*else if(this.getMana() == 0){
-                manaAttack = 1;
-            }*/ else{
+            } else{
                 manaAttack = getMana();
-                //this.setMana(0);
                 this.setHealth(0);
             }
             int opponentHealth = opponent.getHealth() - manaAttack + (opponent.getArmor()+ opponent.getResistBonus(terrain));
-            //System.out.println(this.getName() + " attacks " + opponent.getName());
             opponent.setHealth(opponentHealth);
         }
+    }
+
+    /**
+     * the abstract method from Unit has now a body
+     * Provides identification the unit
+     * @return ID
+     */
+    @Override
+    public String getID() {
+        return "BlackMage";
     }
 }

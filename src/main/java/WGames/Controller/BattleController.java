@@ -49,6 +49,7 @@ public class BattleController implements Initializable {
     private Button fileUploadButton;
     @FXML
     private Button restartButton;
+
     @FXML
     private Button halfSpeedButton;
     @FXML
@@ -134,9 +135,7 @@ public class BattleController implements Initializable {
         speed = 500;
     }
     @FXML
-    public void quadrupleSpeed(){
-        speed = 250;
-    }
+    public void quadrupleSpeed(){speed = 250;}
     @FXML
     public void doubleQuadrupleSpeed(){
         speed = 125;
@@ -148,7 +147,7 @@ public class BattleController implements Initializable {
 
     /**
      * Returns to the frontpage
-     * @throws IOException
+     * @throws IOException IOException
      */
     @FXML
     void backButtonClicked() throws IOException {
@@ -156,23 +155,68 @@ public class BattleController implements Initializable {
     }
 
     /**
+     *  When a certain button is clicked this method sets/changes the terrain image. If a terrain
+     *  is not chosen it sets the DESERT as the default. It uses the setTerrainImage method
+     */
+    @FXML
+    public void confirmTerrain(){
+        if(terrainType.getValue()==null){
+            terrain = Terrain.DESERT;
+        } else{
+            terrain = (Terrain) terrainType.getValue();
+        }
+        if(armyOne != null && armyTwo != null){
+            battle = new Battle(armyOne,armyTwo, terrain);
+        } else {
+            System.out.println(88888);
+        }
+        setTerrainImage(terrain);
+        terrainText.setText(String.valueOf(terrain));
+        System.out.println(terrain);
+    }
+
+    /**
+     * This method sets/changes the terrain image.
+     * @param terrain terrain
+     */
+    public void setTerrainImage(Terrain terrain){
+        terrainImage.getChildren().remove(imageView);
+        imageView = new ImageView(new Image(BattleController.class.getResourceAsStream("/Pictures/" + terrain + ".png")));
+        if(terrain.equals(Terrain.FOREST)){//terrain.equals(Terrain.FOREST) || terrain.equals(Terrain.PLAINS)
+            imageView.fitWidthProperty().bind(terrainImage.widthProperty());
+            imageView.fitHeightProperty().bind(terrainImage.heightProperty());
+        }
+        terrainImage.getChildren().add(imageView);
+    }
+
+    /**
      * When a certain button is clicked this method opens the file explorer. There you choose a csv-file
-     * containing an army. Then it tells you to choose another army. These armies are added to the tables and
-     * as files
+     * containing an army.Then it tells you to choose another army. The armies must have a name and contain
+     * at least one unit. These armies are added to the tables.
      */
     @FXML
     public void fileUpload() {
         try{
 
             FileChooser fileChooser = new FileChooser();
-
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV-files","*.csv", "*.CSV", "*.Csv"));
             fileChooser.setInitialDirectory(new File("src\\main\\resources\\Files"));
+
             armyOne = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
-            if(armyOne==null){
-                throw new IllegalCallerException("You did not choose an army");
+            if(armyOne.getName() == null || armyOne.getName().equals("")){
+                throw new IllegalCallerException("An army without a name is not legal");
+            }else if(armyOne.getAllUnits().size() == 0) {
+                throw new IllegalCallerException("Empty army");
             }
+
             Dialog.information("Now choose another army to battle " + armyOne.getName());
+
             armyTwo = filewriter.makeArmyFromFile(fileChooser.showOpenDialog(WApplication.primaryStage));
+            if(armyTwo.getName() == null || armyTwo.getName().equals("")){
+                throw new IllegalCallerException("An army without a name is not legal");
+            }else if(armyTwo.getAllUnits().size() == 0) {
+                throw new IllegalCallerException("Empty army");
+            }
 
             if(terrainType.getValue()==null){
                 terrain = Terrain.DESERT;
@@ -181,12 +225,10 @@ public class BattleController implements Initializable {
             }
 
             setTerrainImage(terrain);
-
             battle = new Battle(armyOne,armyTwo, terrain);
             terrainText.setText(String.valueOf(terrain));
             armyOneName.setText(armyOne.getName());
             armyTwoName.setText(armyTwo.getName());
-
 
             updateTables();
 
@@ -194,34 +236,6 @@ public class BattleController implements Initializable {
             Dialog.error(exception);
         }
 
-    }
-
-    /**
-     * Sets the tables with the armies
-     */
-    @FXML
-    public void updateTables(){
-        if(armyOne != null){
-
-            unitTypeArmyOne.setCellValueFactory(new PropertyValueFactory<>("ID"));
-            nameArmyOne.setCellValueFactory(new PropertyValueFactory<>("name"));
-            healthArmyOne.setCellValueFactory(new PropertyValueFactory<>("health"));
-
-            armyOneTable.setItems(FXCollections.observableArrayList(armyOne.getAllUnits()));
-
-        }
-        if(armyTwo != null){
-
-            unitTypeArmyTwo.setCellValueFactory(new PropertyValueFactory<>("ID"));
-            nameArmyTwo.setCellValueFactory(new PropertyValueFactory<>("name"));
-            healthArmyTwo.setCellValueFactory(new PropertyValueFactory<>("health"));
-
-            armyTwoTable.setItems(FXCollections.observableArrayList(armyTwo.getAllUnits()));
-
-        }
-
-        armyOneTable.refresh();
-        armyTwoTable.refresh();
     }
 
     /**
@@ -249,17 +263,70 @@ public class BattleController implements Initializable {
     }
 
     /**
-     *
-     * @throws InterruptedException
-     * @throws FileNotFoundException
+     * Method which sets and refreshes the tables with the armies
+     */
+    @FXML
+    public void updateTables(){
+        if(armyOne != null){
+
+            unitTypeArmyOne.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            nameArmyOne.setCellValueFactory(new PropertyValueFactory<>("name"));
+            healthArmyOne.setCellValueFactory(new PropertyValueFactory<>("health"));
+
+            armyOneTable.setItems(FXCollections.observableArrayList(armyOne.getAllUnits()));
+
+        }
+        if(armyTwo != null){
+
+            unitTypeArmyTwo.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            nameArmyTwo.setCellValueFactory(new PropertyValueFactory<>("name"));
+            healthArmyTwo.setCellValueFactory(new PropertyValueFactory<>("health"));
+
+            armyTwoTable.setItems(FXCollections.observableArrayList(armyTwo.getAllUnits()));
+
+        }
+
+        armyOneTable.refresh();
+        armyTwoTable.refresh();
+    }
+
+    /**
+     * When a certain button is clicked this method clears the tables and fills them with the same armies.
+     * It also sets the speed to normal. During a battle you cannot click this button.
+     */
+    @FXML
+    public void restart(){
+        armyOneTable.getItems().clear();
+        armyTwoTable.getItems().clear();
+
+        armyOne = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyOne.getName() + ".csv"));
+        armyTwo = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyTwo.getName() + ".csv"));
+
+        speed = 1000;
+
+        battle = new Battle(armyOne,armyTwo, terrain);
+
+        updateTables();
+    }
+
+    /**
+     * When a certain button is clicked this method will commence the battle. It constantly changes the
+     * battleAction text so that the user can se how the battle is played
+     * @throws InterruptedException Interrupted exception
+     * @throws FileNotFoundException File not found exception
      */
     @FXML
     public void theBattle() throws InterruptedException, FileNotFoundException {
-        restartButton.setDisable(true);
-        fileUploadButton.setDisable(true);
 
         try {
-            if(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0 && armyOne.getRandom() != null && armyTwo.getRandom() != null){
+            if(battle == null || armyOne == null || armyTwo == null){
+                throw new IllegalArgumentException("You must choose armies before the war can start");
+            }
+
+            restartButton.setDisable(true);
+            fileUploadButton.setDisable(true);
+
+            //if(armyOne.getAllUnits().size() != 0 && armyTwo.getAllUnits().size() != 0 && armyOne.getRandom() != null && armyTwo.getRandom() != null){
 
                 new Thread(()->{
 
@@ -291,75 +358,24 @@ public class BattleController implements Initializable {
 
                 }).start();
 
-            } else{
-                throw new IllegalArgumentException("You must choose armies before the war can start");
-            }
+            /*} else{
+                throw new IllegalArgumentException("Illegal army format");
+            }*/
 
         } catch (Exception exception){
             Dialog.error(exception);
         }
-
-
     }
 
-
-
-    @FXML
-    public void restart(){
-        armyOneTable.getItems().clear();
-        armyTwoTable.getItems().clear();
-
-        armyOne = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyOne.getName() + ".csv"));
-        armyTwo = filewriter.makeArmyFromFile(new File("src\\main\\resources\\Files\\" + armyTwo.getName() + ".csv"));
-
-        speed = 1000;
-
-        battle = new Battle(armyOne,armyTwo, terrain);
-
-        updateTables();
-
-    }
-
-
-
-    @FXML
-    public void confirmTerrain(){
-        if(terrainType.getValue()==null){
-            terrain = Terrain.DESERT;
-        } else{
-            terrain = (Terrain) terrainType.getValue();
-        }
-        if(armyOne != null && armyTwo != null){
-            battle = new Battle(armyOne,armyTwo, terrain);
-        } else {
-            System.out.println(88888);
-        }
-        setTerrainImage(terrain);
-        terrainText.setText(String.valueOf(terrain));
-        System.out.println(terrain);
-    }
-
-
-
-
-    public void setTerrainImage(Terrain terrain){
-        terrainImage.getChildren().remove(imageView);
-        imageView = new ImageView(new Image(BattleController.class.getResourceAsStream("/Pictures/" + terrain + ".png")));
-        if(terrain.equals(Terrain.FOREST)){//terrain.equals(Terrain.FOREST) || terrain.equals(Terrain.PLAINS)
-            imageView.fitWidthProperty().bind(terrainImage.widthProperty());
-            imageView.fitHeightProperty().bind(terrainImage.heightProperty());
-        }
-        terrainImage.getChildren().add(imageView);
-
-    }
-
-
-
+    /**
+     * Initial method
+     * @param url url
+     * @param resourceBundle resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Terrain> u = FXCollections.observableArrayList(Terrain.values());
         terrainType.setItems(u);
         restartButton.setDisable(true);
-
     }
 }

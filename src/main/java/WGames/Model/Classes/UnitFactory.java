@@ -11,7 +11,16 @@ import WGames.Model.Units.Standard.RangedUnit;
 
 public class UnitFactory {
 
-    public Unit getUnit(String typeOfUnit, String name, int health){
+    /**
+     * Method which makes a new unit. It checks which ID fits the parameter and
+     * makes that unit.
+     * @param typeOfUnit typeOfUnit
+     * @param name name
+     * @param health health
+     * @return Unit
+     * @throws IllegalArgumentException illegal argument exception
+     */
+    public Unit getUnit(String typeOfUnit, String name, int health) throws IllegalArgumentException{
         try{
             if("CavalryUnit".equals(typeOfUnit)){
                 return new CavalryUnit(name, health);
@@ -30,11 +39,10 @@ public class UnitFactory {
             }
             else if("WhiteMage".equals(typeOfUnit)){
                 return new WhiteMage(name, health);
+            } else{
+                throw new IllegalArgumentException("This is not a defined unit");
             }
-            //else{
-              //  return null;
-            //}
-        }catch (IllegalArgumentException exception){
+        }catch (Exception exception){
             Dialog.error(exception);
         }
         return null;

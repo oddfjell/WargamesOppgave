@@ -4,26 +4,21 @@ import WGames.Model.Units.Unit;
 
 import java.util.Random;
 
-//TODO enum
-
 public class Battle {
     private Army armyOne;
     private Army armyTwo;
     private Terrain terrain;
 
-
-
     public static String battleText = "";
-
 
     /**
      * constructor of the battle class
-     * @param armyOne
-     * @param armyTwo
-     * @param terrain
+     * @param armyOne armyOne
+     * @param armyTwo armyTwo
+     * @param terrain terrain
+     * @throws IllegalStateException illegal state exception
      */
     public Battle(Army armyOne, Army armyTwo, Terrain terrain) throws IllegalStateException{
-        //used to be void
         if(!armyOne.getName().trim().equals(armyTwo.getName().trim())){
             this.armyOne = armyOne;
             this.armyTwo = armyTwo;
@@ -36,7 +31,8 @@ public class Battle {
     /**
      * method to get a random army to attack a random hostile unit with their own random unit
      * the simulation loops the random process until an army does not have any more units
-     * then it returns the victor team
+     * than it returns the victor team
+     * //TODO this is a version before WhiteMage
      * @return the victorious army
      */
     public Army simulate(){
@@ -44,28 +40,28 @@ public class Battle {
 
             Random random = new Random();
 
-            Unit arm1 = armyOne.getRandom();
-            Unit arm2 = armyTwo.getRandom();
+            Unit unitFromArmyOne = armyOne.getRandom();
+            Unit unitFromArmyTwo = armyTwo.getRandom();
 
-            if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && arm1.getID().equals("WhiteMage") && arm2.getID().equals("WhiteMage")){
+            /*if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && unitFromArmyOne.getID().equals("WhiteMage") && unitFromArmyTwo.getID().equals("WhiteMage")){
                 return null;
-            }//TODO
+            }*///TODO
 
             int whoIsFirst = random.nextInt(2);
 
             switch (whoIsFirst) {
                 case 0 -> {
-                    arm1.attack(arm2, terrain);
-                    if (arm2.getHealth() <= 0) {
-                        armyTwo.remove(arm2);
-                        System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
+                    unitFromArmyOne.attack(unitFromArmyTwo, terrain);
+                    if (unitFromArmyTwo.getHealth() <= 0) {
+                        armyTwo.remove(unitFromArmyTwo);
+                        System.out.println(unitFromArmyTwo.getName() + " (" + armyTwo.getName() + ") died");
                     }
                 }
                 case 1 -> {
-                    arm2.attack(arm1, terrain);
-                    if (arm1.getHealth() <= 0) {
-                        armyOne.remove(arm1);
-                        System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");
+                    unitFromArmyTwo.attack(unitFromArmyOne, terrain);
+                    if (unitFromArmyOne.getHealth() <= 0) {
+                        armyOne.remove(unitFromArmyOne);
+                        System.out.println(unitFromArmyOne.getName() + " (" + armyOne.getName() + ") died");
                     }
                 }
             }
@@ -78,44 +74,48 @@ public class Battle {
         }
     }
 
-    public String slowSimulate(){
+    /**
+     * Method to get a random army to attack a random hostile unit with their own random unit. It returns
+     * different strings if the unit is attacked, healed or killed.
+     * If the attacker is a WhiteMage it heals a unit from their army.
+     * @return String of unit vs unit event
+     * @throws IllegalStateException illegal state exception
+     */
+    public String slowSimulate() throws IllegalStateException{
+
         Random random = new Random();
+        Unit unitFromArmyOne = armyOne.getRandom();
+        Unit unitFromArmyTwo = armyTwo.getRandom();
 
-        Unit arm1 = armyOne.getRandom();
-        if (arm1 == null){
-            armyOne.remove(arm1);
+        /**
+         * Extra removal since the BattleController did not always remove the unit when it was null
+         */
+        if (unitFromArmyOne == null){
+            armyOne.remove(unitFromArmyOne);
             return "";
-        }
-        Unit arm2 = armyTwo.getRandom();
-        if (arm2 == null){
-            armyTwo.remove(arm2);
+        }else if (unitFromArmyTwo == null){
+            armyTwo.remove(unitFromArmyTwo);
             return "";
-        }
-
-
-        if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && arm1.getID().equals("WhiteMage") && arm2.getID().equals("WhiteMage")){
+        } else if(armyOne.getAllUnits().size() == 1 && armyTwo.getAllUnits().size() == 1 && unitFromArmyOne.getID().equals("WhiteMage") && unitFromArmyTwo.getID().equals("WhiteMage")){
             return "stalemate";
         } else{
             int whoIsFirst = random.nextInt(2);
 
-
-            //TODO fix the code quality here so that opponent != null
             Unit attacker;
             Unit victim;
             Army attackerArmy;
             Army victimArmy;
 
-
             switch (whoIsFirst){
                 case 0 -> {
-                    attacker = arm1;
-                    victim = arm2;
+                    attacker = unitFromArmyOne;
+                    victim = unitFromArmyTwo;
                     attackerArmy = armyOne;
                     victimArmy = armyTwo;
                 }
                 case 1 -> {
-                    attacker = arm2;
-                    victim = arm1;
+                    attacker = unitFromArmyTwo;
+                    victim = unitFromArmyOne;
                     attackerArmy = armyTwo;
                     victimArmy = armyOne;
                 }
@@ -139,60 +139,10 @@ public class Battle {
                 }
                 return attacker.getName() + " attacks " + victim.getName();
             }
-
-
-            /*switch (whoIsFirst) {
-                case 0 -> {
-                    if(arm1.getID().equals("WhiteMage")){
-                        Unit patientFromSameArmy = armyOne.getRandom();
-                        arm1.attack(patientFromSameArmy);
-                        if(arm1.getHealth()==0){
-                            armyOne.remove(arm1);
-                            return arm1.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm1.getAttack() + arm1.getAttackBonus(terrain)) + " hp and dies";
-                        }
-                        return arm1.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm1.getAttack() + arm1.getAttackBonus(terrain)) + " hp";
-                    } else{
-                        arm1.attack(arm2, terrain);
-                        if (arm2.getHealth() <= 0) {
-                            armyTwo.remove(arm2);
-                            System.out.println(arm2.getName() + " (" + armyTwo.getName() + ") died");
-                            return arm1.getName() + " kills " + arm2.getName() + " (" + armyTwo.getName() + ")";
-                            //return arm1.getName() + " attacks " + arm2.getName() + "\n" + arm2.getName() + " (" + armyTwo.getName() + ") died";
-                        }
-                        return arm1.getName() + " attacks " + arm2.getName();
-                    }
-                }
-                case 1 -> {
-                    if(arm2.getID().equals("WhiteMage")){
-                        Unit patientFromSameArmy = armyTwo.getRandom();
-                        arm2.attack(patientFromSameArmy);
-                        if(arm2.getHealth()==0){
-                            armyTwo.remove(arm2);
-                            return arm2.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm2.getAttack() + arm2.getAttackBonus(terrain)) + " hp and dies";
-                        }
-                        return arm2.getName() + " heals " + patientFromSameArmy.getName() + " for " + (arm2.getAttack() + arm2.getAttackBonus(terrain)) + " hp";
-                    }else{
-                        arm2.attack(arm1, terrain);
-                        if (arm1.getHealth() <= 0) {
-                            armyOne.remove(arm1);
-                            System.out.println(arm1.getName() + " (" + armyOne.getName() + ") died");
-                            return arm2.getName() + " kills " + arm1.getName() + " (" + armyOne.getName() + ")";
-                            //return arm2.getName() + " attacks " + arm1.getName() + "\n" + arm1.getName() + " (" + armyOne.getName() + ") died";
-                        }
-                        return arm2.getName() + " attacks " + arm1.getName();
-                    }
-
-
-                }
-            }
-            return "";*/
         }
-
-
     }
 
 //TODO ha en fast paste simulate med en notepad over hendelsene
-
 
     /**
      * toString method

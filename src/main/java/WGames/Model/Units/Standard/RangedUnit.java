@@ -7,10 +7,10 @@ public class RangedUnit extends Unit {
 
     /**
      * Constructor of the RangedUnit class
-     * @param name
-     * @param health
-     * @param attack
-     * @param armor
+     * @param name name
+     * @param health health
+     * @param attack attack
+     * @param armor armor
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
@@ -18,8 +18,8 @@ public class RangedUnit extends Unit {
 
     /**
      * Constructor of the RangedUnit class with defined values for attack and armor
-     * @param name
-     * @param health
+     * @param name name
+     * @param health health
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
@@ -59,6 +59,11 @@ public class RangedUnit extends Unit {
 
     }
 
+    /**
+     * the abstract method from Unit has now a body
+     * Provides identification the unit
+     * @return ID
+     */
     @Override
     public String getID(){
         return "RangedUnit";
