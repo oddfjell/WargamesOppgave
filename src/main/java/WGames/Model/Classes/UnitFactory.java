@@ -9,6 +9,9 @@ import WGames.Model.Units.Standard.CommanderUnit;
 import WGames.Model.Units.Standard.InfantryUnit;
 import WGames.Model.Units.Standard.RangedUnit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UnitFactory {
 
     /**
@@ -46,5 +49,13 @@ public class UnitFactory {
             Dialog.error(exception);
         }
         return null;
+    }
+
+    public List<Unit> makeUnits(String typeOfUnit, String name, int health, int amount){
+        List<Unit> factoryProducts = new ArrayList<>();
+        for(int i = 0; i < amount; i++){
+            factoryProducts.add(getUnit(typeOfUnit,name, health));
+        }
+        return factoryProducts;
     }
 }

@@ -60,6 +60,8 @@ public class NewArmyController implements Initializable {
      * TextFields
      */
     @FXML
+    private TextField amount;
+    @FXML
     private TextField armyName;
     @FXML
     private TextField name;
@@ -94,6 +96,10 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("The unit must have a name");
             } else if(!health.getText().replaceAll("[^0-9]", "").equals(health.getText()) || Objects.equals(health.getText(), "")){//health.getText().replaceAll("[^0-9]", "").equals("")
                 throw new IllegalArgumentException("The health must be an integer");
+            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
+                throw new IllegalArgumentException("The amount must be an integer between 1 and 100");
+            } else if(Integer.parseInt(amount.getText()) < 1 || Integer.parseInt(amount.getText()) > 100){
+                throw new IllegalArgumentException("The amount must be between 1 and 100");
             } else{
                 UnitFactory unitFactory = new UnitFactory();
                 Filewriter filewriter = new Filewriter();
@@ -104,15 +110,18 @@ public class NewArmyController implements Initializable {
                 String unitName = name.getText().trim();
                 int unitHealth = Integer.parseInt(health.getText());
                 String typeOfUnit = String.valueOf(unitType.getValue());
+                int amountOfUnits = Integer.parseInt(amount.getText());
 
-                Unit unit = unitFactory.getUnit(typeOfUnit, unitName, unitHealth);
-                standardUnitText.setText(unit.toString());
+                List<Unit> unit = unitFactory.makeUnits(typeOfUnit, unitName, unitHealth, amountOfUnits);
+                standardUnitText.setText(unit.get(0).toString() + " * " + amountOfUnits);
 
                 if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists()) {
-                    army.add(unit);
+                    army.addAll(unit);
                     filewriter.writeArmyInFile(army);
                 } else {
-                    filewriter.writeData(armyName.getText(), unit);
+                    for(Unit u:unit){
+                        filewriter.writeData(armyName.getText(), u);
+                    }
                 }
             }
         }catch (IllegalArgumentException exception){
@@ -136,6 +145,10 @@ public class NewArmyController implements Initializable {
                 throw new IllegalArgumentException("The army must have a name");
             } else if(unitType.getValue() == null){
                 throw new IllegalArgumentException("Please choose the unit type from the box above");
+            } else if(!amount.getText().replaceAll("[^0-9]", "").equals(amount.getText()) || Objects.equals(amount.getText(), "")){
+                throw new IllegalArgumentException("The amount must be an integer between 1 and 100");
+            } else if(Integer.parseInt(amount.getText()) < 1 || Integer.parseInt(amount.getText()) > 100){
+                throw new IllegalArgumentException("The amount must be between 1 and 100");
             } else{
                 UnitFactory unitFactory = new UnitFactory();
                 Filewriter filewriter = new Filewriter();
@@ -146,15 +159,18 @@ public class NewArmyController implements Initializable {
                 String typeOfUnit = String.valueOf(unitType.getValue());
                 Random random = new Random();
                 int unitHealth = random.nextInt(50) + 1;
+                int amountOfUnits = Integer.parseInt(amount.getText());
 
-                Unit unit = unitFactory.getUnit(typeOfUnit, typeOfUnit, unitHealth);
-                standardUnitText.setText(unit.toString());
+                List<Unit> unit = unitFactory.makeUnits(typeOfUnit, typeOfUnit, unitHealth, amountOfUnits);
+                standardUnitText.setText(unit.get(0).toString() + " * " + amountOfUnits);
 
                 if (!(new File("src\\main\\resources\\Files\\" + armyName.getText() + ".csv")).exists() && unit!=null) {
-                    army.add(unit);
+                    army.addAll(unit);
                     filewriter.writeArmyInFile(army);
                 } else {
-                    filewriter.writeData(armyName.getText(), unit);
+                    for(Unit u:unit){
+                        filewriter.writeData(armyName.getText(), u);
+                    }
                 }
             }
 

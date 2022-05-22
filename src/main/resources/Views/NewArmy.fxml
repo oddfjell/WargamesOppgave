@@ -67,6 +67,7 @@
                               <Font name="Papyrus" size="25.0" />
                            </font>
                         </Text>
+                        <TextField fx:id="amount" layoutX="718.0" layoutY="335.0" prefHeight="55.0" prefWidth="98.0" styleClass="TextField" stylesheets="@../styles.css" />
                             </children>
                         </AnchorPane>
                     </children>
